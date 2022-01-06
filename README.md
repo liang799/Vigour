@@ -1,4 +1,9 @@
 # Vigour
+[![issues](https://img.shields.io/github/issues/liang799/Vigour)](https://github.com/liang799/Vigour/issues/new)
+[![forks](https://img.shields.io/github/forks/liang799/Vigour)](https://github.com/liang799/Vigour/fork)
+[![stars](https://img.shields.io/github/stars/liang799/Vigour)](https://github.com/liang799/P2032203-Assignment/stargazers)
+![license](https://img.shields.io/github/license/liang799/Vigour)
+
 Group Project for 2022 Mobile Application Development. 
 * Our app rewards user with crypto after walking for a certain amount of steps. 
 * We will be using the Etherum test network
