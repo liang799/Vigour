@@ -9,5 +9,14 @@
         android:id="@+id/home2"
         android:name="com.sp.vigour.Home"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home2_to_steps"
+            app:destination="@id/steps" />
+    </fragment>
+    <fragment
+        android:id="@+id/steps"
+        android:name="com.sp.vigour.Steps"
+        android:label="fragment_steps"
+        tools:layout="@layout/fragment_steps" />
 </navigation>
