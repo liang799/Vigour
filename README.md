@@ -34,8 +34,9 @@ Group Project for 2022 Mobile Application Development.
 - [ ] Create Fragments
 ### Tian Pok
 - [x] Get comfortable with Git
-- [ ] Create first branch
-- [ ] Start working on homepage UI
+- [x] Create first branch
+- [x] Start working on homepage UI
+- [ ] Start working on Steps frag UI
 ### Fazith
 - [x] Get comfortable with Git
 - [x] Create first branch
