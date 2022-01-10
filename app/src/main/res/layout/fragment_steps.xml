@@ -38,7 +38,7 @@
             app:layout_constraintStart_toStartOf="@+id/steps_cum"
             app:layout_constraintTop_toBottomOf="@+id/steps_cum" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button3"
             android:layout_width="112dp"
             android:layout_height="36dp"
