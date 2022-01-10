@@ -10,4 +10,14 @@
         android:name="com.sp.vigour.Home"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/map"
+        android:name="com.sp.vigour.map"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/transactions"
+        android:name="com.sp.vigour.transactions"
+        android:label="fragment_transactions"
+        tools:layout="@layout/fragment_transactions" />
 </navigation>
