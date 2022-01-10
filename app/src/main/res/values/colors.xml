@@ -6,10 +6,8 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="NeutralWhite">#FFFFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="PrimaryDark">#19233C</color>
-    <color name="Primary">#27345A</color>
-    <color name="Secondary">#FFD04D</color>
-    <color name="PrimaryLight">#A0A6C6</color>
-    <color name="NeutralGray">#ADADAD</color>
+    <color name="Secondary">#f1c40f</color>
+    <color name="PrimaryLight">#27345A</color>
 </resources>

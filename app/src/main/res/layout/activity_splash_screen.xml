@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashScreen"
+    android:orientation="vertical"
+    android:background="@color/PrimaryDark">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="100dp">
+
+        <ImageView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:src="@drawable/vigourlogo"
+            android:layout_gravity="center"
+            android:id="@+id/pfp"/>
+
+
+    </androidx.cardview.widget.CardView>
+
+   <!-- <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="15dp">
+
+        <ProgressBar
+            android:layout_width="200dp"
+            android:layout_height="9dp"
+            android:layout_gravity="center"
+            android:progressTint="@color/Secondary"
+            android:progressBackgroundTint="@color/PrimaryDark"
+            android:id="@+id/pb"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            />
+
+    </androidx.cardview.widget.CardView>-->
+
+</LinearLayout>
