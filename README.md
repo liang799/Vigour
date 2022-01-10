@@ -26,6 +26,7 @@ Group Project for 2022 Mobile Application Development.
   * Delete the `name/feature` branch
  * Only modify your branch
  * If you wish to modify another team member's branch let them know so that they can `git fetch` instead of `git pull`
+* Commit often. Do not change/add over 80 files and commit.
 
 ## TODO
 ### Team
@@ -36,7 +37,8 @@ Group Project for 2022 Mobile Application Development.
 - [x] Get comfortable with Git
 - [x] Create first branch
 - [x] Start working on homepage UI
-- [ ] Start working on Steps frag UI
+- [x] Start working on Steps frag UI
+- [ ] Start working on Steps history activity UI
 ### Fazith
 - [x] Get comfortable with Git
 - [x] Create first branch
