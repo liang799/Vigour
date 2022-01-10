@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
-            android:layout_marginTop="184dp"
+            android:layout_marginTop="170dp"
             android:layout_marginEnd="185dp"
             android:text="7,363"
             android:textColor="@color/NeutralWhite"
@@ -57,10 +57,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/events_stuff"
             android:layout_width="330dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="628dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="480dp"
             android:background="@drawable/events_bg"
+            android:paddingBottom="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -83,12 +85,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="56dp"
-                android:src="@drawable/events1"
+                android:src="@drawable/event_1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/event_info_bg"
@@ -104,6 +107,7 @@
                     android:id="@+id/textView13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
                     android:text="Early Bird"
                     android:textColor="@color/PrimaryLight"
                     android:textSize="26sp"
@@ -126,9 +130,127 @@
                     android:paddingTop="20dp"
                     android:paddingRight="1dp"
                     android:src="@drawable/ic_go_arrow" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:src="@drawable/event_2"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/event_info_bg"
+                android:backgroundTint="#00101A"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                app:layout_constraintStart_toStartOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="Temple Run"
+                    android:textColor="@color/PrimaryLight"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:text="x2 the rewards when walking near Siong Lim Temple"
+                    android:textColor="@color/PrimaryLight" />
+
+                <ImageButton
+                    android:id="@+id/imageButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:backgroundTint="#00101A"
+                    android:paddingTop="20dp"
+                    android:paddingRight="1dp"
+                    android:src="@drawable/ic_go_arrow" />
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="43dp"
+                android:src="@drawable/event_3"
+                app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/event_info_bg"
+                android:backgroundTint="#00101A"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="15dp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView5"
+                app:layout_constraintStart_toStartOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/imageView5">
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:text="It's Over 9,000!"
+                    android:textColor="@color/PrimaryLight"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="15dp"
+                    android:text="Walk over 9,000 steps today"
+                    android:textColor="@color/PrimaryLight" />
+
+                <ImageButton
+                    android:id="@+id/imageButton4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:backgroundTint="#00101A"
+                    android:paddingTop="20dp"
+                    android:paddingRight="1dp"
+                    android:src="@drawable/ic_go_arrow" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="88dp"
+            android:text="DO NOT EDIT. MEANT TO BE EMPTY"
+            android:textColor="@color/PrimaryDark"
+            app:layout_constraintEnd_toEndOf="@+id/events_stuff"
+            app:layout_constraintStart_toStartOf="@+id/events_stuff"
+            app:layout_constraintTop_toBottomOf="@+id/events_stuff" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
