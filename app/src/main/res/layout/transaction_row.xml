@@ -19,6 +19,46 @@
             android:layout_height="wrap_content">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="49dp"
+                android:layout_marginBottom="28dp"
+                android:text="+50"
+                android:textColor="@color/Secondary"
+                android:textSize="35sp" />
+
+            <TextView
+                android:id="@+id/vgr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="119dp"
+                android:layout_marginBottom="33dp"
+                android:text="VGR"
+                android:textColor="@color/NeutralWhite"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/steps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="300dp"
+                android:layout_marginBottom="35dp"
+                android:text="10000 steps"
+                android:textColor="@color/NeutralGray"
+                android:textSize="18sp" />
+        </RelativeLayout>
 
 
 

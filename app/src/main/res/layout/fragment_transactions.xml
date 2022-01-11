@@ -19,19 +19,57 @@
         app:subtitleTextColor="@color/bottom_nav"
         app:titleTextColor="@color/bottom_nav" />
 
+    <ImageView
+        android:layout_width="154dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/ic_yellowcircle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/userCountry"
-        android:layout_width="220dp"
-        android:layout_height="30dp"
-        android:text="VGR"
-        android:textSize="21dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="20"
         android:textColor="@color/NeutralWhite"
+        android:textSize="22dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.146" />
+
+    <TextView
+        android:id="@+id/userCountry2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VGR"
+        android:textColor="@color/NeutralWhite"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
+
+    <TextView
+        android:id="@+id/balance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BALANCE"
+        android:textColor="@color/NeutralGray"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.209" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/historyview"
