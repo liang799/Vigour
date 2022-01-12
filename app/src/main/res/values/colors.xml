@@ -12,4 +12,5 @@
     <color name="Primary">#27345A</color>
     <color name="PrimaryLight">#A0A6C6</color>
     <color name="NeutralGray">#ADADAD</color>
+    <color name="NeutralWhite_alt">#EEEEEEEE</color>
 </resources>
