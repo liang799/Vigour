@@ -8,22 +8,13 @@
     android:orientation="vertical"
     android:background="@color/PrimaryDark">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/ic_logo"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp"
-        app:cardCornerRadius="100dp">
-
-        <ImageView
-            android:layout_width="220dp"
-            android:layout_height="220dp"
-            android:src="@drawable/vigourlogo"
-            android:layout_gravity="center"
-            android:id="@+id/pfp"/>
-
-
-    </androidx.cardview.widget.CardView>
+        android:layout_marginTop="70dp"
+        android:id="@+id/pfp"/>
 
    <!-- <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
