@@ -4,26 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="196dp"
+    android:layout_height="246dp"
     android:background="@color/PrimaryDark"
-    android:gravity="bottom"
+    android:gravity="center"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:padding="16dp">
+    android:paddingTop="24dp">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        app:cardCornerRadius="50dp">
 
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/vigourlogo"
+            android:src="@drawable/ic_logo"
             android:layout_gravity="center"
-            android:id="@+id/pfp"/>
+            android:id="@+id/pfp"
+            />
 
-    </androidx.cardview.widget.CardView>
 
     <TextView
         android:layout_width="wrap_content"

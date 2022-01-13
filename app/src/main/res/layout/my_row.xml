@@ -7,14 +7,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:padding="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_width="410dp"
+            android:layout_height="170dp"
             app:cardBackgroundColor="@color/PrimaryDark"
             app:cardCornerRadius="0dp">
 
@@ -26,32 +27,41 @@
                     android:id="@+id/healthphoto"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:layout_marginTop="48dp"
-                    app:layout_constraintEnd_toStartOf="@+id/healthtext"
-                    app:layout_constraintHorizontal_bias="0.421"
+                    android:src="@drawable/vigourlogo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.051"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/vigourlogo"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/healthtext"
-                    android:text="This is a pretty long health tip for today"
                     android:layout_width="250dp"
-                    android:textSize="25dp"
-                    android:gravity="center"
-                    android:textColor="@color/NeutralWhite"
-                    android:fontFamily="serif"
                     android:layout_height="150dp"
-                    android:layout_marginTop="24dp"
+                    android:fontFamily="serif"
+                    android:gravity="start|center"
+                    android:text="This is a pretty long health tip for today"
+                    android:textColor="@color/NeutralWhite"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.855"
+                    app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
         </androidx.cardview.widget.CardView>
+
+        <View
+            android:layout_width="380dp"
+            android:layout_height="1dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray" />
 
     </LinearLayout>
 
