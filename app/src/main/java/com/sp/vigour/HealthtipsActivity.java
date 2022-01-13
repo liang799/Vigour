@@ -46,7 +46,6 @@ public class HealthtipsActivity extends Fragment {
         View v = inflater.inflate(R.layout.fragment_healthtips,container,false);
 
         healthview = v.findViewById(R.id.healthview);
-        healthclose = v.findViewById(R.id.healthclose);
 
         userList = new ArrayList<>();
 
