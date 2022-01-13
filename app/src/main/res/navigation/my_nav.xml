@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_home2_to_steps"
             app:destination="@id/steps" />
+        <action
+            android:id="@+id/action_home2_to_transactions"
+            app:destination="@id/transactions" />
     </fragment>
     <fragment
         android:id="@+id/steps"
         android:name="com.sp.vigour.Steps"
         android:label="fragment_steps"
         tools:layout="@layout/fragment_steps" />
+    <fragment
+        android:id="@+id/transactions"
+        android:name="com.sp.vigour.Transactions"
+        android:label="fragment_transactions"
+        tools:layout="@layout/fragment_transactions" />
 </navigation>
