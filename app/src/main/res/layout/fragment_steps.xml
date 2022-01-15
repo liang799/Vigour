@@ -39,7 +39,7 @@
             app:layout_constraintTop_toBottomOf="@+id/steps_cum" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button3"
+            android:id="@+id/goto_steps_hist"
             android:layout_width="112dp"
             android:layout_height="36dp"
             android:layout_marginTop="40dp"
