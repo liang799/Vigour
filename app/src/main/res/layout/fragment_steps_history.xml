@@ -7,26 +7,25 @@
     android:background="@color/PrimaryDark"
     tools:context=".StepsHistory">
 
-    <TextView
-        android:id="@+id/textView10"
+    <ImageButton
+        android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="24dp"
-        android:text="Steps History"
-        android:textColor="@color/NeutralWhite_alt"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/PrimaryDark"
+        android:src="@drawable/ic_baseline_close_24"
+        android:tint="@color/NeutralWhite"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/steps_history"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/imageButton3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
