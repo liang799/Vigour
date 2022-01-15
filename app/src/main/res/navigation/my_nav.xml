@@ -35,5 +35,9 @@
         android:id="@+id/stepsHistory"
         android:name="com.sp.vigour.StepsHistory"
         android:label="fragment_steps_history"
-        tools:layout="@layout/fragment_steps_history" />
+        tools:layout="@layout/fragment_steps_history" >
+        <action
+            android:id="@+id/action_stepsHistory_to_steps"
+            app:destination="@id/steps" />
+    </fragment>
 </navigation>
