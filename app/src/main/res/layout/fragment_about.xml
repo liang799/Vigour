@@ -140,7 +140,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
@@ -163,8 +163,8 @@
                 android:textAllCaps="false"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="@+id/textView5"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                app:layout_constraintStart_toStartOf="@+id/tips"
+                app:layout_constraintTop_toBottomOf="@+id/tips" />
 
             <ImageView
                 android:id="@+id/imageView6"
