@@ -56,10 +56,10 @@ public class NavDrawerActivity extends AppCompatActivity implements NavigationVi
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.healthtips:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HealthtipsActivity()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HealthTips()).commit();
                 break;
             case R.id.about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new AboutActivity()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new About()).commit();
                 break;
         }
 

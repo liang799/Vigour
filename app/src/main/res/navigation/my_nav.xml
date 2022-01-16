@@ -40,4 +40,5 @@
             android:id="@+id/action_stepsHistory_to_steps"
             app:destination="@id/steps" />
     </fragment>
+    <navigation android:id="@+id/navigation" />
 </navigation>

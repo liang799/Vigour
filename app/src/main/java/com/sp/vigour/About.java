@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class AboutActivity extends Fragment {
+public class About extends Fragment {
 
     @Nullable
     @Override

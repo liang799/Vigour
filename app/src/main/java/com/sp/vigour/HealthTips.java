@@ -31,7 +31,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class HealthtipsActivity extends Fragment {
+public class HealthTips extends Fragment {
 
     ArrayList<String> userList;
     Handler mainHandler =  new Handler();
