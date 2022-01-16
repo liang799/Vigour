@@ -41,7 +41,7 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/Primary"
+            android:background="@color/PrimaryNav"
             app:itemIconTint="@color/bottom_nav"
             app:itemTextColor="@color/bottom_nav"
             app:layout_constraintBottom_toBottomOf="parent"

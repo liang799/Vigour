@@ -13,4 +13,5 @@
     <color name="PrimaryLight">#A0A6C6</color>
     <color name="NeutralGray">#ADADAD</color>
     <color name="NeutralWhite_alt">#EEEEEEEE</color>
+    <color name="PrimaryNav">#232E4D</color>
 </resources>
