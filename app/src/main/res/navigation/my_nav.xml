@@ -6,10 +6,28 @@
     app:startDestination="@id/home2">
 
     <fragment
+        android:id="@+id/about2"
+        android:name="com.sp.vigour.About"
+        android:label="About"
+        tools:layout="@layout/fragment_about">
+        <action
+            android:id="@+id/action_about2_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthTips"
+        android:name="com.sp.vigour.HealthTips"
+        android:label="HealthTips"
+        tools:layout="@layout/fragment_healthtips">
+        <action
+            android:id="@+id/action_healthTips_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
         android:id="@+id/home2"
         android:name="com.sp.vigour.Home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home2_to_steps"
             app:destination="@id/steps" />
@@ -17,14 +35,17 @@
             android:id="@+id/action_home2_to_transactions"
             app:destination="@id/transactions" />
         <action
-            android:id="@+id/action_home2_to_navigation"
-            app:destination="@id/navigation" />
+            android:id="@+id/action_home2_to_healthTips"
+            app:destination="@id/healthTips" />
+        <action
+            android:id="@+id/action_home2_to_about2"
+            app:destination="@id/about2" />
     </fragment>
     <fragment
         android:id="@+id/steps"
         android:name="com.sp.vigour.Steps"
-        android:label="fragment_steps"
-        tools:layout="@layout/fragment_steps" >
+        android:label="Steps"
+        tools:layout="@layout/fragment_steps">
         <action
             android:id="@+id/action_steps_to_stepsHistory"
             app:destination="@id/stepsHistory" />
@@ -32,7 +53,7 @@
     <fragment
         android:id="@+id/transactions"
         android:name="com.sp.vigour.Transactions"
-        android:label="fragment_transactions"
+        android:label="Transactions"
         tools:layout="@layout/fragment_transactions" />
     <fragment
         android:id="@+id/stepsHistory"
@@ -43,15 +64,4 @@
             android:id="@+id/action_stepsHistory_to_steps"
             app:destination="@id/steps" />
     </fragment>
-    <navigation android:id="@+id/navigation"
-        app:startDestination="@id/about2">
-        <fragment
-            android:id="@+id/about2"
-            android:name="com.sp.vigour.About"
-            android:label="About" />
-        <fragment
-            android:id="@+id/healthTips"
-            android:name="com.sp.vigour.HealthTips"
-            android:label="HealthTips" />
-    </navigation>
 </navigation>
