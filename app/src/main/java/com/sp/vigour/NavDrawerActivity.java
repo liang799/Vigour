@@ -32,8 +32,8 @@ public class NavDrawerActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavigationView navigationView = findViewById(R.id.nav_view);
 
-//        NavigationView navigationView = findViewById(R.id.nav_view);
 //        navigationView.setNavigationItemSelectedListener(this);
 
         NavController navController = Navigation.findNavController(this,  R.id.fragment_container);
@@ -44,6 +44,7 @@ public class NavDrawerActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
 
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer, toolbar,
