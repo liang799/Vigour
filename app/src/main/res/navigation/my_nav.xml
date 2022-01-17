@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/healthTips"
         android:name="com.sp.vigour.HealthTips"
-        android:label="HealthTips"
+        android:label="Health Tips"
         tools:layout="@layout/fragment_healthtips">
         <action
             android:id="@+id/action_healthTips_to_home2"
@@ -58,8 +58,8 @@
     <fragment
         android:id="@+id/stepsHistory"
         android:name="com.sp.vigour.StepsHistory"
-        android:label="fragment_steps_history"
-        tools:layout="@layout/fragment_steps_history" >
+        android:label="Steps History"
+        tools:layout="@layout/fragment_steps_history">
         <action
             android:id="@+id/action_stepsHistory_to_steps"
             app:destination="@id/steps" />
