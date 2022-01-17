@@ -23,6 +23,8 @@ public class Steps extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_steps, container, false);
+
+
         return v;
     }
 }
