@@ -24,7 +24,7 @@
         android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/money"
+                android:id="@+id/money_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -48,7 +48,7 @@
                 android:textSize="22sp" />
 
             <TextView
-                android:id="@+id/steps"
+                android:id="@+id/steps_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"

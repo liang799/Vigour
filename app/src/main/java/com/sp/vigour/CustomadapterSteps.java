@@ -1,13 +1,9 @@
 package com.sp.vigour;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHolder>{
+public class CustomadapterSteps extends RecyclerView.Adapter<CustomadapterSteps.MyViewHolder>{
 
     Context context;
-    ArrayList<String> healthtip;
+    ArrayList<Vigouritem> vigouritemArrayList;
+    ArrayList historyID;
 
     private OnItemClickListener mListener;
 
@@ -30,9 +27,11 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
         mListener = listener;
     }
 
-    Customadapter(Context context, ArrayList healthtip){
+
+    CustomadapterSteps(Context context, ArrayList historyID, ArrayList vigouritemArrayList){
         this.context = context;
-        this.healthtip = healthtip;
+        this.vigouritemArrayList = vigouritemArrayList;
+        this.historyID = historyID;
     }
 
     @NonNull
@@ -46,24 +45,39 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Vigouritem vigouritem = vigouritemArrayList.get(position);
 
-        holder.healthtiptxt.setText(healthtip.get(position));
+        holder.usermoneytxt.setText(vigouritem.getUsercrypto());
+        holder.steps.setText(vigouritem.getUsersteps());
+        holder.steps_text.setText(vigouritem.getUsersteps());
+
+        String totaltime = vigouritem.getUserdate() + " " + vigouritem.getUsertime();
+
+        holder.steps_date.setText(totaltime);
 
     }
 
     @Override
     public int getItemCount() {
-        return healthtip.size();
+        return vigouritemArrayList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
-        TextView healthtiptxt;
+        TextView usermoneytxt;
+        TextView steps;
+
+        TextView steps_text;
+        TextView steps_date;
 
         public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
-            healthtiptxt = itemView.findViewById(R.id.healthtext);
+            usermoneytxt = itemView.findViewById(R.id.money_row);
+            steps = itemView.findViewById(R.id.steps_row);
+
+            steps_text = itemView.findViewById(R.id.steps_hist_main);
+            steps_date = itemView.findViewById(R.id.steps_hist_date);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
