@@ -13,11 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class StepsHistory extends Fragment { //implements View.OnClickListener {
-    public StepsHistory() {}
-
     private BottomNavigationView navBar;
     private RecyclerView recyclerView;
-//    private ImageButton close;
 
     // Testing data
     int steps[] = {9000, 8000, 1000, 200, 500, 0};
@@ -33,8 +30,6 @@ public class StepsHistory extends Fragment { //implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_steps_history, container, false);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
-//        close = (ImageButton) v.findViewById(R.id.close_sHist);
-//        close.setOnClickListener(this);
 
         recyclerView = (RecyclerView) v.findViewById(R.id.steps_history);
         StepsAdapter adapter = new StepsAdapter(getActivity(), steps, time);
@@ -47,25 +42,12 @@ public class StepsHistory extends Fragment { //implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
         navBar.setVisibility(View.GONE);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-//        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
         navBar.setVisibility(View.VISIBLE);
     }
-
-//    @Override
-//    public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.close_sHist:
-//                Navigation.findNavController(v).navigate(R.id.action_stepsHistory_to_steps);
-//                break;
-//            default:
-//                throw new IllegalStateException("Unexpected value: " + v.getId());
-//        }
-//    }
 }
