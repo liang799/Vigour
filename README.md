@@ -1,7 +1,7 @@
 # Vigour
 [![issues](https://img.shields.io/github/issues/liang799/Vigour)](https://github.com/liang799/Vigour/issues/new)
 [![forks](https://img.shields.io/github/forks/liang799/Vigour)](https://github.com/liang799/Vigour/fork)
-[![stars](https://img.shields.io/github/stars/liang799/Vigour)](https://github.com/liang799/P2032203-Assignment/stargazers)
+[![stars](https://img.shields.io/github/stars/liang799/Vigour)](https://github.com/liang799/Vigour/stargazers)
 ![license](https://img.shields.io/github/license/liang799/Vigour)
 
 Group Project for 2022 Mobile Application Development. 
@@ -25,25 +25,31 @@ Group Project for 2022 Mobile Application Development.
   * After you have finish implementing the feature, merge it
   * Delete the `name/feature` branch
  * Only modify your branch
- * If you wish to modify another team member's branch let them know so that they can `git fetch` instead of `git pull`
+ * Use `git pull --rebase` instead of `git pull`
+ * Try to `rebase` instead of `merge`
 * Commit often. Do not change/add over 80 files and commit.
 
 ## TODO
 ### Team
 - [ ] Learn Remote, Local and Tracking Branches
 - [ ] Learn how to resolve conflict when merging
-- [ ] Create Fragments
+- [x] Create Fragments
+- [ ] Learn Safe args, Navigation graph
 ### Tian Pok
 - [x] Get comfortable with Git
 - [x] Create first branch
-- [x] Start working on homepage UI
-- [x] Start working on Steps frag UI
-- [ ] Start working on Steps history activity UI
+- [x] Completed all the UI
+- [x] Implemented JSON parsing on Did you know section
+- [ ] Start working on pedometer
 ### Fazith
 - [x] Get comfortable with Git
 - [x] Create first branch
-- [ ] Start working on Steps Details UI
+- [x] Start working on Steps Details UI
+- [ ] Start learning crypto
 ### Raja
 - [x] Get comfortable with Git
-- [ ] Create first branch
-- [ ] Start working on splash screen
+- [x] Create first branch
+- [x] Start working on splash screen
+- [x] Add adapters
+- [x] JSON Parsing on Health tips
+- [ ] Get remote image for Health tips
