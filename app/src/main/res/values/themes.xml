@@ -2,15 +2,15 @@
     <!-- Base application theme. -->
     <style name="Theme.Vigour" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/NeutralWhite</item>
+        <item name="colorPrimary">#0F1524</item>
+        <item name="colorPrimaryVariant">#0F1524</item>
+        <item name="colorOnPrimary">#0F1524</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorSecondary">#0F1524</item>
+        <item name="colorSecondaryVariant">#0F1524</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">@color/Primary</item>
+        <item name="android:statusBarColor" tools:targetApi="l">#0F1524</item>
         <!-- Customize your theme here. -->
     </style>
 
