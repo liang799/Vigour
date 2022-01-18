@@ -9,6 +9,7 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -22,17 +23,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="512dp"
+        android:layout_marginBottom="196dp"
         android:text="please make a selection below to create or recover your wallet"
         android:textColor="@color/NeutralWhite"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView23"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/textView23" />
 
     <ImageView
         android:layout_width="25dp"
@@ -46,19 +48,22 @@
         app:layout_constraintTop_toTopOf="@+id/createwallet"
         />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createwallet"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="548dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rounded_button"
-        android:text="Create New Wallet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:text="     Create New Wallet"
+        android:textAllCaps="false"
+        android:textColor="@color/NeutralWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView20"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/textView20">
 
-    </Button>
+    </androidx.appcompat.widget.AppCompatButton>
 
     <ImageView
         android:layout_width="25dp"
@@ -71,17 +76,20 @@
         app:layout_constraintStart_toStartOf="@+id/restorewallet"
         app:layout_constraintTop_toTopOf="@+id/restorewallet" />
 
-    <Button
-        android:layout_width="350dp"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/restorewallet"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="624dp"
-        android:background="@drawable/rounded_button"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/secondary_button_restore"
         android:text="Restore Wallet"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/restorewallet"/>
+        android:textAllCaps="false"
+        android:textColor="@color/NeutralWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/createwallet"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/createwallet"
+        app:layout_constraintTop_toBottomOf="@+id/createwallet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

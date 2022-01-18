@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,8 +33,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class HealthtipsActivity extends Fragment {
+public class HealthTips extends Fragment {
 
+    BottomNavigationView navBar;
     ArrayList<String> userList;
     Handler mainHandler =  new Handler();
     Customadapter customadapter;
@@ -56,9 +59,22 @@ public class HealthtipsActivity extends Fragment {
         customadapter = new Customadapter(getContext(),userList);
         healthview.setAdapter(customadapter);
         healthview.setLayoutManager(new LinearLayoutManager(getContext()));
+        navBar = getActivity().findViewById(R.id.bottomNavigationView);
 
         return v;
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        navBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        navBar.setVisibility(View.VISIBLE);
     }
 
     class fetchData extends Thread {

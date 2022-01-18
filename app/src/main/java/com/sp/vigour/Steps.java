@@ -1,23 +1,16 @@
 package com.sp.vigour;
 
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import com.google.android.gms.common.data.DataBufferUtils;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
-import org.w3c.dom.Text;
-
-public class Steps extends Fragment {
+public class Steps extends Fragment implements View.OnClickListener {
+    private Button stepsButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,19 +21,19 @@ public class Steps extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_steps, container, false);
-
-        Button historyview = v.findViewById(R.id.button3);
-
-        historyview.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fr = getFragmentManager().beginTransaction();
-                fr.replace(R.id.fragment_container,new StepsHistory() );
-                fr.commit();
-            }
-        });
-
-
+        stepsButton = (Button) v.findViewById(R.id.goto_steps_hist);
+        stepsButton.setOnClickListener(this);
         return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.goto_steps_hist:
+                Navigation.findNavController(v).navigate(R.id.action_steps_to_stepsHistory);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + v.getId());
+        }
     }
 }

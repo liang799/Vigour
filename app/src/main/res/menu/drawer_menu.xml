@@ -5,10 +5,10 @@
     >
 
     <group android:checkableBehavior="single">
-        <item android:id="@+id/healthtips"
+        <item android:id="@+id/healthTips"
             android:icon="@drawable/fitnesssvg"
             android:title="Health Tips"/>
-        <item android:id="@+id/about"
+        <item android:id="@+id/about2"
             android:icon="@drawable/infosvg"
             android:title="About"/>
     </group>
