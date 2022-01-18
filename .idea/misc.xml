@@ -9,29 +9,28 @@
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/fitnesssvg.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/history_button.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/ic_arrow.xml" value="0.24027777777777778" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.236986301369863" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/infosvg.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/rounded_button.xml" value="0.24027777777777778" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/rounded_button2.xml" value="0.236986301369863" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/rounded_corner.xml" value="0.24027777777777778" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/secondary_button_restore.xml" value="0.236986301369863" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_nav_drawer.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_about.xml" value="0.264" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_home.xml" value="0.264" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_login.xml" value="0.1375" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_map.xml" value="0.16799999999999998" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.152" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps_history.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_transactions.xml" value="0.264" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/my_row.xml" value="0.13935185185185187" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/nav_header.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/steps_row.xml" value="0.264" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/transaction_row.xml" value="0.2228310502283105" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/bottom_nav.xml" value="0.4" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/close_frag.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/drawer_menu.xml" value="0.2228310502283105" />
+        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.2" />
+        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/bottom_nav.xml" value="0.22592592592592592" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/drawable/rounded_button.xml" value="0.2703125" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/drawable/roundedimageview.xml" value="0.2703125" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/activity_nav_drawer.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/activity_splash_screen.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_about.xml" value="0.5" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_healthtips.xml" value="0.15625" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.2864583333333333" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_steps_history.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_transactions.xml" value="0.1421875" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/my_row.xml" value="0.33" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/nav_header.xml" value="0.13385416666666666" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/steps_row.xml" value="0.33958333333333335" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/transaction_row.xml" value="0.1421875" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/menu/bottom_nav.xml" value="0.1421875" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/menu/drawer_menu.xml" value="0.13385416666666666" />
       </map>
     </option>
   </component>
