@@ -49,6 +49,9 @@
         <action
             android:id="@+id/action_steps_to_stepsHistory"
             app:destination="@id/stepsHistory" />
+        <action
+            android:id="@+id/action_steps_to_map"
+            app:destination="@id/map" />
     </fragment>
     <fragment
         android:id="@+id/transactions"
@@ -62,6 +65,15 @@
         tools:layout="@layout/fragment_steps_history">
         <action
             android:id="@+id/action_stepsHistory_to_steps"
+            app:destination="@id/steps" />
+    </fragment>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.sp.vigour.Map"
+        android:label="Event Tracker"
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_map_to_steps"
             app:destination="@id/steps" />
     </fragment>
 </navigation>
