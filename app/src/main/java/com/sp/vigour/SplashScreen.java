@@ -3,6 +3,7 @@ package com.sp.vigour;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
@@ -14,6 +15,7 @@ public class SplashScreen extends AppCompatActivity {
 
     ProgressBar pb;
     int counter = 0;
+    MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,13 @@ public class SplashScreen extends AppCompatActivity {
         };
 
         t.schedule(tt,0,10);*/
+
+        if(mediaPlayer ==  null){
+            mediaPlayer = MediaPlayer.create(this,R.raw.windowsound);
+        }
+
+        mediaPlayer.start();
+
 
 
         new Handler().postDelayed(new Runnable() {

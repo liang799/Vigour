@@ -15,8 +15,17 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Button createwallet = findViewById(R.id.createwallet);
+        Button restorewallet = findViewById(R.id.restorewallet);
 
         createwallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,NavDrawerActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        restorewallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,NavDrawerActivity.class);
