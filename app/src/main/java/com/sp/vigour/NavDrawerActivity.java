@@ -13,13 +13,29 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class NavDrawerActivity extends AppCompatActivity {
+import java.io.IOException;
+
+public class NavDrawerActivity extends AppCompatActivity implements SensorEventListener {
+    private SensorManager sensorManager = null;
+    private boolean running = false;
+    private float totalSteps = 0;
+    private float prevTotalSteps = 0;
+
 
     private DrawerLayout drawer;
     private AppBarConfiguration appBarConfiguration;
@@ -34,8 +50,6 @@ public class NavDrawerActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-//        navigationView.setNavigationItemSelectedListener(this);
-
         NavController navController = Navigation.findNavController(this,  R.id.fragment_container);
 
         appBarConfiguration =
@@ -46,21 +60,9 @@ public class NavDrawerActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer, toolbar,
-//                R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-//        drawer.addDrawerListener(toggle);
-//        toggle.syncState();
     }
-
-//    @Override
-//    public void onBackPressed() {
-//        if(drawer.isDrawerOpen(GravityCompat.START)){
-//            drawer.closeDrawer(GravityCompat.START);
-//        }else {
-//            super.onBackPressed();
-//        }
-//    }
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -75,18 +77,39 @@ public class NavDrawerActivity extends AppCompatActivity {
         return NavigationUI.onNavDestinationSelected(item, navController)
                 || super.onOptionsItemSelected(item);
     }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        running = true;
+        Sensor pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if (pedometer == null)
+            Toast.makeText(getApplicationContext(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
+        else
+            sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
+    }
 
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()){
-//            case R.id.healthtips:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HealthTips()).commit();
-//                break;
-//            case R.id.about:
-//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new About()).commit();
-//                break;
-//        }
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (running) {
+            totalSteps = event.values[0];
+            int currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
+            try {
+                TextView steps = findViewById(R.id.counter_int);
+                ImageView crossOut_steps = findViewById(R.id.error_counter);
+                TextView stepErrMsg = findViewById(R.id.error_counter_msg);
+                steps.setText(String.valueOf(totalSteps));
+                crossOut_steps.setVisibility(View.GONE);
+                stepErrMsg.setVisibility(View.GONE);
+            } catch (Exception e) {
+                // This will catch any exception, because they are all descended from Exception
+                System.out.println("Error " + e.getMessage());
+                return;
+            }
+        }
+    }
 
-//        drawer.closeDrawer(GravityCompat.START);
-//        return true;
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
 }

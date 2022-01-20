@@ -1,5 +1,6 @@
 package com.sp.vigour;
 
+import android.hardware.SensorManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class Debugging extends Fragment {
+    private SensorManager sensorManager = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

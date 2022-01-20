@@ -71,7 +71,7 @@ public class Home extends Fragment implements View.OnClickListener {
             new fetchData().start();
         } else {
             // Failure! No pedometer.
-            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
             tips.setText("Error! Your hardware does not have a Pedometer.");
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
