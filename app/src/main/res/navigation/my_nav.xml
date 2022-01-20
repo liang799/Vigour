@@ -78,6 +78,9 @@
         <action
             android:id="@+id/action_map_to_steps"
             app:destination="@id/steps" />
+        <action
+            android:id="@+id/action_map_to_stepsDetails"
+            app:destination="@id/stepsDetails" />
     </fragment>
     <fragment
         android:id="@+id/stepsDetails"
@@ -87,5 +90,8 @@
         <action
             android:id="@+id/action_stepsDetails_to_stepsHistory"
             app:destination="@id/stepsHistory" />
+        <action
+            android:id="@+id/action_stepsDetails_to_map"
+            app:destination="@id/map" />
     </fragment>
 </navigation>
