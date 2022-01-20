@@ -42,11 +42,11 @@
         android:layout_marginTop="12dp"
         android:elevation="10dp"
         android:src="@drawable/addsvg"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/createwallet"
         app:layout_constraintHorizontal_bias="0.178"
         app:layout_constraintStart_toStartOf="@+id/createwallet"
-        app:layout_constraintTop_toTopOf="@+id/createwallet"
-        />
+        app:layout_constraintTop_toTopOf="@+id/createwallet" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/createwallet"
@@ -58,6 +58,7 @@
         android:textAllCaps="false"
         android:textColor="@color/NeutralWhite"
         android:textSize="20sp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/textView20"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView20"
@@ -82,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:background="@drawable/secondary_button_restore"
-        android:text="Restore Wallet"
+        android:text="Log In to Wallet"
         android:textAllCaps="false"
         android:textColor="@color/NeutralWhite"
         android:textSize="20sp"
