@@ -1,5 +1,10 @@
 package com.sp.vigour;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -36,11 +41,13 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView hide_indicator;
     private TextView toggle_hide;
     private boolean hidden = false;
-    ArrayList<String> did_u_know;
-    Handler mainHandler =  new Handler();
+    private ArrayList<String> did_u_know;
+    private Handler mainHandler =  new Handler();
+    private SensorManager sensorManager;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
     }
 
     @Override
@@ -55,8 +62,19 @@ public class Home extends Fragment implements View.OnClickListener {
         hide_indicator = view.findViewById(R.id.hideEye);
         toggle_hide = view.findViewById(R.id.visibilitySwitch);
         toggle_hide.setOnClickListener(this);
-        did_u_know = new ArrayList<>();
-        new fetchData().start();
+
+        if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null){
+            // Success! There's a pedometer.
+            did_u_know = new ArrayList<>();
+            new fetchData().start();
+        } else {
+            // Failure! No pedometer.
+            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_LONG).show();
+            tips.setText("Error! Your hardware does not have a Pedometer.");
+            tips.setTextColor(Color.parseColor("#EF4B39"));
+            tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
+        }
+
         return view;
     }
 

@@ -3,6 +3,8 @@
     package="com.sp.vigour">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.sensor.stepcounter"/>
+    <uses-feature android:name="android.hardware.sensor.stepdetector"/>
 
     <application
         android:allowBackup="true"
