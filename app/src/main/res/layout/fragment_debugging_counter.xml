@@ -37,7 +37,7 @@
             app:drawableTint="#F44336"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView28" />
+            app:layout_constraintTop_toBottomOf="@+id/error_counter_msg" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -61,12 +61,12 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/error_accel_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:drawableStart="@drawable/ic_baseline_warning_24"
-            android:text=" NOT WORKING!"
+            android:text=" NOT IMPLEMENTED!"
             android:textColor="@color/NeutralWhite"
             android:textSize="16sp"
             android:visibility="visible"
@@ -89,7 +89,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/error_counter"
             android:layout_width="133dp"
             android:layout_height="97dp"
             android:src="@drawable/ic_baseline_close_24"
@@ -113,7 +113,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/error_accel"
             android:layout_width="133dp"
             android:layout_height="97dp"
             android:src="@drawable/ic_baseline_close_24"
@@ -125,7 +125,7 @@
             app:layout_constraintTop_toTopOf="@+id/imageView7" />
 
         <TextView
-            android:id="@+id/textView28"
+            android:id="@+id/error_counter_msg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -137,7 +137,7 @@
             app:drawableTint="@color/Secondary"
             app:layout_constraintEnd_toEndOf="@+id/imageView8"
             app:layout_constraintHorizontal_bias="0.666"
-            app:layout_constraintStart_toStartOf="@+id/imageView9"
+            app:layout_constraintStart_toStartOf="@+id/error_counter"
             app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
         <TextView
@@ -151,7 +151,7 @@
             app:drawableTint="#F44336"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+            app:layout_constraintTop_toBottomOf="@+id/error_accel_msg" />
 
         <TextView
             android:id="@+id/textView31"
