@@ -4,6 +4,8 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,11 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,10 +43,13 @@ public class Home extends Fragment implements View.OnClickListener {
     private ArrayList<String> did_u_know;
     private Handler mainHandler =  new Handler();
     private SensorManager sensorManager;
+    private Sensor pedometer;
+    private int mSteps;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
     }
 
     @Override
@@ -63,13 +65,13 @@ public class Home extends Fragment implements View.OnClickListener {
         toggle_hide = view.findViewById(R.id.visibilitySwitch);
         toggle_hide.setOnClickListener(this);
 
-        if (sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER) != null){
+        if (pedometer != null){
             // Success! There's a pedometer.
             did_u_know = new ArrayList<>();
             new fetchData().start();
         } else {
             // Failure! No pedometer.
-            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
             tips.setText("Error! Your hardware does not have a Pedometer.");
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
@@ -157,4 +159,16 @@ public class Home extends Fragment implements View.OnClickListener {
             });
         }
     }
+
+    private final SensorEventListener mListener = new SensorEventListener() {
+        @Override
+        public void onSensorChanged(SensorEvent event) {
+            mSteps += event.values.length;
+        }
+
+        @Override
+        public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+        }
+    };
 }
