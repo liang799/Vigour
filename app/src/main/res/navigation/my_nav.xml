@@ -81,7 +81,7 @@
     </fragment>
     <fragment
         android:id="@+id/stepsDetails"
-        android:name="com.sp.vigour.StepsDetails"
+        android:name="com.sp.vigour.Details"
         android:label="fragment_steps_details"
         tools:layout="@layout/fragment_steps_details" >
         <action
