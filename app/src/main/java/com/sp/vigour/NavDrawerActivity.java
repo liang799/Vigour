@@ -44,6 +44,7 @@ public class NavDrawerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav_drawer);
 
+        /* ---- Binding Views ---- */
         Toolbar toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
@@ -51,6 +52,7 @@ public class NavDrawerActivity extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this,  R.id.fragment_container);
 
+        /* ---- Navigation using NavGraph ---- */
         appBarConfiguration =
                 new AppBarConfiguration.Builder(R.id.home2, R.id.steps, R.id.transactions)
                         .setDrawerLayout(drawer).build(); //up button will not be displayed for these destinations
@@ -58,7 +60,9 @@ public class NavDrawerActivity extends AppCompatActivity {
         setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
-        if(ContextCompat.checkSelfPermission(this,
+
+        /* --------  Permissions --------- */
+        if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
             //ask for permission
             ActivityCompat.requestPermissions(

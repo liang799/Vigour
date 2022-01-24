@@ -4,8 +4,6 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -44,7 +41,6 @@ public class Home extends Fragment implements View.OnClickListener {
     private Handler mainHandler =  new Handler();
     private SensorManager sensorManager;
     private Sensor pedometer;
-    private int mSteps;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +67,6 @@ public class Home extends Fragment implements View.OnClickListener {
             new fetchData().start();
         } else {
             // Failure! No pedometer.
-//            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
             tips.setText("Error! Your hardware does not have a Pedometer.");
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
@@ -107,19 +102,6 @@ public class Home extends Fragment implements View.OnClickListener {
 
         @Override
         public void run(){
-
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-
-                    /*progressDialog = new ProgressDialog(getContext());
-                    progressDialog.setMessage("Fetching Data");
-                    progressDialog.setCancelable(false);
-                    progressDialog.show();*/
-
-                }
-            });
-
             try {
                 URL url = new URL("https://api.npoint.io/cbb709d068583b916068");
 //                URL url = new URL("https://opensheet.elk.sh/1y9yJlj3czkw9BDVR3d6BZXW_cOzpMNSxHkHlESlK4D4/1");
@@ -134,7 +116,6 @@ public class Home extends Fragment implements View.OnClickListener {
 
                 if (!data.isEmpty()) {
                     JSONObject jsonObject = new JSONObject(data);
-//                    JSONArray facts_array = new JSONArray(line);
                     JSONArray facts_array = jsonObject.getJSONArray("Did you know?");
                     for (int i = 0; i < facts_array.length(); i++) {
                         JSONObject facts = facts_array.getJSONObject(i);
@@ -150,7 +131,7 @@ public class Home extends Fragment implements View.OnClickListener {
                 e.printStackTrace();
             }
 
-            mainHandler.post(new Runnable() {
+            mainHandler.post( new Runnable() {
                 @Override
                 public void run() {
                     int random = new Random().nextInt(did_u_know.size());
@@ -159,16 +140,4 @@ public class Home extends Fragment implements View.OnClickListener {
             });
         }
     }
-
-    private final SensorEventListener mListener = new SensorEventListener() {
-        @Override
-        public void onSensorChanged(SensorEvent event) {
-            mSteps += event.values.length;
-        }
-
-        @Override
-        public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-        }
-    };
 }
