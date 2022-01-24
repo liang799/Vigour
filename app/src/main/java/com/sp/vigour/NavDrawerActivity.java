@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -13,7 +15,9 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -33,6 +37,7 @@ import java.io.IOException;
 public class NavDrawerActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private AppBarConfiguration appBarConfiguration;
+    private static final int PERMISSION_REQUEST_ACTIVITY_RECOGNITION = 45;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,14 @@ public class NavDrawerActivity extends AppCompatActivity {
         setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
+        if(ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
+            //ask for permission
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
+                    PERMISSION_REQUEST_ACTIVITY_RECOGNITION);
+        }
     }
 
     @Override
