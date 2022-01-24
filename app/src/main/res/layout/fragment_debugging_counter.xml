@@ -93,12 +93,12 @@
             android:layout_width="133dp"
             android:layout_height="97dp"
             android:src="@drawable/ic_baseline_close_24"
-            android:tint="#F44336"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/imageView8"
             app:layout_constraintEnd_toEndOf="@+id/imageView8"
             app:layout_constraintStart_toStartOf="@+id/imageView8"
-            app:layout_constraintTop_toTopOf="@+id/imageView8" />
+            app:layout_constraintTop_toTopOf="@+id/imageView8"
+            app:tint="#F44336" />
 
         <TextView
             android:id="@+id/accel_int"
@@ -117,12 +117,12 @@
             android:layout_width="133dp"
             android:layout_height="97dp"
             android:src="@drawable/ic_baseline_close_24"
-            android:tint="#F44336"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/imageView7"
             app:layout_constraintEnd_toEndOf="@+id/imageView7"
             app:layout_constraintStart_toStartOf="@+id/imageView7"
-            app:layout_constraintTop_toTopOf="@+id/imageView7" />
+            app:layout_constraintTop_toTopOf="@+id/imageView7"
+            app:tint="#F44336" />
 
         <TextView
             android:id="@+id/error_counter_msg"
