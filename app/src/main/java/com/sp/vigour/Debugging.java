@@ -1,22 +1,13 @@
 package com.sp.vigour;
 
 import android.Manifest;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,7 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 public class Debugging extends Fragment implements SensorEventListener {
     private SensorManager sensorManager = null;
@@ -41,12 +33,6 @@ public class Debugging extends Fragment implements SensorEventListener {
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (ContextCompat.checkSelfPermission(
-            getActivity(), Manifest.permission.ACTIVITY_RECOGNITION) ==
-            PackageManager.PERMISSION_GRANTED) {
-        } else {
-            Toast.makeText(getActivity(), "Permission needed!", Toast.LENGTH_SHORT).show();
-        }
     }
 
     @Override
@@ -62,6 +48,14 @@ public class Debugging extends Fragment implements SensorEventListener {
             error_msg.setVisibility(View.GONE);
         }
 
+        if (ContextCompat.checkSelfPermission(
+                getActivity(), Manifest.permission.ACTIVITY_RECOGNITION) ==
+                PackageManager.PERMISSION_GRANTED) {
+        } else {
+            error_msg.setVisibility(View.VISIBLE);
+            error_msg.setText("Physical Activity Permission needed!");
+        }
+
         return v;
     }
 
@@ -71,9 +65,7 @@ public class Debugging extends Fragment implements SensorEventListener {
         running = true;
         Sensor pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         Toast.makeText(getActivity(), "running is true", Toast.LENGTH_SHORT).show();
-        if (pedometer == null)
-            Toast.makeText(getActivity(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
-        else
+        if (pedometer != null)
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
@@ -82,11 +74,9 @@ public class Debugging extends Fragment implements SensorEventListener {
         if (running) {
             totalSteps = event.values[0];
             int currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
-            Toast.makeText(getActivity(), "Called", Toast.LENGTH_SHORT).show();
             steps.setText(String.valueOf(currentSteps));
             cross.setVisibility(View.GONE);
             error_msg.setVisibility(View.GONE);
-            Toast.makeText(getActivity(), "getting called", Toast.LENGTH_SHORT).show();
         }
     }
 
