@@ -11,5 +11,9 @@
         <item android:id="@+id/about2"
             android:icon="@drawable/infosvg"
             android:title="About"/>
+        <item
+            android:id="@+id/debuggingCounter"
+            android:icon="@drawable/ic_baseline_bug_report_24"
+            android:title="Debugging" />
     </group>
 </menu>

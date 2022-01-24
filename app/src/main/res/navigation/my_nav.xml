@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_home2_to_about2"
             app:destination="@id/about2" />
+        <action
+            android:id="@+id/action_home2_to_debuggingCounter"
+            app:destination="@id/debuggingCounter" />
     </fragment>
     <fragment
         android:id="@+id/steps"
@@ -75,5 +78,14 @@
         <action
             android:id="@+id/action_map_to_steps"
             app:destination="@id/steps" />
+    </fragment>
+    <fragment
+        android:id="@+id/debuggingCounter"
+        android:name="com.sp.vigour.Debugging"
+        android:label="Debugging"
+        tools:layout="@layout/fragment_debugging_counter">
+        <action
+            android:id="@+id/action_debuggingCounter_to_home2"
+            app:destination="@id/home2" />
     </fragment>
 </navigation>

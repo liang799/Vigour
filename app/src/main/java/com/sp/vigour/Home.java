@@ -1,5 +1,10 @@
 package com.sp.vigour;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -7,13 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,11 +37,15 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView hide_indicator;
     private TextView toggle_hide;
     private boolean hidden = false;
-    ArrayList<String> did_u_know;
-    Handler mainHandler =  new Handler();
+    private ArrayList<String> did_u_know;
+    private Handler mainHandler =  new Handler();
+    private SensorManager sensorManager;
+    private Sensor pedometer;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
     }
 
     @Override
@@ -55,8 +60,18 @@ public class Home extends Fragment implements View.OnClickListener {
         hide_indicator = view.findViewById(R.id.hideEye);
         toggle_hide = view.findViewById(R.id.visibilitySwitch);
         toggle_hide.setOnClickListener(this);
-        did_u_know = new ArrayList<>();
-        new fetchData().start();
+
+        if (pedometer != null){
+            // Success! There's a pedometer.
+            did_u_know = new ArrayList<>();
+            new fetchData().start();
+        } else {
+            // Failure! No pedometer.
+            tips.setText("Error! Your hardware does not have a Pedometer.");
+            tips.setTextColor(Color.parseColor("#EF4B39"));
+            tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
+        }
+
         return view;
     }
 
@@ -87,19 +102,6 @@ public class Home extends Fragment implements View.OnClickListener {
 
         @Override
         public void run(){
-
-            mainHandler.post(new Runnable() {
-                @Override
-                public void run() {
-
-                    /*progressDialog = new ProgressDialog(getContext());
-                    progressDialog.setMessage("Fetching Data");
-                    progressDialog.setCancelable(false);
-                    progressDialog.show();*/
-
-                }
-            });
-
             try {
                 URL url = new URL("https://api.npoint.io/cbb709d068583b916068");
 //                URL url = new URL("https://opensheet.elk.sh/1y9yJlj3czkw9BDVR3d6BZXW_cOzpMNSxHkHlESlK4D4/1");
@@ -114,7 +116,6 @@ public class Home extends Fragment implements View.OnClickListener {
 
                 if (!data.isEmpty()) {
                     JSONObject jsonObject = new JSONObject(data);
-//                    JSONArray facts_array = new JSONArray(line);
                     JSONArray facts_array = jsonObject.getJSONArray("Did you know?");
                     for (int i = 0; i < facts_array.length(); i++) {
                         JSONObject facts = facts_array.getJSONObject(i);
@@ -130,7 +131,7 @@ public class Home extends Fragment implements View.OnClickListener {
                 e.printStackTrace();
             }
 
-            mainHandler.post(new Runnable() {
+            mainHandler.post( new Runnable() {
                 @Override
                 public void run() {
                     int random = new Random().nextInt(did_u_know.size());
