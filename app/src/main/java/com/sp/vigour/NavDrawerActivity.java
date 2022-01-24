@@ -30,13 +30,7 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.io.IOException;
 
-public class NavDrawerActivity extends AppCompatActivity implements SensorEventListener {
-    private SensorManager sensorManager = null;
-    private boolean running = false;
-    private float totalSteps = 0;
-    private float prevTotalSteps = 0;
-
-
+public class NavDrawerActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private AppBarConfiguration appBarConfiguration;
 
@@ -59,9 +53,6 @@ public class NavDrawerActivity extends AppCompatActivity implements SensorEventL
         setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
         NavigationUI.setupWithNavController(navigationView, navController);
-
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-
     }
 
     @Override
@@ -76,40 +67,5 @@ public class NavDrawerActivity extends AppCompatActivity implements SensorEventL
         NavController navController = Navigation.findNavController(this, R.id.fragment_container);
         return NavigationUI.onNavDestinationSelected(item, navController)
                 || super.onOptionsItemSelected(item);
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        running = true;
-        Sensor pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (pedometer == null)
-            Toast.makeText(getApplicationContext(), "ERROR - No Pedometer", Toast.LENGTH_SHORT).show();
-        else
-            sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
-    }
-
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (running) {
-            totalSteps = event.values[0];
-            int currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
-            try {
-                TextView steps = findViewById(R.id.counter_int);
-                ImageView crossOut_steps = findViewById(R.id.error_counter);
-                TextView stepErrMsg = findViewById(R.id.error_counter_msg);
-                steps.setText(String.valueOf(totalSteps));
-                crossOut_steps.setVisibility(View.GONE);
-                stepErrMsg.setVisibility(View.GONE);
-            } catch (Exception e) {
-                // This will catch any exception, because they are all descended from Exception
-                System.out.println("Error " + e.getMessage());
-                return;
-            }
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
     }
 }
