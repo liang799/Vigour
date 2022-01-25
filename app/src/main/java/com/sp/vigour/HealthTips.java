@@ -100,7 +100,7 @@ public class HealthTips extends Fragment {
 
             try {
                 Log.d("LOG", "trying json");
-                //https://www.npoint.io/docs/cbb709d068583b916068
+                //https://www.npoint.io/docs/cbb709d068check583b916068
                 URL url = new URL("https://api.npoint.io/cbb709d068583b916068");
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 InputStream inputStream = httpURLConnection.getInputStream();
