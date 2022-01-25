@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +14,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHolder>{
 
     Context context;
     ArrayList<String> healthtip;
+    ArrayList<String> imagelist;
 
     private OnItemClickListener mListener;
 
@@ -30,9 +36,10 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
         mListener = listener;
     }
 
-    Customadapter(Context context, ArrayList healthtip){
+    Customadapter(Context context, ArrayList healthtip, ArrayList imagelist){
         this.context = context;
         this.healthtip = healthtip;
+        this.imagelist = imagelist;
     }
 
     @NonNull
@@ -48,6 +55,59 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
         holder.healthtiptxt.setText(healthtip.get(position));
+        //holder.imagetip.setImageBitmap(getBitmapFromURL(imagelist.get(position)));
+
+        new ImageLoadTask(imagelist.get(position), holder.imagetip).execute();
+
+    }
+
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
+
+        private String url;
+        private ImageView imageView;
+
+        public ImageLoadTask(String url, ImageView imageView) {
+            this.url = url;
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(Void... params) {
+            try {
+                URL urlConnection = new URL(url);
+                HttpURLConnection connection = (HttpURLConnection) urlConnection
+                        .openConnection();
+                connection.setDoInput(true);
+                connection.connect();
+                InputStream input = connection.getInputStream();
+                Bitmap myBitmap = BitmapFactory.decodeStream(input);
+                return myBitmap;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            super.onPostExecute(result);
+            imageView.setImageBitmap(result);
+        }
 
     }
 
@@ -59,11 +119,13 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder{
 
         TextView healthtiptxt;
+        ImageView imagetip;
 
         public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
             healthtiptxt = itemView.findViewById(R.id.healthtext);
+            imagetip = itemView.findViewById(R.id.healthphoto);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
