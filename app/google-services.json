@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "132756598481",
+    "project_id": "vigorlogin",
+    "storage_bucket": "vigorlogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132756598481:android:3fe2d1966a4a6ab69adff0",
+        "android_client_info": {
+          "package_name": "com.sp.vigour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132756598481-92d4e8d9igki19c0381erbmh5rog9fic.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sp.vigour",
+            "certificate_hash": "ad89a5548a9321a1c4cd2aba788b17d4d31d8b32"
+          }
+        },
+        {
+          "client_id": "132756598481-tu6m8ccv7f54r0ju5ullsbij11njcghb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaO9kh3Sj9tmk7tmxA_hJl4zkhtP8lpno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132756598481-tu6m8ccv7f54r0ju5ullsbij11njcghb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

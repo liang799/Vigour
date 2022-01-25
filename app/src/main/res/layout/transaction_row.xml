@@ -55,7 +55,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_marginStart="300dp"
                 android:layout_marginBottom="35dp"
-                android:text="10000 steps"
+                android:text="10,000 steps"
                 android:textColor="@color/NeutralGray"
                 android:textSize="18sp" />
         </RelativeLayout>

@@ -8,6 +8,7 @@
         android:icon="@drawable/ic_baseline_directions_walk_24"
         android:title="Steps" />
     <item
+        android:id="@+id/map"
         android:icon="@drawable/ic_baseline_account_balance_wallet_24"
         android:title="Wallet" />
 </menu>

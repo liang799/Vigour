@@ -6,18 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/PrimaryDark"
     tools:context=".transactions">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/PrimaryDark"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:subtitleTextColor="@color/bottom_nav"
-        app:titleTextColor="@color/bottom_nav" />
 
     <ImageView
         android:layout_width="154dp"
