@@ -1,64 +1,143 @@
 package com.sp.vigour;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Home#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class Home extends Fragment {
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Random;
 
-    public Home() {
-        // Required empty public constructor
-    }
+public class Home extends Fragment implements View.OnClickListener {
+    private Button detailsButt;
+    private TextView tips;
+    private TextView Vgr_Amount;
+    private TextView hide_indicator;
+    private TextView toggle_hide;
+    private boolean hidden = false;
+    private ArrayList<String> did_u_know;
+    private Handler mainHandler =  new Handler();
+    private SensorManager sensorManager;
+    private Sensor pedometer;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Home.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Home newInstance(String param1, String param2) {
-        Home fragment = new Home();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        tips = view.findViewById(R.id.tips);
+        detailsButt = view.findViewById(R.id.details_button);
+        detailsButt.setOnClickListener(this);
+        Vgr_Amount = view.findViewById(R.id.balance_home);
+        hide_indicator = view.findViewById(R.id.hideEye);
+        toggle_hide = view.findViewById(R.id.visibilitySwitch);
+        toggle_hide.setOnClickListener(this);
+
+        if (pedometer != null){
+            // Success! There's a pedometer.
+            did_u_know = new ArrayList<>();
+            new fetchData().start();
+        } else {
+            // Failure! No pedometer.
+            tips.setText("Error! Your hardware does not have a Pedometer.");
+            tips.setTextColor(Color.parseColor("#EF4B39"));
+            tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
+        }
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.visibilitySwitch:
+                if (hidden == false) {
+                    hide_indicator.setVisibility(View.VISIBLE);
+                    Vgr_Amount.setText("***");
+                    hidden = true;
+                } else {
+                    hide_indicator.setVisibility(View.GONE);
+                    Vgr_Amount.setText("100");
+                    hidden = false;
+                }
+                break;
+            case R.id.details_button:
+                Navigation.findNavController(v).navigate(R.id.action_home2_to_transactions);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + v.getId());
+        }
+    }
+
+    class fetchData extends Thread {    // to allow stuff to be run simultaneously
+        String data = "";
+
+        @Override
+        public void run(){
+            try {
+                URL url = new URL("https://api.npoint.io/cbb709d068583b916068");
+//                URL url = new URL("https://opensheet.elk.sh/1y9yJlj3czkw9BDVR3d6BZXW_cOzpMNSxHkHlESlK4D4/1");
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                InputStream is = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is));
+                String line;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    data += line;
+                }
+
+                if (!data.isEmpty()) {
+                    JSONObject jsonObject = new JSONObject(data);
+                    JSONArray facts_array = jsonObject.getJSONArray("Did you know?");
+                    for (int i = 0; i < facts_array.length(); i++) {
+                        JSONObject facts = facts_array.getJSONObject(i);
+                        String fact = facts.getString("Did you know?");
+                        did_u_know.add(fact);
+                    }
+                }
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            mainHandler.post( new Runnable() {
+                @Override
+                public void run() {
+                    int random = new Random().nextInt(did_u_know.size());
+                    tips.setText(did_u_know.get(random));
+                }
+            });
+        }
     }
 }

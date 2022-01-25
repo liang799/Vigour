@@ -8,8 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="NeutralWhite">#FFFFFFFF</color>
     <color name="PrimaryDark">#19233C</color>
+    <color name="Secondary">#f1c40f</color>
     <color name="Primary">#27345A</color>
-    <color name="Secondary">#FFD04D</color>
     <color name="PrimaryLight">#A0A6C6</color>
     <color name="NeutralGray">#ADADAD</color>
+    <color name="NeutralWhite_alt">#EEEEEEEE</color>
+    <color name="PrimaryNav">#232E4D</color>
 </resources>

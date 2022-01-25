@@ -2,13 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/home2"
         android:icon="@drawable/ic_baseline_home_24"
         android:title="Home" />
     <item
+        android:id="@+id/steps"
         android:icon="@drawable/ic_baseline_directions_walk_24"
         android:title="Steps" />
     <item
-        android:id="@+id/map"
+        android:id="@+id/transactions"
         android:icon="@drawable/ic_baseline_account_balance_wallet_24"
         android:title="Wallet" />
 </menu>

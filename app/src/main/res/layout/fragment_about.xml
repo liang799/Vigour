@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/PrimaryDark"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Vigour Coin"
+            android:textColor="@color/NeutralWhite"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Version Information v1.0.0 Samsung Solve, Health &amp; Wellness"
+            android:textColor="@color/PrimaryLight"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/Primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="220dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="Developed By"
+                android:textColor="@color/NeutralWhite"
+                android:textSize="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="32dp"
+                android:src="@drawable/fazithpfp"
+                app:layout_constraintStart_toStartOf="@+id/shapeableImageView"
+                app:layout_constraintTop_toBottomOf="@+id/shapeableImageView" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:gravity="center|left"
+                android:text="Tian Pok"
+                android:textColor="@color/NeutralWhite"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.137"
+                app:layout_constraintStart_toEndOf="@+id/shapeableImageView"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/tianpokwebsite"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/rounded_button2"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:text="Visit Website"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center|left"
+                android:text="Fazith"
+                android:textColor="@color/NeutralWhite"
+                android:textSize="17dp"
+                app:layout_constraintStart_toStartOf="@+id/tianpokwebsite"
+                app:layout_constraintTop_toBottomOf="@+id/tianpokwebsite" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fazithwebsite"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/rounded_button2"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:text="Visit Website"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+            <TextView
+                android:id="@+id/tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:gravity="center|left"
+                android:text="Raja"
+                android:textColor="@color/NeutralWhite"
+                android:textSize="17dp"
+                app:layout_constraintStart_toStartOf="@+id/fazithwebsite"
+                app:layout_constraintTop_toBottomOf="@+id/fazithwebsite" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/rajawebsite"
+                android:layout_width="110dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="21dp"
+                android:background="@drawable/rounded_button2"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:text="Visit Website"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/tips"
+                app:layout_constraintTop_toBottomOf="@+id/tips" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="32dp"
+                android:rotation="25"
+                android:src="@drawable/rajapfp"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/shapeableImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/tianpokpfp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.221"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DO NOT REMOVE"
+            android:textSize="0.1sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

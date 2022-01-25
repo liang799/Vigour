@@ -6,18 +6,91 @@
     app:startDestination="@id/home2">
 
     <fragment
+        android:id="@+id/about2"
+        android:name="com.sp.vigour.About"
+        android:label="About"
+        tools:layout="@layout/fragment_about">
+        <action
+            android:id="@+id/action_about2_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/healthTips"
+        android:name="com.sp.vigour.HealthTips"
+        android:label="Health Tips"
+        tools:layout="@layout/fragment_healthtips">
+        <action
+            android:id="@+id/action_healthTips_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
         android:id="@+id/home2"
         android:name="com.sp.vigour.Home"
-        android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_home2_to_steps"
+            app:destination="@id/steps" />
+        <action
+            android:id="@+id/action_home2_to_transactions"
+            app:destination="@id/transactions" />
+        <action
+            android:id="@+id/action_home2_to_healthTips"
+            app:destination="@id/healthTips" />
+        <action
+            android:id="@+id/action_home2_to_about2"
+            app:destination="@id/about2" />
+        <action
+            android:id="@+id/action_home2_to_debuggingCounter"
+            app:destination="@id/debuggingCounter" />
+    </fragment>
     <fragment
-        android:id="@+id/map"
-        android:name="com.sp.vigour.map"
-        android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        android:id="@+id/steps"
+        android:name="com.sp.vigour.Steps"
+        android:label="Steps"
+        tools:layout="@layout/fragment_steps">
+        <action
+            android:id="@+id/action_steps_to_stepsHistory"
+            app:destination="@id/stepsHistory" />
+        <action
+            android:id="@+id/action_steps_to_map"
+            app:destination="@id/map" />
+    </fragment>
     <fragment
         android:id="@+id/transactions"
-        android:name="com.sp.vigour.transactions"
-        android:label="fragment_transactions"
+        android:name="com.sp.vigour.Transactions"
+        android:label="Transactions"
         tools:layout="@layout/fragment_transactions" />
+    <fragment
+        android:id="@+id/stepsHistory"
+        android:name="com.sp.vigour.StepsHistory"
+        android:label="Steps History"
+        tools:layout="@layout/fragment_steps_history">
+        <action
+            android:id="@+id/action_stepsHistory_to_steps"
+            app:destination="@id/steps" />
+    </fragment>
+    <fragment
+        android:id="@+id/map"
+        android:name="com.sp.vigour.Map"
+        android:label="Event Tracker"
+        tools:layout="@layout/fragment_map">
+        <action
+            android:id="@+id/action_map_to_steps"
+            app:destination="@id/steps" />
+    </fragment>
+    <fragment
+        android:id="@+id/debuggingCounter"
+        android:name="com.sp.vigour.Debugging"
+        android:label="Debugging"
+        tools:layout="@layout/fragment_debugging_counter">
+        <action
+            android:id="@+id/action_debuggingCounter_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
+    <fragment
+        android:id="@+id/details"
+        android:name="com.sp.vigour.Details"
+        android:label="fragment_steps_details"
+        tools:layout="@layout/fragment_steps_details" />
 </navigation>
