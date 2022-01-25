@@ -61,21 +61,6 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
 
     }
 
-    public static Bitmap getBitmapFromURL(String src) {
-        try {
-            URL url = new URL(src);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setDoInput(true);
-            connection.connect();
-            InputStream input = connection.getInputStream();
-            Bitmap myBitmap = BitmapFactory.decodeStream(input);
-            return myBitmap;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
     public class ImageLoadTask extends AsyncTask<Void, Void, Bitmap> {
 
         private String url;
