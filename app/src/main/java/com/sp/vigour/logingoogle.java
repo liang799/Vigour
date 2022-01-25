@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -30,6 +31,7 @@ public class logingoogle extends AppCompatActivity {
     GoogleSignInButton btSignIn;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
+    ImageView debug;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class logingoogle extends AppCompatActivity {
 
         //Assing variable
         btSignIn = findViewById(R.id.buttonSignin);
+        debug = findViewById(R.id.debugButt);
 
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(
                 GoogleSignInOptions.DEFAULT_SIGN_IN
@@ -56,6 +59,14 @@ public class logingoogle extends AppCompatActivity {
                 Intent intent = googleSignInClient.getSignInIntent();
 
                 startActivityForResult(intent,100);
+            }
+        });
+
+        debug.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(logingoogle.this, NavDrawerActivity.class);
+                startActivity(i);
             }
         });
 
