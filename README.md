@@ -40,16 +40,22 @@ Group Project for 2022 Mobile Application Development.
 - [x] Create first branch
 - [x] Completed all the UI
 - [x] Implemented JSON parsing on Did you know section
-- [ ] Start working on pedometer
+- [x] Start working on pedometer
+- [ ] Test out pedometer on Boyan's old phone
+- [ ] Store steps in SQL database
+- [ ] Work on RecyclerView
 ### Fazith
 - [x] Get comfortable with Git
 - [x] Create first branch
 - [x] Start working on Steps Details UI
-- [ ] Start learning crypto
+- [x] Start learning crypto
+- [ ] Work on Google login intergration with Etherum wallet
+- [ ] Declare API key in local.properties
 ### Raja
 - [x] Get comfortable with Git
 - [x] Create first branch
 - [x] Start working on splash screen
 - [x] Add adapters
 - [x] JSON Parsing on Health tips
-- [ ] Get remote image for Health tips
+- [x] Get remote image for Health tips
+- [ ] Add stuff here
