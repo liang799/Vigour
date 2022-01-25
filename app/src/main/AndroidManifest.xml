@@ -28,6 +28,12 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".logingoogle"
+            android:exported="false" />
+        <activity
+            android:name=".logoutgoogle"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>

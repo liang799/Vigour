@@ -21,25 +21,6 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
-        /*pb = (ProgressBar)findViewById(R.id.pb);
-
-        final Timer t = new Timer();
-        TimerTask tt = new TimerTask() {
-            @Override
-            public void run()
-            {
-                counter++;
-                pb.setProgress(counter);
-
-                if(counter == 100) {
-                    t.cancel();
-                }
-            }
-        };
-
-        t.schedule(tt,0,10);*/
-
         if(mediaPlayer ==  null){
             mediaPlayer = MediaPlayer.create(this,R.raw.windowsound);
         }
@@ -51,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run(){
-                startActivity(new Intent(SplashScreen.this,LoginActivity.class));
+                startActivity(new Intent(SplashScreen.this, logingoogle.class));
                 finish();
             }
         }, 2500);
