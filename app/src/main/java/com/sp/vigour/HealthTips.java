@@ -37,6 +37,7 @@ public class HealthTips extends Fragment {
 
     BottomNavigationView navBar;
     ArrayList<String> userList;
+    ArrayList<String> imagelist;
     Handler mainHandler =  new Handler();
     Customadapter customadapter;
     ProgressDialog progressDialog;
@@ -51,12 +52,13 @@ public class HealthTips extends Fragment {
         healthview = v.findViewById(R.id.healthview);
 
         userList = new ArrayList<>();
+        imagelist = new ArrayList<>();
 
         new fetchData().start();
 
         Log.d("LOG", "fetching data");
 
-        customadapter = new Customadapter(getContext(),userList);
+        customadapter = new Customadapter(getContext(),userList,imagelist);
         healthview.setAdapter(customadapter);
         healthview.setLayoutManager(new LinearLayoutManager(getContext()));
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
@@ -116,8 +118,11 @@ public class HealthTips extends Fragment {
                     userList.clear();
                     for(int  i =0;i< users.length();i++){
                         JSONObject names = users.getJSONObject(i);
+                        JSONObject images = users.getJSONObject(i);
                         String name = names.getString("healthtext");
+                        String image = names.getString("healthimage");
                         userList.add(name);
+                        imagelist.add(image);
                         Log.d("LOG", String.valueOf(name));
 
                     }
@@ -140,7 +145,7 @@ public class HealthTips extends Fragment {
                    /* if (progressDialog.isShowing())
                         progressDialog.dismiss();*/
 
-                    customadapter = new Customadapter(getContext(),userList);
+                    customadapter = new Customadapter(getContext(),userList,imagelist);
                     healthview.setAdapter(customadapter);
                     healthview.setLayoutManager(new LinearLayoutManager(getContext()));
 
