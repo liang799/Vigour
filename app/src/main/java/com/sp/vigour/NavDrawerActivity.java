@@ -11,6 +11,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -69,17 +70,15 @@ public class NavDrawerActivity extends AppCompatActivity implements SensorEventL
                     this,
                     new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
                     PERMISSION_REQUEST_ACTIVITY_RECOGNITION);
-        } else {
-            sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-            pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         }
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
     }
 
     @Override
     public void onResume() {
         super.onResume();
         running = true;
-        Sensor pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (pedometer != null)
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
     }
@@ -105,6 +104,7 @@ public class NavDrawerActivity extends AppCompatActivity implements SensorEventL
             currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
             SimpleDateFormat sdf = new SimpleDateFormat("dd LLL");
             String today = sdf.format(new Date());
+            Toast.makeText(getApplicationContext(), String.valueOf(currentSteps) + " Steps, " + today, Toast.LENGTH_SHORT).show();
         }
     }
 
