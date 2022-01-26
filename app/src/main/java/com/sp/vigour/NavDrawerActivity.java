@@ -2,19 +2,6 @@ package com.sp.vigour;
 
 import static androidx.navigation.ui.NavigationUI.setupActionBarWithNavController;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -24,20 +11,34 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-public class NavDrawerActivity extends AppCompatActivity {
+public class NavDrawerActivity extends AppCompatActivity implements SensorEventListener {
     private DrawerLayout drawer;
     private AppBarConfiguration appBarConfiguration;
     private static final int PERMISSION_REQUEST_ACTIVITY_RECOGNITION = 45;
+    private SensorManager sensorManager = null;
+    private Sensor pedometer;
+    private float totalSteps = 0;
+    private float prevTotalSteps = 0;
+    private int currentSteps = 0;
+    private boolean running = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +71,16 @@ public class NavDrawerActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
                     PERMISSION_REQUEST_ACTIVITY_RECOGNITION);
         }
+        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        running = true;
+        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if (pedometer != null)
+            sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
@@ -84,5 +95,21 @@ public class NavDrawerActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.fragment_container);
         return NavigationUI.onNavDestinationSelected(item, navController)
                 || super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if (running) {
+            totalSteps = event.values[0];
+            currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd LLL");
+            String today = sdf.format(new Date());
+            Toast.makeText(getApplicationContext(), String.valueOf(currentSteps) + " Steps, " + today, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
