@@ -97,8 +97,8 @@
     <fragment
         android:id="@+id/logout"
         android:name="com.sp.vigour.Logout"
-        android:label="fragment_logout"
-        tools:layout="@layout/fragment_logout" >
+        android:label="Confirmation"
+        tools:layout="@layout/fragment_logout">
         <action
             android:id="@+id/action_logout_to_loginActivity"
             app:destination="@id/loginActivity" />
