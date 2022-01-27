@@ -89,10 +89,6 @@
         android:name="com.sp.vigour.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" >
-        <argument
-            android:name="logout"
-            app:argType="boolean"
-            android:defaultValue="false" />
     </activity>
     <fragment
         android:id="@+id/logout"
