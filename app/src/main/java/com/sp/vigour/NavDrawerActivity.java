@@ -29,16 +29,10 @@ import com.google.android.material.navigation.NavigationView;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NavDrawerActivity extends AppCompatActivity implements SensorEventListener {
+public class NavDrawerActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private AppBarConfiguration appBarConfiguration;
     private static final int PERMISSION_REQUEST_ACTIVITY_RECOGNITION = 45;
-    private SensorManager sensorManager = null;
-    private Sensor pedometer;
-    private float totalSteps = 0;
-    private float prevTotalSteps = 0;
-    private int currentSteps = 0;
-    private boolean running = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,16 +65,6 @@ public class NavDrawerActivity extends AppCompatActivity implements SensorEventL
                     new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
                     PERMISSION_REQUEST_ACTIVITY_RECOGNITION);
         }
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        running = true;
-        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (pedometer != null)
-            sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
     }
 
     @Override
@@ -97,19 +81,4 @@ public class NavDrawerActivity extends AppCompatActivity implements SensorEventL
                 || super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-        if (running) {
-            totalSteps = event.values[0];
-            currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd LLL");
-            String today = sdf.format(new Date());
-            Toast.makeText(getApplicationContext(), String.valueOf(currentSteps) + " Steps, " + today, Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
 }
