@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.concurrent.Executor;
 
-public class Logout extends Fragment implements View.OnClickListener {
+public class Logout extends Fragment {
     Button btLogout;
     FirebaseAuth firebaseAuth;
     GoogleSignInClient googleSignInClient;
@@ -36,6 +36,7 @@ public class Logout extends Fragment implements View.OnClickListener {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         googleSignInClient = GoogleSignIn.getClient(getActivity()
                 , GoogleSignInOptions.DEFAULT_SIGN_IN);
+
     }
 
     @Override
@@ -44,20 +45,40 @@ public class Logout extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_logout, container, false);
         btLogout = v.findViewById(R.id.logout_button);
-        btLogout.setOnClickListener(this);
+        //btLogout.setOnClickListener(this);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
+
+        btLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View view) {
+                googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            firebaseAuth.signOut();
+
+                            Toast.makeText(getActivity().getApplicationContext()
+                                    ,"Logout Successful", Toast.LENGTH_SHORT).show();
+
+                            getActivity().finish();
+                        }
+                    }
+                });
+            }
+        });
 
         return v;
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.bt_logout:
-                signOut(view);
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+//        switch (view.getId()) {
+//            case R.id.bt_logout:
+//                signOut(view);
+//                break;
+//        }
+//    }
 
 
     private void signOut(View v) {
