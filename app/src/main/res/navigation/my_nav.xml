@@ -40,6 +40,9 @@
         <action
             android:id="@+id/action_home2_to_about2"
             app:destination="@id/about2" />
+        <action
+            android:id="@+id/action_home2_to_loginActivity"
+            app:destination="@id/loginActivity" />
     </fragment>
     <fragment
         android:id="@+id/steps"
@@ -81,4 +84,14 @@
         android:name="com.sp.vigour.Details"
         android:label="fragment_steps_details"
         tools:layout="@layout/fragment_steps_details" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.sp.vigour.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" >
+        <argument
+            android:name="logout"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </activity>
 </navigation>

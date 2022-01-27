@@ -11,5 +11,8 @@
         <item android:id="@+id/about2"
             android:icon="@drawable/infosvg"
             android:title="About"/>
+        <item android:id="@+id/loginActivity"
+            android:icon="@drawable/fitnesssvg"
+            android:title="Logout"/>
     </group>
 </menu>

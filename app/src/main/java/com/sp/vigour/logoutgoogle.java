@@ -37,6 +37,7 @@ public class logoutgoogle extends AppCompatActivity {
 
         btLogout.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
                 googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
