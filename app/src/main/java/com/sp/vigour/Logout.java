@@ -45,7 +45,6 @@ public class Logout extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_logout, container, false);
         btLogout = v.findViewById(R.id.logout_button);
-        //btLogout.setOnClickListener(this);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
 
         btLogout.setOnClickListener(new View.OnClickListener() {
@@ -69,27 +68,6 @@ public class Logout extends Fragment {
         });
 
         return v;
-    }
-
-//    @Override
-//    public void onClick(View view) {
-//        switch (view.getId()) {
-//            case R.id.bt_logout:
-//                signOut(view);
-//                break;
-//        }
-//    }
-
-
-    private void signOut(View v) {
-        googleSignInClient.signOut()
-                .addOnCompleteListener((Executor) this, new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        firebaseAuth.getInstance().signOut();
-                        Navigation.findNavController(v).navigate(R.id.action_logout_to_loginActivity);
-                    }
-                });
     }
 
     @Override

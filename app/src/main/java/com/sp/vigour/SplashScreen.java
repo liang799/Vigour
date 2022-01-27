@@ -8,9 +8,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 public class SplashScreen extends AppCompatActivity {
 
     ProgressBar pb;
@@ -32,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run(){
-                startActivity(new Intent(SplashScreen.this, logingoogle.class));
+                startActivity(new Intent(SplashScreen.this, LoginActivity.class));
                 finish();
             }
         }, 2500);
