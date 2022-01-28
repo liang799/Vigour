@@ -13,13 +13,17 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.work.WorkManager;
+import androidx.work.Worker;
+import androidx.work.WorkerParameters;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Pedometer extends Service implements SensorEventListener {
-    private static final String TAG = "PedomService";
+public class PedoWorker extends Worker implements SensorEventListener {
+    private static final String TAG = "PedoWorker";
 
     private SensorManager sensorManager = null;
     private Sensor pedometer;
@@ -27,16 +31,8 @@ public class Pedometer extends Service implements SensorEventListener {
     private float prevTotalSteps = 0;
     private int currentSteps = 0;
 
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-        if (pedometer != null)
-            sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
-        else
-            Log.e(TAG, "Pedometer == null");
-
-        return START_STICKY;
+    public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+        super(context, workerParams);
     }
 
     @Override
@@ -53,8 +49,20 @@ public class Pedometer extends Service implements SensorEventListener {
 
     }
 
+    @NonNull
     @Override
-    public IBinder onBind(Intent intent) {
-        return null;
+    public Result doWork() {
+        Log.d(TAG, "Started work");
+        sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
+        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        if (pedometer != null) {
+            sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
+            Log.d(TAG, "Work successful");
+        } else {
+            Log.d(TAG, "No pedometer");
+            return Result.retry();
+        }
+
+        return Result.success();
     }
 }

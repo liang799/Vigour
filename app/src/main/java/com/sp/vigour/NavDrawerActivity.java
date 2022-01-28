@@ -22,12 +22,17 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.work.BackoffPolicy;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkRequest;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class NavDrawerActivity extends AppCompatActivity {
     private DrawerLayout drawer;
@@ -58,13 +63,27 @@ public class NavDrawerActivity extends AppCompatActivity {
 
         /* --------  Permissions --------- */
         if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){
+                Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED) {
             //ask for permission
             ActivityCompat.requestPermissions(
                     this,
                     new String[]{Manifest.permission.ACTIVITY_RECOGNITION},
                     PERMISSION_REQUEST_ACTIVITY_RECOGNITION);
         }
+
+        /* --------  Schedule Work --------- */
+        WorkRequest pedometerChecker =
+                new OneTimeWorkRequest.Builder(PedoWorker.class)
+                        .setBackoffCriteria(
+                                BackoffPolicy.LINEAR,
+                                OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
+                                TimeUnit.MILLISECONDS)
+                        .build();
+
+        PeriodicWorkRequest pedometer =
+                new PeriodicWorkRequest.Builder(PedoWorker.class, 1, TimeUnit.HOURS)
+                        // Constraints
+                        .build();
     }
 
     @Override
