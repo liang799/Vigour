@@ -23,8 +23,11 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 import androidx.work.BackoffPolicy;
+import androidx.work.ExistingPeriodicWorkPolicy;
+import androidx.work.ExistingWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
+import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -81,9 +84,19 @@ public class NavDrawerActivity extends AppCompatActivity {
                         .build();
 
         PeriodicWorkRequest pedometer =
-                new PeriodicWorkRequest.Builder(PedoWorker.class, 1, TimeUnit.HOURS)
+                new PeriodicWorkRequest.Builder(PedoWorker.class, 1, TimeUnit.MINUTES)
                         // Constraints
                         .build();
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+                "Pedometer",
+                ExistingPeriodicWorkPolicy.KEEP,
+                pedometer);
+        WorkManager.getInstance().enqueueUniqueWork(
+                "pedomChecker",
+                ExistingWorkPolicy.REPLACE,
+                (OneTimeWorkRequest) pedometerChecker);
+
     }
 
     @Override
