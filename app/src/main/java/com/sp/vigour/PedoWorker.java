@@ -12,7 +12,6 @@ import android.hardware.SensorManager;
 import android.os.BatteryManager;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -28,14 +27,9 @@ import java.util.Date;
 public class PedoWorker extends Worker implements SensorEventListener {
     private static final String TAG = "PedoWorker";
 
-    private SensorManager sensorManager = null;
-    private Sensor pedometer;
-    private float totalSteps = 0;
     private float prevSteps = 0;
-    private String currentSteps;
     private String today;
     private SimpleDateFormat simpleDateFormat;
-    private Addhelper helper = null;
 
     public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -43,13 +37,15 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        totalSteps = event.values[0];
-        helper = new Addhelper(getApplicationContext());
-        if (!helper.checkForTables()) {
+        float totalSteps = event.values[0];
+        String currentSteps = "";
+        Addhelper helper = new Addhelper(getApplicationContext());
+
+        if (helper.checkForTables() == false) {
             //create new entry
             currentSteps = String.valueOf(Math.round(totalSteps));
             helper.insert(currentSteps, today);
-        } else if(simpleDateFormat.format(new Date()) != today) {
+        } else if(!simpleDateFormat.format(new Date()).equals(today)) {
             //update date, steps and create new entry
             today = simpleDateFormat.format(new Date());
             prevSteps = totalSteps;
@@ -73,10 +69,10 @@ public class PedoWorker extends Worker implements SensorEventListener {
     @Override
     public Result doWork() {
         Log.d(TAG, "Started work");
-        sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
-        pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        SensorManager sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
+        Sensor pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (pedometer != null) {
-            setForegroundAsync(createForegroundInfo("Started"));
+            setForegroundAsync(createForegroundInfo());
             simpleDateFormat = new SimpleDateFormat("dd LLL");
             today = simpleDateFormat.format(new Date());
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
@@ -91,7 +87,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
     }
 
     @NonNull
-    private ForegroundInfo createForegroundInfo(@NonNull String progress) {
+    private ForegroundInfo createForegroundInfo() {
         // Build a notification using bytesRead and contentLength
 
         Context context = getApplicationContext();
