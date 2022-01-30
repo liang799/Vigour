@@ -25,19 +25,17 @@ public class Addhelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS Steps_table");
+        onCreate(db);
     }
 
-    public void insert(String usersteps, String userdate,
-                       String usertime, String usercrypto){
+    public void insert(String usersteps, String userdate) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("usersteps",usersteps);
         cv.put("userdate",userdate);
-        cv.put("usertime",usertime);
-        cv.put("usercrypto",usercrypto);
 
         db.insert("Steps_table", "usersteps", cv);
         Log.d("Actlife","db inserted");
@@ -72,9 +70,12 @@ public class Addhelper extends SQLiteOpenHelper {
         }
     }
 
-    public void updateSteps() {
+    public void updateSteps(String steps, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
-        //db.update()
+        ContentValues cv = new ContentValues();
+        cv.put("usersteps", steps);
+        db.update("Steps_table", cv, "userdate=?", new String[]{date});
+        db.close();
     }
 
     public boolean checkForTables(){

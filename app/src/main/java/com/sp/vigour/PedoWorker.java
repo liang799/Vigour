@@ -31,8 +31,8 @@ public class PedoWorker extends Worker implements SensorEventListener {
     private SensorManager sensorManager = null;
     private Sensor pedometer;
     private float totalSteps = 0;
-    private float prevTotalSteps = 0;
-    private int currentSteps = 0;
+    private float prevSteps = 0;
+    private String currentSteps;
     private String today;
     private SimpleDateFormat simpleDateFormat;
     private Addhelper helper = null;
@@ -44,15 +44,23 @@ public class PedoWorker extends Worker implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         totalSteps = event.values[0];
-        currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
         helper = new Addhelper(getApplicationContext());
         if (!helper.checkForTables()) {
             //create new entry
+            currentSteps = String.valueOf(Math.round(totalSteps));
+            helper.insert(currentSteps, today);
         } else if(simpleDateFormat.format(new Date()) != today) {
+            //update date, steps and create new entry
+            today = simpleDateFormat.format(new Date());
+            prevSteps = totalSteps;
+            currentSteps = String.valueOf(Math.round(totalSteps) - Math.round(prevSteps));
+            helper.insert(currentSteps, today);
         } else {
             //use old entry
+            currentSteps = String.valueOf(Math.round(totalSteps) - Math.round(prevSteps));
+            helper.updateSteps(currentSteps, today);
         }
-        Toast.makeText(getApplicationContext(), String.valueOf(currentSteps) + " Steps, " + today, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), currentSteps + " Steps, " + today, Toast.LENGTH_SHORT).show();
     }
 
     @Override
