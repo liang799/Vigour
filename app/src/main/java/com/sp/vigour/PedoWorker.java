@@ -9,6 +9,7 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.os.BatteryManager;
 import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
@@ -59,6 +60,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @NonNull
     @Override
     public Result doWork() {
@@ -70,6 +72,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
             simpleDateFormat = new SimpleDateFormat("dd LLL");
             today = simpleDateFormat.format(new Date());
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
+            while(isUSBCharging());
             Log.d(TAG, "Work successful");
         } else {
             Log.d(TAG, "No pedometer");
@@ -97,8 +100,9 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
         Notification notification = new NotificationCompat.Builder(context, id)
                 .setContentTitle(title)
+                .setContentText("Charge the phone to stop the pedometer")
                 .setTicker(title)
-                .setSmallIcon(R.drawable.ic_steps)
+                .setSmallIcon(R.drawable.ic_logo_navdrawer)
                 .setOngoing(true)
                 // Add the cancel action to the notification which can
                 // be used to cancel the worker
@@ -110,7 +114,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private void createChannel() {
-        CharSequence name = "Vigour Pedometer";
+        CharSequence name = "Pedometer is now active";
         String description = "Tracking the amount of steps you have taken";
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
         NotificationChannel channel = new NotificationChannel("pedoNotifChannel", name, importance);
@@ -119,5 +123,12 @@ public class PedoWorker extends Worker implements SensorEventListener {
         // or other notification behaviors after this
         NotificationManager notificationManager = getApplicationContext().getSystemService(NotificationManager.class);
         notificationManager.createNotificationChannel(channel);
+    }
+
+    BatteryManager myBatteryManager = (BatteryManager) getApplicationContext().getSystemService(Context.BATTERY_SERVICE);
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    public boolean isUSBCharging(){
+        return  myBatteryManager.isCharging();
     }
 }
