@@ -89,7 +89,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
         Context context = getApplicationContext();
         String id = "pedoNotifChannel";
         String title = "Vigour Pedometer";
-        String cancel = "Cancel? Vigour will stop tracking your steps";
+        String cancel = "Cancel?";
         // This PendingIntent can be used to cancel the worker
         PendingIntent intent = WorkManager.getInstance(context)
                 .createCancelPendingIntent(getId());
