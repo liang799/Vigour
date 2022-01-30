@@ -19,7 +19,7 @@ public class Addhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Steps_table( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "usersteps TEXT,userdate TEXT,usertime  TEXT,usercrypto TEXT)");
+                "usersteps TEXT, userdate TEXT, usertime TEXT, usercrypto TEXT)");
 
     }
 
@@ -45,7 +45,7 @@ public class Addhelper extends SQLiteOpenHelper {
     }
 
     Cursor getdata() {
-        String query = "Select * " + " From Steps_table";
+        String query = "SELECT * " + " FROM Steps_table";
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = null;
@@ -59,7 +59,7 @@ public class Addhelper extends SQLiteOpenHelper {
     public Boolean delete(String historyID) {
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select *from Steps_table where _id = ?", new String[]{historyID});
+        Cursor cursor = db.rawQuery("SELECT * FROM Steps_table WHERE _id = ?", new String[]{historyID});
         if (cursor.getCount() > 0) {
             long result = db.delete("Steps_table", "_id=?", new String[]{historyID});
             if (result == -1) {
@@ -70,5 +70,23 @@ public class Addhelper extends SQLiteOpenHelper {
         } else {
             return false;
         }
+    }
+
+    public void updateSteps() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        //db.update()
+    }
+
+    public boolean checkForTables(){
+        boolean hasTables = false;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery( "SELECT *  FROM Steps_table", null);
+
+        if(cursor != null && cursor.getCount() > 0){
+            hasTables=true;
+            cursor.close();
+        }
+
+        return hasTables;
     }
 }

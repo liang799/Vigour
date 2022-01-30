@@ -1,20 +1,22 @@
 package com.sp.vigour;
 
-import android.app.Service;
-import android.app.job.JobParameters;
-import android.app.job.JobService;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.os.IBinder;
+import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.NotificationCompat;
+import androidx.work.ForegroundInfo;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
@@ -30,6 +32,9 @@ public class PedoWorker extends Worker implements SensorEventListener {
     private float totalSteps = 0;
     private float prevTotalSteps = 0;
     private int currentSteps = 0;
+    private String today;
+    private SimpleDateFormat simpleDateFormat;
+    private Addhelper helper = null;
 
     public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -39,8 +44,13 @@ public class PedoWorker extends Worker implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         totalSteps = event.values[0];
         currentSteps = Math.round(totalSteps) - Math.round(prevTotalSteps);
-        SimpleDateFormat sdf = new SimpleDateFormat("dd LLL");
-        String today = sdf.format(new Date());
+        helper = new Addhelper(getApplicationContext());
+        if (!helper.checkForTables()) {
+            //create new entry
+        } else if(simpleDateFormat.format(new Date()) != today) {
+        } else {
+            //use old entry
+        }
         Toast.makeText(getApplicationContext(), String.valueOf(currentSteps) + " Steps, " + today, Toast.LENGTH_SHORT).show();
     }
 
@@ -56,6 +66,9 @@ public class PedoWorker extends Worker implements SensorEventListener {
         sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
         pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
         if (pedometer != null) {
+            setForegroundAsync(createForegroundInfo("Started"));
+            simpleDateFormat = new SimpleDateFormat("dd LLL");
+            today = simpleDateFormat.format(new Date());
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
             Log.d(TAG, "Work successful");
         } else {
@@ -64,5 +77,47 @@ public class PedoWorker extends Worker implements SensorEventListener {
         }
 
         return Result.success();
+    }
+
+    @NonNull
+    private ForegroundInfo createForegroundInfo(@NonNull String progress) {
+        // Build a notification using bytesRead and contentLength
+
+        Context context = getApplicationContext();
+        String id = "pedoNotifChannel";
+        String title = "Vigour Pedometer";
+        String cancel = "Cancel? Vigour will stop tracking your steps";
+        // This PendingIntent can be used to cancel the worker
+        PendingIntent intent = WorkManager.getInstance(context)
+                .createCancelPendingIntent(getId());
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createChannel();
+        }
+
+        Notification notification = new NotificationCompat.Builder(context, id)
+                .setContentTitle(title)
+                .setTicker(title)
+                .setSmallIcon(R.drawable.ic_steps)
+                .setOngoing(true)
+                // Add the cancel action to the notification which can
+                // be used to cancel the worker
+                .addAction(android.R.drawable.ic_delete, cancel, intent)
+                .build();
+
+        return new ForegroundInfo(1, notification);
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private void createChannel() {
+        CharSequence name = "Vigour Pedometer";
+        String description = "Tracking the amount of steps you have taken";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel("pedoNotifChannel", name, importance);
+        channel.setDescription(description);
+        // Register the channel with the system; you can't change the importance
+        // or other notification behaviors after this
+        NotificationManager notificationManager = getApplicationContext().getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 }

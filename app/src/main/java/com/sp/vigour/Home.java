@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -143,10 +145,19 @@ public class Home extends Fragment implements View.OnClickListener {
             mainHandler.post( new Runnable() {
                 @Override
                 public void run() {
-                    int random = new Random().nextInt(did_u_know.size());
-                    tips.setText(did_u_know.get(random));
+                    if (isNetworkAvailable()) {
+                        int random = new Random().nextInt(did_u_know.size());
+                        tips.setText(did_u_know.get(random));
+                    }
                 }
             });
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
