@@ -38,7 +38,6 @@ public class Logout extends Fragment {
         /* -------- Logout Dialog -------- */
         LogoutDialogFrag logoutDialogFrag = new LogoutDialogFrag(googleSignInClient, firebaseAuth);
         logoutDialogFrag.show(getChildFragmentManager(), "Logout of Vigour");
-
     }
 
     @Override
