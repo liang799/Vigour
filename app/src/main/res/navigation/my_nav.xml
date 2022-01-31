@@ -92,6 +92,9 @@
         <action
             android:id="@+id/action_logout_to_loginActivity"
             app:destination="@id/loginActivity" />
+        <action
+            android:id="@+id/action_logout_to_home2"
+            app:destination="@id/home2" />
     </fragment>
     <activity
         android:id="@+id/loginActivity"

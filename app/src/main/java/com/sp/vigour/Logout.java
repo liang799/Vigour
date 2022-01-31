@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -20,9 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Logout extends Fragment {
-    Button btLogout;
-    FirebaseAuth firebaseAuth;
-    GoogleSignInClient googleSignInClient;
+    private FirebaseAuth firebaseAuth;
+    private GoogleSignInClient googleSignInClient;
     private BottomNavigationView navBar;
 
     @Override
@@ -32,6 +32,8 @@ public class Logout extends Fragment {
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         googleSignInClient = GoogleSignIn.getClient(getActivity()
                 , GoogleSignInOptions.DEFAULT_SIGN_IN);
+        LogoutDialogFrag logoutDialogFrag = new LogoutDialogFrag(googleSignInClient, firebaseAuth);
+        logoutDialogFrag.show(getChildFragmentManager(), "Logout of Vigour");
 
     }
 
@@ -40,28 +42,7 @@ public class Logout extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_logout, container, false);
-        btLogout = v.findViewById(R.id.logout_button);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
-
-        btLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-
-            public void onClick(View view) {
-                googleSignInClient.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            firebaseAuth.signOut();
-
-                            Toast.makeText(getActivity().getApplicationContext()
-                                    ,"Logout Successful", Toast.LENGTH_SHORT).show();
-
-                            getActivity().finish();
-                        }
-                    }
-                });
-            }
-        });
 
         return v;
     }
@@ -70,11 +51,13 @@ public class Logout extends Fragment {
     public void onResume() {
         super.onResume();
         navBar.setVisibility(View.GONE);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
     }
 
     @Override
     public void onStop() {
         super.onStop();
         navBar.setVisibility(View.VISIBLE);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 }
