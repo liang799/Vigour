@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Addhelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "StepsList.db";
@@ -95,6 +98,7 @@ public class Addhelper extends SQLiteOpenHelper {
     public int getSteps(Cursor c) {
         return (Integer.parseInt(c.getString(1)));
     }
+
     public String getDate(Cursor c) {
         return (String.valueOf(c.getFloat(2)));
     }
@@ -152,11 +156,24 @@ public class Addhelper extends SQLiteOpenHelper {
         String amount = "0";
         if (checkForTables()) {
             Cursor cursor = getdata();
-            if (cursor != null && cursor.getCount() > 0) {
-                cursor.moveToLast();
-                amount = getCoin(cursor);
-            }
+            cursor.moveToLast();
+            amount = getCoin(cursor);
         }
         return amount;
     }
+
+    public String getTodaySteps() {
+        String steps = "0";
+        if (checkForTables()) {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
+            String today = simpleDateFormat.format(new Date());
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("SELECT * FROM Steps_table WHERE userdate = ?", new String[]{today});
+            if (cursor != null && cursor.getCount() > 0)
+                steps = String.valueOf(getSteps(cursor));
+            db.close();
+        }
+        return steps;
+    }
+
 }

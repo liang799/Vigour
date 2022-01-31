@@ -11,22 +11,26 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
 
 public class Steps extends Fragment implements View.OnClickListener {
     private Button stepsButton;
     private ImageButton eventBtn_1, eventBtn_2, eventBtn_3;
     private TextView steps;
+    private Addhelper helper = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        helper = new Addhelper(getContext());
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_steps, container, false);
+        steps = v.findViewById(R.id.steps_cum);
         stepsButton = (Button) v.findViewById(R.id.goto_steps_hist);
         stepsButton.setOnClickListener(this);
 
@@ -37,6 +41,12 @@ public class Steps extends Fragment implements View.OnClickListener {
         eventBtn_2.setOnClickListener(this);
         eventBtn_3.setOnClickListener(this);
         return v;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        steps.setText(helper.getTodaySteps());
     }
 
     @Override
