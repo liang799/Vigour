@@ -19,7 +19,12 @@ Group Project for 2022 Mobile Application Development.
 git clone https://github.com/liang799/Vigour.git
 ```
 2. Open the project in Android studio
-3. Build the project using Gradle
+3. Go to `local.properties` and type in your api key. It should look something like this:
+```config
+sdk.dir=/path/to/sdk/
+MAPS_API_KEY=___(Enter api key)_____
+```
+4. Build the project using Gradle
 
 ## Roles
 | Raja (Certified Android guy) | Tian Pok (Jack of all Trades) | Fazith (Crypto Guy) |
