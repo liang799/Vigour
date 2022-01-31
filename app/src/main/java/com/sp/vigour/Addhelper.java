@@ -87,10 +87,14 @@ public class Addhelper extends SQLiteOpenHelper {
             hasTables=true;
             cursor.close();
         }
+        db.close();
 
         return hasTables;
     }
 
+    public int getSteps(Cursor c) {
+        return (Integer.parseInt(c.getString(1)));
+    }
     public String getDate(Cursor c) {
         return (String.valueOf(c.getFloat(2)));
     }
@@ -105,7 +109,7 @@ public class Addhelper extends SQLiteOpenHelper {
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT MAX(usercrypto) FROM Steps_table", null);
 
-            if(cursor != null && cursor.getCount() > 0)
+            if (cursor != null && cursor.getCount() > 0)
                 result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
                         + getDate(cursor);
             db.close();
@@ -115,12 +119,27 @@ public class Addhelper extends SQLiteOpenHelper {
 
     public String stepsInsight() {
         String result = "No data. Did you enable Vigour to access you physical activity?";
+
         if (checkForTables()) {
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT MAX(usercrypto) FROM Steps_table", null);
-            if(cursor != null && cursor.getCount() > 0)
-                result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
-                        + getDate(cursor);
+            Cursor cursor = db.rawQuery( "SELECT *  FROM Steps_table", null);
+
+            if (cursor.getCount() == 1){
+                result = "Thank you for downloading our humble app, please keep up the good work";
+            } else {
+                Cursor model = getdata();
+                model.moveToLast();
+                int today = getSteps(model);
+                model.moveToPrevious();
+                int yest = getSteps(model);
+                int stepsMath = today - yest;
+                if (stepsMath < 0)
+                    result = "You walked more yesterday than today by "
+                            + String.valueOf(Math.abs(stepsMath)) + "steps";
+                else
+                    result = "You walked more today than yesterday by "
+                            + String.valueOf(stepsMath) + "steps";
+            }
             db.close();
         }
         return result;

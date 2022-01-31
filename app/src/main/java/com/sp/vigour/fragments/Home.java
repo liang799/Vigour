@@ -84,7 +84,7 @@ public class Home extends Fragment implements View.OnClickListener {
         }
 
             insight_coin.setText(db.coinInsight());
-            insight_step.setText("");
+            insight_step.setText(db.stepsInsight());
 
         return view;
     }
