@@ -9,6 +9,18 @@ Group Project for 2022 Mobile Application Development.
 * We will be using the Etherum test network
 * [Here](https://xd.adobe.com/view/1b3068a5-e074-4485-9b69-1abaa5e79f71-4e63/) is our prototype designed using Adobe XD.
 
+## Pre-requsites
+* git
+* Android studio
+
+## Getting started
+1. Clone the repository using the following command
+```bash
+git clone https://github.com/liang799/Vigour.git
+```
+2. Open the project in Android studio
+3. Build the project using Gradle
+
 ## Roles
 | Raja (Certified Android guy) | Tian Pok (Jack of all Trades) | Fazith (Crypto Guy) |
 | ---- | ------- | ---- |
@@ -41,9 +53,12 @@ Group Project for 2022 Mobile Application Development.
 - [x] Completed all the UI
 - [x] Implemented JSON parsing on Did you know section
 - [x] Start working on pedometer
-- [ ] Test out pedometer on Boyan's old phone
-- [ ] Store steps in SQL database
+- [x] Test out pedometer on Boyan's old phone
+- [x] Store steps in SQL database
+- [x] Change Pedometer service to be a Worker
 - [ ] Work on RecyclerView
+- [x] Pull data from SQL database from Home Frag
+- [x] Pull data from SQL database from Steps Frag
 ### Fazith
 - [x] Get comfortable with Git
 - [x] Create first branch
