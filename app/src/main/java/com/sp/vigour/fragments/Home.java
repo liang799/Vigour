@@ -84,7 +84,7 @@ public class Home extends Fragment implements View.OnClickListener {
         }
 
             insight_coin.setText(db.coinInsight());
-            insight_step.setText("No data. Did you enable Vigour to access you physical activity?");
+            insight_step.setText("");
 
         return view;
     }

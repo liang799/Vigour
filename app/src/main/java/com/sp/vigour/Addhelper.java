@@ -100,15 +100,29 @@ public class Addhelper extends SQLiteOpenHelper {
     }
 
     public String coinInsight() {
+        String result = "Start walking now to earn VGR";
         if (checkForTables()) {
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT MAX(usercrypto) FROM Steps_table", null);
-            if(cursor != null && cursor.getCount() > 0){
-                String result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
+
+            if(cursor != null && cursor.getCount() > 0)
+                result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
                         + getDate(cursor);
-                return result;
-            }
+            db.close();
         }
-        return "Start walking now to earn VGR";
+        return result;
+    }
+
+    public String stepsInsight() {
+        String result = "No data. Did you enable Vigour to access you physical activity?";
+        if (checkForTables()) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("SELECT MAX(usercrypto) FROM Steps_table", null);
+            if(cursor != null && cursor.getCount() > 0)
+                result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
+                        + getDate(cursor);
+            db.close();
+        }
+        return result;
     }
 }
