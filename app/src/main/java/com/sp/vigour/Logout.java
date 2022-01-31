@@ -28,10 +28,14 @@ public class Logout extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /* -------- Firebase stuff -------- */
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
         googleSignInClient = GoogleSignIn.getClient(getActivity()
                 , GoogleSignInOptions.DEFAULT_SIGN_IN);
+
+        /* -------- Logout Dialog -------- */
         LogoutDialogFrag logoutDialogFrag = new LogoutDialogFrag(googleSignInClient, firebaseAuth);
         logoutDialogFrag.show(getChildFragmentManager(), "Logout of Vigour");
 
@@ -40,7 +44,6 @@ public class Logout extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_logout, container, false);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
 
@@ -50,6 +53,7 @@ public class Logout extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        /* -------- Hide BottomNav & Toolbar when entering this Fragment -------- */
         navBar.setVisibility(View.GONE);
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
     }
@@ -57,6 +61,7 @@ public class Logout extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+        /* -------- Show BottomNav & Toolbar when exiting this Fragment -------- */
         navBar.setVisibility(View.VISIBLE);
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
