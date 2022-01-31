@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.sp.vigour.LogoutDialogFrag;
+import com.sp.vigour.R;
 
 public class Logout extends Fragment {
     private FirebaseAuth firebaseAuth;

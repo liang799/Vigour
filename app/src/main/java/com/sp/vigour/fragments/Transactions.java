@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.fragments;
 
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,6 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import com.sp.vigour.Addhelper;
+import com.sp.vigour.R;
+import com.sp.vigour.Vigouritem;
+import com.sp.vigour.adapters.CustomadapterSteps;
 
 import java.util.ArrayList;
 

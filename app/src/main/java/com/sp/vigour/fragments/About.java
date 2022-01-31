@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sp.vigour.R;
 
 public class About extends Fragment {
     private BottomNavigationView navBar;

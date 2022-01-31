@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.sp.vigour.R;
+import com.sp.vigour.adapters.Customadapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;

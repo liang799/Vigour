@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.adapters;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.sp.vigour.R;
 
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -34,7 +36,7 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
         mListener = listener;
     }
 
-    Customadapter(Context context, ArrayList healthtip, ArrayList imagelist){
+    public Customadapter(Context context, ArrayList healthtip, ArrayList imagelist){
         this.context = context;
         this.healthtip = healthtip;
         this.imagelist = imagelist;

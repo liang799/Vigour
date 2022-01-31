@@ -20,7 +20,7 @@ public class LogoutDialogFrag extends DialogFragment {
     private FirebaseAuth firebaseAuth;
     private GoogleSignInClient googleSignInClient;
 
-    LogoutDialogFrag(GoogleSignInClient client, FirebaseAuth fAuth){
+    public LogoutDialogFrag(GoogleSignInClient client, FirebaseAuth fAuth){
         firebaseAuth = fAuth;
         googleSignInClient = client;
     }

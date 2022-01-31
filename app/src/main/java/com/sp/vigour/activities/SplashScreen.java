@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.ProgressBar;
+
+import com.sp.vigour.R;
 
 public class SplashScreen extends AppCompatActivity {
 

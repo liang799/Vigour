@@ -42,7 +42,7 @@ public class Addhelper extends SQLiteOpenHelper {
 
     }
 
-    Cursor getdata() {
+    public Cursor getdata() {
         String query = "SELECT * " + " FROM Steps_table";
         SQLiteDatabase db = this.getReadableDatabase();
 

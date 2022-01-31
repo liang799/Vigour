@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.fragments;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.sp.vigour.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

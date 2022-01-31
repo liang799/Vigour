@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.sp.vigour.R;
+import com.sp.vigour.Vigouritem;
 
 import java.util.ArrayList;
 
@@ -28,7 +31,7 @@ public class CustomadapterSteps extends RecyclerView.Adapter<CustomadapterSteps.
     }
 
 
-    CustomadapterSteps(Context context, ArrayList historyID, ArrayList vigouritemArrayList){
+    public CustomadapterSteps(Context context, ArrayList historyID, ArrayList vigouritemArrayList){
         this.context = context;
         this.vigouritemArrayList = vigouritemArrayList;
         this.historyID = historyID;

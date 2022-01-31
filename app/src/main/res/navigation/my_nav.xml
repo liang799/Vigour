@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/about2"
-        android:name="com.sp.vigour.About"
+        android:name="com.sp.vigour.fragments.About"
         android:label="About"
         tools:layout="@layout/fragment_about">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/healthTips"
-        android:name="com.sp.vigour.HealthTips"
+        android:name="com.sp.vigour.fragments.HealthTips"
         android:label="Health Tips"
         tools:layout="@layout/fragment_healthtips">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/home2"
-        android:name="com.sp.vigour.Home"
+        android:name="com.sp.vigour.fragments.Home"
         android:label="Home"
         tools:layout="@layout/fragment_home">
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/steps"
-        android:name="com.sp.vigour.Steps"
+        android:name="com.sp.vigour.fragments.Steps"
         android:label="Steps"
         tools:layout="@layout/fragment_steps">
         <action
@@ -58,12 +58,12 @@
     </fragment>
     <fragment
         android:id="@+id/transactions"
-        android:name="com.sp.vigour.Transactions"
+        android:name="com.sp.vigour.fragments.Transactions"
         android:label="Transactions"
         tools:layout="@layout/fragment_transactions" />
     <fragment
         android:id="@+id/stepsHistory"
-        android:name="com.sp.vigour.StepsHistory"
+        android:name="com.sp.vigour.fragments.StepsHistory"
         android:label="Steps History"
         tools:layout="@layout/fragment_steps_history">
         <action
@@ -72,7 +72,7 @@
     </fragment>
     <fragment
         android:id="@+id/map"
-        android:name="com.sp.vigour.Map"
+        android:name="com.sp.vigour.fragments.Map"
         android:label="Event Tracker"
         tools:layout="@layout/fragment_map">
         <action
@@ -81,12 +81,12 @@
     </fragment>
     <fragment
         android:id="@+id/details"
-        android:name="com.sp.vigour.Details"
+        android:name="com.sp.vigour.fragments.Details"
         android:label="fragment_steps_details"
         tools:layout="@layout/fragment_steps_details" />
     <fragment
         android:id="@+id/logout"
-        android:name="com.sp.vigour.Logout"
+        android:name="com.sp.vigour.fragments.Logout"
         android:label="Confirmation"
         tools:layout="@layout/fragment_logout">
         <action
@@ -98,7 +98,7 @@
     </fragment>
     <activity
         android:id="@+id/loginActivity"
-        android:name="com.sp.vigour.LoginActivity"
+        android:name="com.sp.vigour.activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.activities;
 
 import static androidx.navigation.ui.NavigationUI.setupActionBarWithNavController;
 
@@ -26,10 +26,12 @@ import androidx.work.WorkRequest;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.sp.vigour.PedoWorker;
+import com.sp.vigour.R;
 
 import java.util.concurrent.TimeUnit;
 
-public class NavDrawerActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private AppBarConfiguration appBarConfiguration;
     private static final int PERMISSION_REQUEST_ACTIVITY_RECOGNITION = 45;

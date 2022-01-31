@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.ImageButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
+
+import com.sp.vigour.R;
 
 public class Steps extends Fragment implements View.OnClickListener {
     private Button stepsButton;
