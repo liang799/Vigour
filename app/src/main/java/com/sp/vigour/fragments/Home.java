@@ -18,6 +18,7 @@ import android.widget.TextView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
 
 import org.json.JSONArray;
@@ -45,12 +46,15 @@ public class Home extends Fragment implements View.OnClickListener {
     private Handler mainHandler =  new Handler();
     private SensorManager sensorManager;
     private Sensor pedometer;
+    private TextView insight_step;
+    private TextView insight_coin;
+    private Addhelper db;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         pedometer = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
+        db = new Addhelper(getContext());
     }
 
     @Override
@@ -65,6 +69,8 @@ public class Home extends Fragment implements View.OnClickListener {
         hide_indicator = view.findViewById(R.id.hideEye);
         toggle_hide = view.findViewById(R.id.visibilitySwitch);
         toggle_hide.setOnClickListener(this);
+        insight_step = view.findViewById(R.id.insight_step);
+        insight_coin = view.findViewById(R.id.insight_coin);
 
         if (pedometer != null){
             // Success! There's a pedometer.
@@ -76,6 +82,9 @@ public class Home extends Fragment implements View.OnClickListener {
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
         }
+
+            insight_coin.setText(db.coinInsight());
+            insight_step.setText("No data. Did you enable Vigour to access you physical activity?");
 
         return view;
     }

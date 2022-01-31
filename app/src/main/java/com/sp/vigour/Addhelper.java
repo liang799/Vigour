@@ -19,8 +19,8 @@ public class Addhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Steps_table( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "usersteps TEXT, userdate TEXT, usertime TEXT, usercrypto TEXT)");
-
+                "usersteps TEXT, userdate TEXT, usertime TEXT, usercrypto REAL)");
+        // REAL is a floating value
     }
 
     @Override
@@ -89,5 +89,26 @@ public class Addhelper extends SQLiteOpenHelper {
         }
 
         return hasTables;
+    }
+
+    public String getDate(Cursor c) {
+        return (String.valueOf(c.getFloat(2)));
+    }
+
+    public String getCoin(Cursor c) {
+        return (String.valueOf(c.getFloat(4)));
+    }
+
+    public String coinInsight() {
+        if (checkForTables()) {
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("SELECT MAX(usercrypto) FROM Steps_table", null);
+            if(cursor != null && cursor.getCount() > 0){
+                String result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
+                        + getDate(cursor);
+                return result;
+            }
+        }
+        return "Start walking now to earn VGR";
     }
 }
