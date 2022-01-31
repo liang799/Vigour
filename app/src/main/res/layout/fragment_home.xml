@@ -47,12 +47,13 @@
             android:id="@+id/balance_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:padding="0sp"
-            android:text="100"
+            android:text="-1"
             android:textColor="@color/NeutralWhite"
             android:textSize="29sp"
+            app:layout_constraintEnd_toEndOf="@+id/visibilitySwitch"
+            app:layout_constraintHorizontal_bias="0.33"
             app:layout_constraintStart_toStartOf="@+id/visibilitySwitch"
             app:layout_constraintTop_toBottomOf="@+id/visibilitySwitch" />
 
@@ -68,7 +69,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/balance_home"
             app:layout_constraintTop_toBottomOf="@+id/visibilitySwitch"
-            app:layout_constraintVertical_bias="0.53" />
+            app:layout_constraintVertical_bias="0.47000003" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/details_button"
