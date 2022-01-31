@@ -100,7 +100,10 @@ public class Addhelper extends SQLiteOpenHelper {
     }
 
     public String getCoin(Cursor c) {
-        return (String.valueOf(c.getFloat(4)));
+        Float amt = c.getFloat(4);
+        if (amt == null)
+            return "0";
+        return String.valueOf(amt);
     }
 
     public String coinInsight() {
@@ -143,5 +146,17 @@ public class Addhelper extends SQLiteOpenHelper {
             db.close();
         }
         return result;
+    }
+
+    public String getVGR() {
+        String amount = "0";
+        if (checkForTables()) {
+            Cursor cursor = getdata();
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToLast();
+                amount = getCoin(cursor);
+            }
+        }
+        return amount;
     }
 }

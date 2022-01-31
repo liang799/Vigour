@@ -1,5 +1,6 @@
 package com.sp.vigour.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -49,6 +50,7 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView insight_step;
     private TextView insight_coin;
     private Addhelper db;
+    private String amount;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +92,13 @@ public class Home extends Fragment implements View.OnClickListener {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        amount = db.getVGR();
+        Vgr_Amount.setText(amount);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.visibilitySwitch:
@@ -99,7 +108,7 @@ public class Home extends Fragment implements View.OnClickListener {
                     hidden = true;
                 } else {
                     hide_indicator.setVisibility(View.GONE);
-                    Vgr_Amount.setText("100");
+                    Vgr_Amount.setText(amount);
                     hidden = false;
                 }
                 break;
@@ -160,7 +169,7 @@ public class Home extends Fragment implements View.OnClickListener {
     private boolean isNetworkAvailable() {
         ConnectivityManager connectivityManager
                 = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        @SuppressLint("MissingPermission") NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
