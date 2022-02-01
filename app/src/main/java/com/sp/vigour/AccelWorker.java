@@ -17,21 +17,18 @@ import java.util.Date;
 
 public class AccelWorker extends Worker implements SensorEventListener {
 
-    private static final String TAG = "AccelWorker";
-
     private SensorManager sensorManager;
     private Sensor accelmeter;
 
     public AccelWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
 
-
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
 
-        Log.d("acel", " X: "+ event.values[0] + " Y: "+ event.values[1]  + " Z: "+ event.values[2] );
+        Log.d("accel", " X: "+ event.values[0] + " Y: "+ event.values[1]  + " Z: "+ event.values[2] );
 
 
     }
@@ -44,14 +41,14 @@ public class AccelWorker extends Worker implements SensorEventListener {
     @NonNull
     @Override
     public Result doWork() {
-        Log.d(TAG, "Started work");
+        Log.d("accel", "Started work");
         sensorManager = (SensorManager) getApplicationContext().getSystemService(Context.SENSOR_SERVICE);
         accelmeter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if (accelmeter != null) {
             sensorManager.registerListener(this, accelmeter, SensorManager.SENSOR_DELAY_NORMAL);
-            Log.d(TAG, "Work successful");
+            Log.d("accel", "Work successful accel");
         } else {
-            Log.d(TAG, "No pedometer");
+            Log.d("accel", "No accel");
             return Result.retry();
         }
 
