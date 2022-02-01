@@ -1,9 +1,12 @@
 package com.sp.vigour.fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,9 +21,41 @@ public class About extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View vv = inflater.inflate(R.layout.fragment_about,container,false);
+        View v = inflater.inflate(R.layout.fragment_about,container,false);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
-        return vv;
+
+        Button tianpokwebsite = (Button) v.findViewById(R.id.tianpokwebsite);
+        Button fazithwebsite = (Button) v.findViewById(R.id.fazithwebsite);
+        Button rajawebsite = (Button) v.findViewById(R.id.rajawebsite);
+
+        tianpokwebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("https://github.com/liang799");
+            }
+        });
+
+        fazithwebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("https://zithinc.com/");
+            }
+        });
+
+        rajawebsite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gotoUrl("https://www.linkedin.com/in/krajaselvam/");
+            }
+        });
+
+
+        return v;
+    }
+
+    private void gotoUrl(String s) {
+        Uri uri = Uri.parse(s);
+        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
     @Override
@@ -35,3 +70,4 @@ public class About extends Fragment {
         navBar.setVisibility(View.VISIBLE);
     }
 }
+
