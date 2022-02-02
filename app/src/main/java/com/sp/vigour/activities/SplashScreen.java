@@ -6,7 +6,11 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
 
+import com.sp.vigour.CryptoWorker;
 import com.sp.vigour.R;
 
 public class SplashScreen extends AppCompatActivity {
@@ -17,11 +21,21 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        /* ---- play music ---- */
         if(mediaPlayer ==  null){
             mediaPlayer = MediaPlayer.create(this,R.raw.windowsound);
         }
         mediaPlayer.start();
 
+        /* ---- crypto stuff ---- */
+        WorkRequest uploadWorkRequest =
+                new OneTimeWorkRequest.Builder(CryptoWorker.class)
+                        .build();
+        WorkManager
+                .getInstance(getApplicationContext())
+                .enqueue(uploadWorkRequest);
+
+        /* ---- goto login ---- */
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run(){

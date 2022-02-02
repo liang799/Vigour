@@ -52,7 +52,8 @@ public class CryptoWorker extends Worker {
             EthGetBalance balanceWei = web3.ethGetBalance("0x46715A53e5654AAA2258B57AfFB9B5C2daF2612d", DefaultBlockParameterName.LATEST).sendAsync()
                     .get();
             BigInteger bigI = balanceWei.getBalance();
-            float storeMe = bigI.floatValue();
+            int storeMe = bigI.intValue();
+            storeMe = storeMe/100000000;
             String today = simpleDateFormat.format(new Date());
             if (helper.checkForTables() == false)
                 helper.insert("0", today, storeMe);

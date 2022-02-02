@@ -72,7 +72,7 @@ public class Transactions extends Fragment {
                 String usersteps = (cursor.getString(1));
                 String userdate = (cursor.getString(2));
                 String usertime = (cursor.getString(3));
-                String usercrypto = (cursor.getString(4));
+                String usercrypto = db.getCoin(cursor);
 
 
                 vigouritemArrayList.add(new Vigouritem( usersteps, userdate, usertime, usercrypto));

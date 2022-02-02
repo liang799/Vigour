@@ -22,8 +22,7 @@ public class Addhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Steps_table( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "usersteps TEXT, userdate TEXT, usercrypto REAL)");
-        // REAL is a floating value
+                "usersteps TEXT, userdate TEXT, usertime TEXT, usercrypto INT)");
     }
 
     @Override
@@ -32,7 +31,7 @@ public class Addhelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String usersteps, String userdate, float amnt) {
+    public void insert(String usersteps, String userdate, int amnt) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -80,7 +79,7 @@ public class Addhelper extends SQLiteOpenHelper {
         db.update("Steps_table", cv, "userdate=?", new String[]{date});
         db.close();
     }
-    public void updateBal(float bal, String date) {
+    public void updateBal(int bal, String date) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("usercrypto", bal);
@@ -111,9 +110,7 @@ public class Addhelper extends SQLiteOpenHelper {
     }
 
     public String getCoin(Cursor c) {
-        Float amt = c.getFloat(3);
-        if (amt == null)
-            return "0";
+        int amt = c.getInt(4);
         return String.valueOf(amt);
     }
 
