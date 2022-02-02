@@ -22,7 +22,7 @@ public class Addhelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE Steps_table( _id INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "usersteps TEXT, userdate TEXT, usertime TEXT, usercrypto REAL)");
+                "usersteps TEXT, userdate TEXT, usercrypto REAL)");
         // REAL is a floating value
     }
 
@@ -32,17 +32,17 @@ public class Addhelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String usersteps, String userdate) {
+    public void insert(String usersteps, String userdate, float amnt) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("usersteps",usersteps);
         cv.put("userdate",userdate);
+        cv.put("usercrypto", amnt);
 
         db.insert("Steps_table", "usersteps", cv);
         Log.d("Actlife","db inserted");
-
     }
 
     public Cursor getdata() {
@@ -80,6 +80,13 @@ public class Addhelper extends SQLiteOpenHelper {
         db.update("Steps_table", cv, "userdate=?", new String[]{date});
         db.close();
     }
+    public void updateBal(float bal, String date) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("usercrypto", bal);
+        db.update("Steps_table", cv, "userdate=?", new String[]{date});
+        db.close();
+    }
 
     public boolean checkForTables(){
         boolean hasTables = false;
@@ -104,7 +111,7 @@ public class Addhelper extends SQLiteOpenHelper {
     }
 
     public String getCoin(Cursor c) {
-        Float amt = c.getFloat(4);
+        Float amt = c.getFloat(3);
         if (amt == null)
             return "0";
         return String.valueOf(amt);
@@ -175,5 +182,4 @@ public class Addhelper extends SQLiteOpenHelper {
         }
         return steps;
     }
-
 }

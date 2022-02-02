@@ -42,13 +42,13 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
         if (helper.checkForTables() == false) {
             //create new row
-            helper.insert(String.valueOf(Math.round(steps)), today);
+            helper.insert(String.valueOf(Math.round(steps)), today, 0f);
             Log.d("accel", "helper inserted " );
         } else if(!simpleDateFormat.format(new Date()).equals(today)) {
             //reset steps and create new row
             steps = 0;
             today = simpleDateFormat.format(new Date());
-            helper.insert(String.valueOf(Math.round(steps)), today);
+            helper.insert(String.valueOf(Math.round(steps)), today, 0f);
             Log.d("accel", "helper inserted " );
         } else {
             //use old row
