@@ -38,7 +38,6 @@ public class PedoWorker extends Worker implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         Addhelper helper = new Addhelper(getApplicationContext());
-        //Sensor sensor = event.sensor;
 
         if (helper.checkForTables() == false) {
             //create new row

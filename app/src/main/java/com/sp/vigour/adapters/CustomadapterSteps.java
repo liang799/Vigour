@@ -54,7 +54,7 @@ public class CustomadapterSteps extends RecyclerView.Adapter<CustomadapterSteps.
         //holder.steps.setText(vigouritem.getUsersteps());
         holder.steps_text.setText(vigouritem.getUsersteps());
 
-        String totaltime = vigouritem.getUserdate() + " " + vigouritem.getUsertime();
+        String totaltime = vigouritem.getUserdate();
 
         holder.steps_date.setText(totaltime);
 
