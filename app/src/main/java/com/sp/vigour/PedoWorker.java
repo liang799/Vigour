@@ -27,7 +27,6 @@ import java.util.Date;
 public class PedoWorker extends Worker implements SensorEventListener {
     private static final String TAG = "PedoWorker";
 
-    private float prevSteps = 0;
     private String today;
     private SimpleDateFormat simpleDateFormat;
     private long steps = 0;
@@ -40,29 +39,21 @@ public class PedoWorker extends Worker implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         Addhelper helper = new Addhelper(getApplicationContext());
         Sensor sensor = event.sensor;
-        float[] values = event.values;
-        int value = -1;
-
-        if (values.length > 0) {
-            value = (int) values[0];
-        }
 
         if (helper.checkForTables() == false) {
-            //create new entry
+            //create new row
             helper.insert(String.valueOf(Math.round(steps)), today);
         } else if(!simpleDateFormat.format(new Date()).equals(today)) {
-            //update date, steps and create new entry
+            //reset steps and create new row
             steps = 0;
             today = simpleDateFormat.format(new Date());
             helper.insert(String.valueOf(Math.round(steps)), today);
         } else {
-            //use old entry
-            if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
-                steps++;
-            }
+            //use old row
+            if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR)
+                ++steps;
             helper.updateSteps(String.valueOf(Math.round(steps)), today);
         }
-        //Toast.makeText(getApplicationContext(), currentSteps + " Steps, " + today, Toast.LENGTH_SHORT).show();
     }
 
     @Override
