@@ -29,7 +29,6 @@ public class AccelWorker extends Worker implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
 
         //Log.d("accel", " X: "+ event.values[0] + " Y: "+ event.values[1]  + " Z: "+ event.values[2] );
-        
     }
 
     @Override
