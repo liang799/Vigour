@@ -16,69 +16,34 @@ import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
 import com.sp.vigour.Vigouritem;
 import com.sp.vigour.adapters.StepsAdapter;
+import com.sp.vigour.adapters.TransAdapter;
 
 import java.util.ArrayList;
 
 
 public class Transactions extends Fragment {
+    private RecyclerView recyclerView;
+    private Addhelper helper = null;
+    private Cursor model = null;
+    private TransAdapter adapter = null;
 
-    ArrayList<Vigouritem> vigouritemArrayList;
-    ArrayList<String> historyID;
-    Addhelper db;
-
-    StepsAdapter customadapter;
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        helper = new Addhelper(getContext());
+        model = helper.getdata();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_transactions, container, false);
-
-        RecyclerView historyview = v.findViewById(R.id.historyview);
-
-        db = new Addhelper(getContext());
-
-        historyID = new ArrayList<>();
-        vigouritemArrayList = new ArrayList<>();
-
-        storeDatainArray();
-
-
-        customadapter = new StepsAdapter(getContext(),historyID, vigouritemArrayList);
-        historyview.setAdapter(customadapter);
-        historyview.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        adapter = new TransAdapter(getActivity(), model, helper);
+        recyclerView = (RecyclerView) v.findViewById(R.id.historyview);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         return v;
-    }
-
-    private void storeDatainArray() {
-
-        db.close();
-        Cursor cursor = db.getdata();
-
-        historyID.clear();
-
-
-        vigouritemArrayList.clear();
-
-        if(cursor.getCount() == 0){
-            Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
-        }else {
-            while (cursor.moveToNext()){
-
-                historyID.add(cursor.getString(0));
-
-                String usersteps = (cursor.getString(1));
-                String userdate = (cursor.getString(2));
-                String usertime = (cursor.getString(3));
-                String usercrypto = db.getCoin(cursor);
-
-
-                vigouritemArrayList.add(new Vigouritem( usersteps, userdate, usertime, usercrypto));
-
-            }
-            db.close();
-        }
     }
 }

@@ -87,7 +87,11 @@
         android:id="@+id/details"
         android:name="com.sp.vigour.fragments.Details"
         android:label="fragment_steps_details"
-        tools:layout="@layout/fragment_steps_details" />
+        tools:layout="@layout/fragment_steps_details" >
+        <action
+            android:id="@+id/action_details_to_transactions"
+            app:destination="@id/transactions" />
+    </fragment>
     <fragment
         android:id="@+id/logout"
         android:name="com.sp.vigour.fragments.Logout"
