@@ -77,7 +77,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
             simpleDateFormat = new SimpleDateFormat("dd LLL");
             today = simpleDateFormat.format(new Date());
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
-            //while(!isUSBCharging());
+            while(!isUSBCharging());
             Log.d(TAG, "Work successful");
         } else {
             Log.d(TAG, "No pedometer");
