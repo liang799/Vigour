@@ -40,7 +40,6 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.MyViewHolder
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.steps_row, parent, false);
         MyViewHolder evh = new MyViewHolder(v, mListener);
         return evh;
@@ -49,13 +48,8 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Vigouritem vigouritem = vigouritemArrayList.get(position);
-
-        //holder.usermoneytxt.setText(vigouritem.getUsercrypto());
-        //holder.steps.setText(vigouritem.getUsersteps());
         holder.steps_text.setText(vigouritem.getUsersteps());
-
         String totaltime = vigouritem.getUserdate();
-
         holder.steps_date.setText(totaltime);
 
     }
@@ -66,18 +60,11 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-
-        //TextView usermoneytxt;
-       // TextView steps;
-
         TextView steps_text;
         TextView steps_date;
 
         public MyViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
-
-            //usermoneytxt = itemView.findViewById(R.id.money_row);
-            //steps = itemView.findViewById(R.id.steps_row);
 
             steps_text = itemView.findViewById(R.id.steps_hist_main);
             steps_date = itemView.findViewById(R.id.steps_hist_date);
