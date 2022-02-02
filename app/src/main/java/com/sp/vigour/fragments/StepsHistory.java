@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.sp.vigour.Addhelper;
@@ -41,8 +42,6 @@ public class StepsHistory extends Fragment {
 
         historyID = new ArrayList<>();
         vigouritemArrayList = new ArrayList<>();
-
-        storeDatainArray();
     }
 
     @Override
@@ -53,6 +52,12 @@ public class StepsHistory extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.steps_history);
         steps_text = (TextView) v.findViewById(R.id.steps_hist_main);
         steps_date = v.findViewById(R.id.steps_hist_date);
+
+        storeDatainArray();
+
+        customadapter = new CustomadapterSteps(getContext(),historyID, vigouritemArrayList);
+        recyclerView.setAdapter(customadapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
         return v;

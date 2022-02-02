@@ -38,21 +38,25 @@ public class PedoWorker extends Worker implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         Addhelper helper = new Addhelper(getApplicationContext());
-        Sensor sensor = event.sensor;
+        //Sensor sensor = event.sensor;
 
         if (helper.checkForTables() == false) {
             //create new row
             helper.insert(String.valueOf(Math.round(steps)), today);
+            Log.d("accel", "helper inserted " );
         } else if(!simpleDateFormat.format(new Date()).equals(today)) {
             //reset steps and create new row
             steps = 0;
             today = simpleDateFormat.format(new Date());
             helper.insert(String.valueOf(Math.round(steps)), today);
+            Log.d("accel", "helper inserted " );
         } else {
             //use old row
-            if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR)
-                ++steps;
+            steps++;
             helper.updateSteps(String.valueOf(Math.round(steps)), today);
+            Log.d("accel", "helper updated" );
+            Log.d("accel", String.valueOf(Math.round(steps)) );
+
         }
     }
 
@@ -73,7 +77,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
             simpleDateFormat = new SimpleDateFormat("dd LLL");
             today = simpleDateFormat.format(new Date());
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
-            while(!isUSBCharging());
+            //while(!isUSBCharging());
             Log.d(TAG, "Work successful");
         } else {
             Log.d(TAG, "No pedometer");

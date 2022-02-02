@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Addhelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "StepsList.db";
+    private static final String DATABASE_NAME = "StepsList4.db";
     private static final int SCHEMA_VERSION = 2;
 
     public Addhelper(Context context) {

@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                         .build();
 
         PeriodicWorkRequest pedometer =
-                new PeriodicWorkRequest.Builder(PedoWorker.class, 1, TimeUnit.MINUTES)
+                new PeriodicWorkRequest.Builder(PedoWorker.class, 1, TimeUnit.SECONDS)
                         // Constraints
                         .build();
 

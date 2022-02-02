@@ -46,7 +46,7 @@ public class Steps extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        steps.setText(helper.getTodaySteps());
+        //steps.setText(helper.getTodaySteps());
     }
 
     @Override
