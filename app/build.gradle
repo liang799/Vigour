@@ -49,4 +49,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.shobhitpuri.custombuttons:google-signin:1.0.0'
+    implementation 'org.web3j:core:4.1.0-android'
 }
