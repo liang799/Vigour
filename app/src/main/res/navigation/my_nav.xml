@@ -60,7 +60,11 @@
         android:id="@+id/transactions"
         android:name="com.sp.vigour.fragments.Transactions"
         android:label="Transactions"
-        tools:layout="@layout/fragment_transactions" />
+        tools:layout="@layout/fragment_transactions" >
+        <action
+            android:id="@+id/action_transactions_to_details"
+            app:destination="@id/details" />
+    </fragment>
     <fragment
         android:id="@+id/stepsHistory"
         android:name="com.sp.vigour.fragments.StepsHistory"
