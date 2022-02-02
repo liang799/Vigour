@@ -7,7 +7,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         app:cardBackgroundColor="@color/Primary"
         app:cardCornerRadius="30dp"
@@ -16,53 +16,47 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:padding="13dp">
 
             <TextView
                 android:id="@+id/money_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="49dp"
-                android:layout_marginBottom="28dp"
+                android:layout_marginStart="32dp"
                 android:text="+50"
                 android:textColor="@color/Secondary"
-                android:textSize="35sp" />
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/vgr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="119dp"
-                android:layout_marginBottom="33dp"
+                android:layout_marginStart="10dp"
                 android:text="VGR"
                 android:textColor="@color/NeutralWhite"
-                android:textSize="22sp" />
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/money_row"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.627" />
 
             <TextView
                 android:id="@+id/steps_row"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/money_row"
-                android:layout_alignBottom="@+id/money_row"
-                android:layout_alignParentEnd="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginEnd="24dp"
                 android:text="10000 steps"
                 android:textColor="@color/NeutralGray"
-                android:textSize="18sp" />
-        </RelativeLayout>
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/vgr"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </androidx.cardview.widget.CardView>

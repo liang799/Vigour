@@ -51,7 +51,6 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView insight_coin;
     private Addhelper db;
     private String amount;
-    private TextView txtbalance;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
