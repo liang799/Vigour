@@ -10,7 +10,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
-import com.sp.vigour.CryptoWorker;
+import com.sp.vigour.workers.CryptoWorker;
 import com.sp.vigour.R;
 
 public class SplashScreen extends AppCompatActivity {

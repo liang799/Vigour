@@ -26,8 +26,8 @@ import androidx.work.WorkRequest;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.sp.vigour.PedoWorker;
-import com.sp.vigour.AccelWorker;
+import com.sp.vigour.workers.PedoWorker;
+import com.sp.vigour.workers.AccelWorker;
 import com.sp.vigour.R;
 
 import java.util.concurrent.TimeUnit;

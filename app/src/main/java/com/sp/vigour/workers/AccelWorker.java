@@ -1,4 +1,4 @@
-package com.sp.vigour;
+package com.sp.vigour.workers;
 
 import android.content.Context;
 import android.hardware.Sensor;
