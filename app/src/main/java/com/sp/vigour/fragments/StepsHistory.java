@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
 import com.sp.vigour.Vigouritem;
-import com.sp.vigour.adapters.CustomadapterSteps;
+import com.sp.vigour.adapters.StepsAdapter;
 
 import java.util.ArrayList;
 
@@ -29,7 +29,7 @@ public class StepsHistory extends Fragment {
 
     ArrayList<String> historyID;
     ArrayList<Vigouritem> vigouritemArrayList;
-    CustomadapterSteps customadapter;
+    StepsAdapter customadapter;
 
     // Testing data
     int steps[] = {9000, 8000, 1000, 200, 500, 0};
@@ -55,7 +55,7 @@ public class StepsHistory extends Fragment {
 
         storeDatainArray();
 
-        customadapter = new CustomadapterSteps(getContext(),historyID, vigouritemArrayList);
+        customadapter = new StepsAdapter(getContext(),historyID, vigouritemArrayList);
         recyclerView.setAdapter(customadapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 

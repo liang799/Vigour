@@ -14,7 +14,7 @@ import com.sp.vigour.Vigouritem;
 
 import java.util.ArrayList;
 
-public class CustomadapterSteps extends RecyclerView.Adapter<CustomadapterSteps.MyViewHolder>{
+public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.MyViewHolder>{
 
     Context context;
     ArrayList<Vigouritem> vigouritemArrayList;
@@ -31,7 +31,7 @@ public class CustomadapterSteps extends RecyclerView.Adapter<CustomadapterSteps.
     }
 
 
-    public CustomadapterSteps(Context context, ArrayList historyID, ArrayList vigouritemArrayList){
+    public StepsAdapter(Context context, ArrayList historyID, ArrayList vigouritemArrayList){
         this.context = context;
         this.vigouritemArrayList = vigouritemArrayList;
         this.historyID = historyID;

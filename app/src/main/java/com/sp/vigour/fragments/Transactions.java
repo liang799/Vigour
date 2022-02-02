@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
 import com.sp.vigour.Vigouritem;
-import com.sp.vigour.adapters.CustomadapterSteps;
+import com.sp.vigour.adapters.StepsAdapter;
 
 import java.util.ArrayList;
 
@@ -26,7 +26,7 @@ public class Transactions extends Fragment {
     ArrayList<String> historyID;
     Addhelper db;
 
-    CustomadapterSteps customadapter;
+    StepsAdapter customadapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,7 +44,7 @@ public class Transactions extends Fragment {
         storeDatainArray();
 
 
-        customadapter = new CustomadapterSteps(getContext(),historyID, vigouritemArrayList);
+        customadapter = new StepsAdapter(getContext(),historyID, vigouritemArrayList);
         historyview.setAdapter(customadapter);
         historyview.setLayoutManager(new LinearLayoutManager(getContext()));
 

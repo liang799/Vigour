@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHolder>{
+public class HealthTipsAdapter extends RecyclerView.Adapter<HealthTipsAdapter.MyViewHolder>{
 
     Context context;
     ArrayList<String> healthtip;
@@ -36,7 +36,7 @@ public class Customadapter extends RecyclerView.Adapter<Customadapter.MyViewHold
         mListener = listener;
     }
 
-    public Customadapter(Context context, ArrayList healthtip, ArrayList imagelist){
+    public HealthTipsAdapter(Context context, ArrayList healthtip, ArrayList imagelist){
         this.context = context;
         this.healthtip = healthtip;
         this.imagelist = imagelist;

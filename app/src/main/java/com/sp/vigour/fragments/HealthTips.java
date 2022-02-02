@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sp.vigour.R;
-import com.sp.vigour.adapters.Customadapter;
+import com.sp.vigour.adapters.HealthTipsAdapter;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +38,7 @@ public class HealthTips extends Fragment {
     ArrayList<String> userList;
     ArrayList<String> imagelist;
     Handler mainHandler =  new Handler();
-    Customadapter customadapter;
+    HealthTipsAdapter customadapter;
     ProgressDialog progressDialog;
     RecyclerView healthview;
     ImageButton healthclose;
@@ -57,7 +57,7 @@ public class HealthTips extends Fragment {
 
         Log.d("LOG", "fetching data");
 
-        customadapter = new Customadapter(getContext(),userList,imagelist);
+        customadapter = new HealthTipsAdapter(getContext(),userList,imagelist);
         healthview.setAdapter(customadapter);
         healthview.setLayoutManager(new LinearLayoutManager(getContext()));
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
@@ -144,7 +144,7 @@ public class HealthTips extends Fragment {
                    /* if (progressDialog.isShowing())
                         progressDialog.dismiss();*/
 
-                    customadapter = new Customadapter(getContext(),userList,imagelist);
+                    customadapter = new HealthTipsAdapter(getContext(),userList,imagelist);
                     healthview.setAdapter(customadapter);
                     healthview.setLayoutManager(new LinearLayoutManager(getContext()));
 
