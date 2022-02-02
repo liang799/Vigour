@@ -10,15 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
-import com.sp.vigour.Vigouritem;
-import com.sp.vigour.adapters.StepsAdapter;
 import com.sp.vigour.adapters.TransAdapter;
-
-import java.util.ArrayList;
 
 
 public class Transactions extends Fragment {
