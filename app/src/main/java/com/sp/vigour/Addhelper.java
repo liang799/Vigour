@@ -106,7 +106,7 @@ public class Addhelper extends SQLiteOpenHelper {
     }
 
     public String getDate(Cursor c) {
-        return (String.valueOf(c.getFloat(2)));
+        return (c.getString(2));
     }
 
     public String getCoin(Cursor c) {
