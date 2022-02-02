@@ -38,13 +38,15 @@ public class TransAdapter extends RecyclerView.Adapter<TransAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         cursor.moveToPosition(position);
-        holder.amt.setText(helper.getCoin(cursor));
-        holder.steps.setText(helper.getSteps(cursor));
+        String amount = "+" + helper.getCoin(cursor);
+        String steps = cursor.getString(1) + " steps";
+        holder.amt.setText(amount);
+        holder.steps.setText(steps);
         // Create the Bundle to pass, you can put String, Integer, or serializable object
         bundle = new Bundle();
         bundle.putString("date", helper.getDate(cursor));
         bundle.putString("amount", helper.getCoin(cursor));
-        bundle.putString("steps", String.valueOf(helper.getSteps(cursor)));
+        bundle.putString("steps", cursor.getString(1));
         holder.itemView.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_transactions_to_details, bundle)
         );
