@@ -30,6 +30,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
     private float prevSteps = 0;
     private String today;
     private SimpleDateFormat simpleDateFormat;
+    private long steps = 0;
 
     public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -37,24 +38,29 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        float totalSteps = event.values[0];
-        String currentSteps = "";
         Addhelper helper = new Addhelper(getApplicationContext());
+        Sensor sensor = event.sensor;
+        float[] values = event.values;
+        int value = -1;
+
+        if (values.length > 0) {
+            value = (int) values[0];
+        }
 
         if (helper.checkForTables() == false) {
             //create new entry
-            currentSteps = String.valueOf(Math.round(totalSteps));
-            helper.insert(currentSteps, today);
+            helper.insert(String.valueOf(Math.round(steps)), today);
         } else if(!simpleDateFormat.format(new Date()).equals(today)) {
             //update date, steps and create new entry
+            steps = 0;
             today = simpleDateFormat.format(new Date());
-            prevSteps = totalSteps;
-            currentSteps = String.valueOf(Math.round(totalSteps) - Math.round(prevSteps));
-            helper.insert(currentSteps, today);
+            helper.insert(String.valueOf(Math.round(steps)), today);
         } else {
             //use old entry
-            currentSteps = String.valueOf(Math.round(totalSteps) - Math.round(prevSteps));
-            helper.updateSteps(currentSteps, today);
+            if (sensor.getType() == Sensor.TYPE_STEP_DETECTOR) {
+                steps++;
+            }
+            helper.updateSteps(String.valueOf(Math.round(steps)), today);
         }
         //Toast.makeText(getApplicationContext(), currentSteps + " Steps, " + today, Toast.LENGTH_SHORT).show();
     }
