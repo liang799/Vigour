@@ -58,9 +58,9 @@
     </fragment>
     <fragment
         android:id="@+id/transactions"
-        android:name="com.sp.vigour.fragments.crypto"
+        android:name="com.sp.vigour.fragments.Transactions"
         android:label="Transactions"
-        tools:layout="@layout/fragment_crypto" />
+        tools:layout="@layout/fragment_transactions" />
     <fragment
         android:id="@+id/stepsHistory"
         android:name="com.sp.vigour.fragments.StepsHistory"
