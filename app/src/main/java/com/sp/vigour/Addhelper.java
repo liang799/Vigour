@@ -41,7 +41,7 @@ public class Addhelper extends SQLiteOpenHelper {
         cv.put("usercrypto", amnt);
 
         db.insert("Steps_table", "usersteps", cv);
-        Log.d("Actlife","db inserted");
+        Log.d("accel", "helper inserted" );
     }
 
     public Cursor getdata() {
@@ -77,6 +77,7 @@ public class Addhelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("usersteps", steps);
         db.update("Steps_table", cv, "userdate=?", new String[]{date});
+        Log.d("accel", "helper updated" );
         db.close();
     }
     public void updateBal(int bal, String date) {

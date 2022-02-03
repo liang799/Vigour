@@ -38,6 +38,7 @@ public class Transactions extends Fragment {
         recyclerView = (RecyclerView) v.findViewById(R.id.historyview);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter.notifyDataSetChanged();
 
         return v;
     }
