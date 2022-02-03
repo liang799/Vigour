@@ -95,30 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 "pedomChecker",
                 ExistingWorkPolicy.REPLACE,
                 (OneTimeWorkRequest) pedometerChecker);
-
-        /* --------  Schedule accel --------- */
-        WorkRequest accelChecker =
-                new OneTimeWorkRequest.Builder(AccelWorker.class)
-                        .setBackoffCriteria(
-                                BackoffPolicy.LINEAR,
-                                OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
-                                TimeUnit.MILLISECONDS)
-                        .build();
-
-        PeriodicWorkRequest accel =
-                new PeriodicWorkRequest.Builder(AccelWorker.class, 1, TimeUnit.SECONDS)
-                        // Constraints
-                        .build();
-
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-                "accelerometer",
-                ExistingPeriodicWorkPolicy.KEEP,
-                accel);
-        WorkManager.getInstance().enqueueUniqueWork(
-                "accelChecker",
-                ExistingWorkPolicy.REPLACE,
-                (OneTimeWorkRequest) accelChecker);
-
     }
 
     @Override
