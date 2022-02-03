@@ -119,11 +119,10 @@ public class Addhelper extends SQLiteOpenHelper {
         String result = "Start walking now to earn VGR";
         if (checkForTables()) {
             SQLiteDatabase db = this.getWritableDatabase();
-            Cursor cursor = db.rawQuery("SELECT MAX(usercrypto) FROM Steps_table", null);
-
-            if (cursor != null && cursor.getCount() > 0)
-                result = "Your highest earning was " + getCoin(cursor) + "Vigour Coin on "
-                        + getDate(cursor);
+            Cursor cursor = db.rawQuery("SELECT * FROM Steps_table ORDER BY usercrypto DESC LIMIT 1", null);
+            cursor.moveToFirst();
+            result = "Your highest earning was " + getCoin(cursor) + " Vigour Coin on "
+                + getDate(cursor);
             db.close();
         }
         return result;

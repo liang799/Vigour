@@ -85,7 +85,7 @@ public class Home extends Fragment implements View.OnClickListener {
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
         }
 
-            //insight_coin.setText(db.coinInsight());
+            insight_coin.setText(db.coinInsight());
             //insight_step.setText(db.stepsInsight());
 
         return view;
