@@ -38,6 +38,7 @@ public class StepsHistory extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
+        adapter.notifyDataSetChanged();
         return v;
     }
 }

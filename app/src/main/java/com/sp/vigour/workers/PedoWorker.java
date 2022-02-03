@@ -32,7 +32,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     private String today;
     private SimpleDateFormat simpleDateFormat;
-    private long steps = 0;
+    private int steps = 0;
 
     public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -45,19 +45,17 @@ public class PedoWorker extends Worker implements SensorEventListener {
         if (helper.checkForTables() == false) {
             //create new row
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-            Log.d("accel", "helper inserted " );
         } else if(!simpleDateFormat.format(new Date()).equals(today)) {
             //reset steps and create new row
             steps = 0;
             today = simpleDateFormat.format(new Date());
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-            Log.d("accel", "helper inserted " );
+
         } else {
             //use old row
             steps++;
-            helper.updateSteps(String.valueOf(Math.round(steps)), today);
-            Log.d("accel", "helper updated" );
-            Log.d("accel", String.valueOf(Math.round(steps)) );
+            helper.updateSteps(String.valueOf(steps), today);
+            Log.d("accel", String.valueOf(steps) );
 
         }
     }
