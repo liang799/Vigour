@@ -84,7 +84,8 @@ public class Home extends Fragment implements View.OnClickListener {
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
         }
-
+            amount = db.getVGR();
+            Vgr_Amount.setText(amount);
             insight_coin.setText(db.coinInsight());
             insight_step.setText(db.stepsInsight());
 
