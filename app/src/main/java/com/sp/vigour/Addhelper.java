@@ -146,7 +146,7 @@ public class Addhelper extends SQLiteOpenHelper {
                 int stepsMath = today - yest;
                 if (stepsMath < 0)
                     result = "You walked more yesterday than today by "
-                            + String.valueOf(Math.abs(stepsMath)) + "steps";
+                            + String.valueOf(stepsMath) + "steps";
                 else
                     result = "You walked more today than yesterday by "
                             + String.valueOf(stepsMath) + "steps";
