@@ -59,6 +59,10 @@ public class CryptoWorker extends Worker {
             String today = simpleDateFormat.format(new Date());
             if (helper.checkForTables() == false)
                 helper.insert("0", today, storeMe);
+                else
+            {
+                // update vgr balance
+            }
         }
         catch (Exception e){
             Toast.makeText(getApplicationContext(), "balance failed", Toast.LENGTH_SHORT).show();

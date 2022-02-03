@@ -95,15 +95,15 @@
                         android:id="@+id/userCountry"
                         android:layout_width="117dp"
                         android:layout_height="36dp"
-                        android:text="8025 Steps"
+                        android:text="5 VGR"
                         android:textColor="@color/NeutralWhite"
                         android:textSize="21dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.136"
+                        app:layout_constraintHorizontal_bias="0.21"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.472" />
+                        app:layout_constraintVertical_bias="0.476" />
 
                     <TextView
                         android:id="@+id/userLat"
