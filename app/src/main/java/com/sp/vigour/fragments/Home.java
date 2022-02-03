@@ -21,6 +21,7 @@ import androidx.navigation.Navigation;
 
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
+import com.sp.vigour.activities.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,7 +51,6 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView insight_step;
     private TextView insight_coin;
     private Addhelper db;
-    private String amount;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +101,7 @@ public class Home extends Fragment implements View.OnClickListener {
                     hidden = true;
                 } else {
                     hide_indicator.setVisibility(View.GONE);
-                    Vgr_Amount.setText(amount);
+                    //Vgr_Amount.setText(amount);
                     hidden = false;
                 }
                 break;
@@ -150,19 +150,13 @@ public class Home extends Fragment implements View.OnClickListener {
             mainHandler.post( new Runnable() {
                 @Override
                 public void run() {
-                    if (isNetworkAvailable()) {
+                    MainActivity activity = (MainActivity) getActivity();
+                    if (activity.isNetworkAvailable()) {
                         int random = new Random().nextInt(did_u_know.size());
                         tips.setText(did_u_know.get(random));
                     }
                 }
             });
         }
-    }
-
-    private boolean isNetworkAvailable() {
-        ConnectivityManager connectivityManager
-                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        @SuppressLint("MissingPermission") NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }
