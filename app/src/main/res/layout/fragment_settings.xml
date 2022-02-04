@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/PrimaryDark"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="98dp"
+            android:layout_height="98dp"
+            android:layout_marginTop="52dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Vigour Coin"
+            android:textColor="@color/NeutralWhite"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:text="Samsung Solve, Health &amp; Wellness"
+            android:textColor="@color/PrimaryLight"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView12"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="@+id/textView12"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="32dp"
+            android:background="@color/PrimaryDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView">
+
+            <TextView
+                android:id="@+id/walletid"
+                android:layout_width="330dp"
+
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/rounded_box_top"
+                android:backgroundTint="@color/Primary"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="WALLET ID"
+                android:textColor="@color/Secondary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:drawableTint="@color/Secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/walletid2"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:text="0xblablabla"
+                android:textColor="@color/NeutralWhite"
+                app:layout_constraintEnd_toEndOf="@+id/walletid"
+                app:layout_constraintStart_toStartOf="@+id/walletid"
+                app:layout_constraintTop_toBottomOf="@+id/walletid" />
+
+            <TextView
+                android:id="@+id/version"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="156dp"
+                android:background="@drawable/rounded_box_top"
+                android:backgroundTint="@color/Primary"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="App Version"
+                android:textColor="@color/Secondary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:drawableTint="@color/Secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/version2"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:text="1.0.1"
+                android:textColor="@color/NeutralWhite"
+                app:layout_constraintEnd_toEndOf="@+id/version"
+                app:layout_constraintStart_toStartOf="@+id/version"
+                app:layout_constraintTop_toBottomOf="@+id/version" />
+
+            <TextView
+                android:id="@+id/policy"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="272dp"
+                android:background="@drawable/rounded_box_top"
+                android:backgroundTint="@color/Primary"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Privacy Policy"
+                android:textColor="@color/Secondary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:drawableTint="@color/Secondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.493"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/policywebsite"
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_box_bottom"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingBottom="20dp"
+                android:text="Please click here to see our policy"
+                android:textColor="@color/NeutralWhite"
+                app:layout_constraintEnd_toEndOf="@+id/policy"
+                app:layout_constraintStart_toStartOf="@+id/policy"
+                app:layout_constraintTop_toBottomOf="@+id/policy" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DO NOT REMOVE"
+            android:textSize="0.1sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

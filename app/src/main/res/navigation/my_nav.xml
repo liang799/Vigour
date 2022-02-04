@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/about2"
         android:name="com.sp.vigour.fragments.About"
-        android:label="About"
-        tools:layout="@layout/fragment_about">
+        android:label="About">
         <action
             android:id="@+id/action_about2_to_home2"
             app:destination="@id/home2" />
@@ -109,4 +108,12 @@
         android:name="com.sp.vigour.activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.sp.vigour.fragments.settings"
+        android:label="Settings" >
+        <action
+            android:id="@+id/action_settings_to_home2"
+            app:destination="@id/home2" />
+    </fragment>
 </navigation>

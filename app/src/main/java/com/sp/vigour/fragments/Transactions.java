@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
@@ -22,7 +21,6 @@ public class Transactions extends Fragment {
     private Addhelper helper = null;
     private Cursor model = null;
     private TransAdapter adapter = null;
-    private TextView balance;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,9 +40,6 @@ public class Transactions extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter.notifyDataSetChanged();
 
-        balance = v.findViewById(R.id.userCountry);
-        model.moveToLast();
-        balance.setText(helper.getCoin(model));
         return v;
     }
 }

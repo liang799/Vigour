@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_about.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_home.xml" value="0.2341485507246377" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_map.xml" value="0.2341485507246377" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_settings.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/nav_header.xml" value="0.24114583333333334" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/menu/bottom_nav.xml" value="0.24114583333333334" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/menu/drawer_menu.xml" value="0.24114583333333334" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/event_info_bg.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/event_title_bg.xml" value="0.24027777777777778" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/drawable/events_bg.xml" value="0.24027777777777778" />

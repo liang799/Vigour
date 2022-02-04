@@ -21,7 +21,6 @@ import androidx.navigation.Navigation;
 
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
-import com.sp.vigour.activities.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -85,10 +84,9 @@ public class Home extends Fragment implements View.OnClickListener {
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
         }
-            amount = db.getVGR();
-            Vgr_Amount.setText(amount);
-            insight_coin.setText(db.coinInsight());
-            insight_step.setText(db.stepsInsight());
+
+            //insight_coin.setText(db.coinInsight());
+            //insight_step.setText(db.stepsInsight());
 
         return view;
     }
@@ -152,13 +150,19 @@ public class Home extends Fragment implements View.OnClickListener {
             mainHandler.post( new Runnable() {
                 @Override
                 public void run() {
-                    MainActivity activity = (MainActivity) getActivity();
-                    if (activity.isNetworkAvailable()) {
+                    if (isNetworkAvailable()) {
                         int random = new Random().nextInt(did_u_know.size());
                         tips.setText(did_u_know.get(random));
                     }
                 }
             });
         }
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        @SuppressLint("MissingPermission") NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

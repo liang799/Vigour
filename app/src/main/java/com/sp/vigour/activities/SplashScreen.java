@@ -6,18 +6,12 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ExistingWorkPolicy;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 import androidx.work.WorkRequest;
 
 import com.sp.vigour.workers.CryptoWorker;
 import com.sp.vigour.R;
-import com.sp.vigour.workers.PedoWorker;
-
-import java.util.concurrent.TimeUnit;
 
 public class SplashScreen extends AppCompatActivity {
     MediaPlayer mediaPlayer;
@@ -34,15 +28,12 @@ public class SplashScreen extends AppCompatActivity {
         mediaPlayer.start();
 
         /* ---- crypto stuff ---- */
-        PeriodicWorkRequest cryptoUpdate =
-                new PeriodicWorkRequest.Builder(CryptoWorker.class, 15, TimeUnit.MINUTES)
-                        // Constraints
+        WorkRequest uploadWorkRequest =
+                new OneTimeWorkRequest.Builder(CryptoWorker.class)
                         .build();
-
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-                "Get Balance",
-                ExistingPeriodicWorkPolicy.KEEP,
-                cryptoUpdate);
+        WorkManager
+                .getInstance(getApplicationContext())
+                .enqueue(uploadWorkRequest);
 
         /* ---- goto login ---- */
         new Handler().postDelayed(new Runnable() {
