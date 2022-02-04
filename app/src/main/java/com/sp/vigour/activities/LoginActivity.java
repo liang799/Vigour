@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
     String password = "pw";
     Button createWallet;
     Button restoreWallet;
-    final String etheriumwalletPath = "Vigour/wallet";
+    final String etheriumwalletPath = "/wallet";
     File file;
 
     @Override
@@ -48,13 +48,17 @@ public class LoginActivity extends AppCompatActivity {
         createWallet = findViewById(R.id.createwallet);
         restoreWallet = findViewById(R.id.restorewallet);
 
-        File file = new File("Vigour/path");
+        file = new File(getFilesDir() + etheriumwalletPath);// the etherium wallet location
 
         createWallet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createWallet();
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                if (file.exists()) {
+                    Toast.makeText(LoginActivity.this, "Please restore your old wallet", Toast.LENGTH_SHORT).show();
+                } else {
+                    createWallet();
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                }
             }
         });
         restoreWallet.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +74,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void createWallet()  {
         try {
-            file = new File(getFilesDir() + etheriumwalletPath);// the etherium wallet location
             if (!file.mkdirs() )
                 file.mkdirs();
             else
