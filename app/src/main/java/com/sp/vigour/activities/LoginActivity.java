@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,11 +28,20 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.shobhitpuri.custombuttons.GoogleSignInButton;
 import com.sp.vigour.R;
 
+import org.web3j.crypto.Credentials;
+import org.web3j.crypto.WalletUtils;
+
+import java.io.File;
+
 public class LoginActivity extends AppCompatActivity {
     GoogleSignInButton btSignIn;
     GoogleSignInClient googleSignInClient;
     FirebaseAuth firebaseAuth;
     ImageView debug;
+    File file = new File("Vigour/path");
+    String Walletname;
+    Credentials credentials;
+    String password = "pw";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                             .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
                                             displayToast("Firebase Authentication succesful");
+                                            createWallet();
                                         }else{
                                             displayToast("Authentication Failed: " + task.getException()
                                             .getMessage());
@@ -128,5 +140,26 @@ public class LoginActivity extends AppCompatActivity {
 
     private void displayToast(String s) {
         Toast.makeText(getApplicationContext(),s,Toast.LENGTH_SHORT).show();
+    }
+
+    public void createWallet()  {
+
+        //EditText Edtpassword = findViewById(R.id.password);
+        //final String password = Edtpassword.getText().toString();  // this will be your etherium password
+        try {
+            // generating the etherium wallet
+
+            Walletname = WalletUtils.generateLightNewWalletFile(password, file);
+            //ShowToast("Wallet generated wallet name is ");
+            Toast.makeText(getApplicationContext(), "Wallet generated wallet name is" + Walletname, Toast.LENGTH_SHORT).show();
+            credentials = WalletUtils.loadCredentials(password, file + "/" + Walletname);
+            Log.d("Wallet text","Wallet generated wallet name is" + Walletname );
+            //txtaddress.setText(getString(R.string.your_address) + credentials.getAddress());
+        }
+        catch(Exception e){
+            //ShowToast("failed");
+            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
