@@ -33,12 +33,13 @@ import org.web3j.crypto.WalletUtils;
 import java.io.File;
 
 public class LoginActivity extends AppCompatActivity {
-    File file = new File("Vigour/path");
     String Walletname;
     Credentials credentials;
     String password = "pw";
     Button createWallet;
     Button restoreWallet;
+    final String etheriumwalletPath = "Vigour/wallet";
+    File file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         createWallet = findViewById(R.id.createwallet);
         restoreWallet = findViewById(R.id.restorewallet);
+
+        File file = new File("Vigour/path");
 
         createWallet.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,12 +70,17 @@ public class LoginActivity extends AppCompatActivity {
 
     public void createWallet()  {
         try {
+            file = new File(getFilesDir() + etheriumwalletPath);// the etherium wallet location
+            if (!file.mkdirs() )
+                file.mkdirs();
+            else
+                Log.d("Wallet", "Directory exists");
             Walletname = WalletUtils.generateLightNewWalletFile(password, file);
             Toast.makeText(getApplicationContext(), "Wallet generated wallet name is" + Walletname, Toast.LENGTH_SHORT).show();
             credentials = WalletUtils.loadCredentials(password, file + "/" + Walletname);
-            Log.d("Wallet text","Wallet generated wallet name is" + Walletname );
-        }
-        catch(Exception e){
+            Log.d("Wallet","Wallet generated wallet name is" + Walletname );
+        } catch(Exception e) {
+            e.printStackTrace();
             Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
         }
     }
