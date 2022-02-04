@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,30 +15,15 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sp.vigour.R;
 
-public class settings extends Fragment {
+public class WalletInfo extends Fragment {
     private BottomNavigationView navBar;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_settings,container,false);
+        View v = inflater.inflate(R.layout.fragment_walletinfo,container,false);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
-
-        TextView policywebsite = (TextView) v.findViewById(R.id.policywebsite);
-
-        policywebsite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gotoUrl("https://zithinc.com/about/");
-            }
-        });
-
         return v;
-    }
-
-    private void gotoUrl(String s) {
-        Uri uri = Uri.parse(s);
-        startActivity(new Intent(Intent.ACTION_VIEW, uri));
     }
 
     @Override

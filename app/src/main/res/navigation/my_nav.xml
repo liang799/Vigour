@@ -8,7 +8,8 @@
     <fragment
         android:id="@+id/about2"
         android:name="com.sp.vigour.fragments.About"
-        android:label="About">
+        android:label="About"
+        android:layout="@layout/fragment_about">
         <action
             android:id="@+id/action_about2_to_home2"
             app:destination="@id/home2" />
@@ -63,6 +64,9 @@
         <action
             android:id="@+id/action_transactions_to_details"
             app:destination="@id/details" />
+        <action
+            android:id="@+id/action_transactions_to_settings"
+            app:destination="@id/addr" />
     </fragment>
     <fragment
         android:id="@+id/stepsHistory"
@@ -109,11 +113,12 @@
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <fragment
-        android:id="@+id/settings"
-        android:name="com.sp.vigour.fragments.settings"
-        android:label="Settings" >
+        android:id="@+id/addr"
+        android:name="com.sp.vigour.fragments.WalletInfo"
+        android:label="Wallet Address"
+        android:layout="@layout/fragment_walletinfo">
         <action
-            android:id="@+id/action_settings_to_home2"
-            app:destination="@id/home2" />
+            android:id="@+id/action_settings_to_transactions"
+            app:destination="@id/transactions" />
     </fragment>
 </navigation>

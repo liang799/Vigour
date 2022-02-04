@@ -8,7 +8,7 @@
     tools:context=".fragments.Transactions">
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/circle"
         android:layout_width="154dp"
         android:layout_height="141dp"
         android:layout_marginTop="44dp"
@@ -25,10 +25,10 @@
         android:text="20"
         android:textColor="@color/NeutralWhite"
         android:textSize="22dp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/circle"
         app:layout_constraintHorizontal_bias="0.356"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+        app:layout_constraintStart_toStartOf="@+id/circle"
+        app:layout_constraintTop_toTopOf="@+id/circle" />
 
     <TextView
         android:id="@+id/userCountry2"
@@ -67,6 +67,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/circle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
