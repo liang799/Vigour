@@ -5,15 +5,10 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class AccelWorker extends Worker implements SensorEventListener {
 

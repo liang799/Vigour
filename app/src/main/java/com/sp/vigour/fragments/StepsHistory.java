@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
 import com.sp.vigour.adapters.StepsAdapter;
-import com.sp.vigour.adapters.TransAdapter;
 
 public class StepsHistory extends Fragment {
     private RecyclerView recyclerView;

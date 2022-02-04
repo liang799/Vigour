@@ -7,15 +7,11 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.OneTimeWorkRequest;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
-import androidx.work.WorkRequest;
 
-import com.sp.vigour.workers.CryptoWorker;
 import com.sp.vigour.R;
-import com.sp.vigour.workers.PedoWorker;
+import com.sp.vigour.workers.CryptoWorker;
 
 import java.util.concurrent.TimeUnit;
 
