@@ -27,7 +27,6 @@ public class settings extends Fragment {
 
         TextView policywebsite = (TextView) v.findViewById(R.id.policywebsite);
 
-
         policywebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

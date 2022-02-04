@@ -12,7 +12,7 @@
             android:icon="@drawable/infosvg"
             android:title="About"/>
         <item android:id="@+id/settings"
-            android:icon="@drawable/infosvg"
+            android:icon="@drawable/settingssvg"
             android:title="Settings"/>
         <item
             android:id="@+id/logout"
