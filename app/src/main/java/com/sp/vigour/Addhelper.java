@@ -173,8 +173,10 @@ public class Addhelper extends SQLiteOpenHelper {
             String today = simpleDateFormat.format(new Date());
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT * FROM Steps_table WHERE userdate = ?", new String[]{today});
-            if (cursor != null && cursor.getCount() > 0)
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
                 steps = String.valueOf(getSteps(cursor));
+            }
             db.close();
         }
         return steps;
