@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".LoginActivity"
     android:background="@drawable/loginbg"
-    android:orientation="vertical"
-    tools:context=".activities.LoginActivity">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView23"
@@ -22,29 +22,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.shobhitpuri.custombuttons.GoogleSignInButton
-        android:id="@+id/buttonSignin"
+    <TextView
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:textSize="20sp"
-        app:isDarkTheme="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="196dp"
+        android:text="please make a selection below to create or recover your wallet"
+        android:textColor="@color/NeutralWhite"
+        android:textSize="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/debugButt"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textView23"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="@+id/textView23" />
 
-    <ImageButton
-        android:id="@+id/debugButt"
-        android:layout_width="50dp"
-        android:layout_height="0dp"
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        android:elevation="10dp"
+        android:src="@drawable/addsvg"
+        app:layout_constraintEnd_toEndOf="@+id/createwallet"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="@+id/createwallet"
+        app:layout_constraintTop_toTopOf="@+id/createwallet"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/createwallet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:background="@drawable/rounded_button"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonSignin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/buttonSignin"
-        app:layout_constraintTop_toTopOf="@+id/buttonSignin"
-        app:srcCompat="@drawable/ic_baseline_bug_report_24" />
+        android:text="     Create New Wallet"
+        android:textAllCaps="false"
+        android:textColor="@color/NeutralWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView20"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView20"
+        app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="12dp"
+        android:elevation="5dp"
+        android:src="@drawable/restoresvg"
+        app:layout_constraintEnd_toEndOf="@+id/restorewallet"
+        app:layout_constraintHorizontal_bias="0.178"
+        app:layout_constraintStart_toStartOf="@+id/restorewallet"
+        app:layout_constraintTop_toTopOf="@+id/restorewallet" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/restorewallet"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/secondary_button_restore"
+        android:text="Restore Wallet"
+        android:textAllCaps="false"
+        android:textColor="@color/NeutralWhite"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/createwallet"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/createwallet"
+        app:layout_constraintTop_toBottomOf="@+id/createwallet" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
