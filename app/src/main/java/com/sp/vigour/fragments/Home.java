@@ -103,7 +103,7 @@ public class Home extends Fragment implements View.OnClickListener {
                     hidden = true;
                 } else {
                     hide_indicator.setVisibility(View.GONE);
-                    //Vgr_Amount.setText(amount);
+                    Vgr_Amount.setText(amount);
                     hidden = false;
                 }
                 break;
