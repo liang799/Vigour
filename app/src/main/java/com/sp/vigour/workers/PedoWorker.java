@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
+import android.database.Cursor;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -32,7 +33,8 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     private String today;
     private SimpleDateFormat simpleDateFormat;
-    private int steps = 0;
+
+    private int steps;
 
     public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -50,12 +52,14 @@ public class PedoWorker extends Worker implements SensorEventListener {
             steps = 0;
             today = simpleDateFormat.format(new Date());
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-
         } else {
             //use old row
+            Cursor cursor = helper.getdata();
+            cursor.moveToLast();
+            steps = helper.getSteps(cursor);
             steps++;
             helper.updateSteps(String.valueOf(steps), today);
-            Log.d("accel", String.valueOf(steps) );
+            Log.d("accel", String.valueOf(steps));
 
         }
     }
