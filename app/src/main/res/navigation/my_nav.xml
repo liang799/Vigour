@@ -116,4 +116,9 @@
             android:id="@+id/action_settings_to_home2"
             app:destination="@id/home2" />
     </fragment>
+    <activity
+        android:id="@+id/qrcode"
+        android:name="com.sp.vigour.activities.qrcode"
+        android:label="activity_qrcode"
+        tools:layout="@layout/activity_qrcode" />
 </navigation>

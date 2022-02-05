@@ -1,5 +1,6 @@
 package com.sp.vigour.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.navigation.Navigation;
 
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
+import com.sp.vigour.activities.qrcode;
 
 public class Steps extends Fragment implements View.OnClickListener {
     private Button stepsButton;
@@ -39,7 +41,13 @@ public class Steps extends Fragment implements View.OnClickListener {
         eventBtn_3 = (ImageButton) v.findViewById(R.id.event_button_3);
         eventBtn_1.setOnClickListener(this);
         eventBtn_2.setOnClickListener(this);
-        eventBtn_3.setOnClickListener(this);
+        eventBtn_3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(getContext(),qrcode.class);
+                startActivity(intent);
+            }
+        });
         return v;
     }
 
@@ -57,7 +65,7 @@ public class Steps extends Fragment implements View.OnClickListener {
                 break;
             case R.id.event_button_1:
             case R.id.event_button_2:
-            case R.id.event_button_3:
+            //case R.id.event_button_3:
                 Navigation.findNavController(v).navigate(R.id.action_steps_to_map);
                 break;
             default:
