@@ -1,10 +1,13 @@
 package com.sp.vigour.workers;
 
+import static android.content.Intent.getIntent;
+
 import android.content.Context;
 import android.os.StrictMode;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 

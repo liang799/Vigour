@@ -14,6 +14,9 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.sp.vigour.R;
+import com.sp.vigour.activities.AboutWebview;
+
+import jnr.ffi.annotations.In;
 
 public class About extends Fragment {
     private BottomNavigationView navBar;
@@ -31,21 +34,33 @@ public class About extends Fragment {
         tianpokwebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://github.com/liang799");
+                //gotoUrl("https://github.com/liang799");
+
+                Intent intent = new Intent(getActivity(), AboutWebview.class);
+                intent.putExtra("userurl", "https://github.com/liang799");
+                startActivity(intent);
             }
         });
 
         fazithwebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://zithinc.com/");
+                //gotoUrl("https://zithinc.com/");
+
+                Intent intent = new Intent(getActivity(), AboutWebview.class);
+                intent.putExtra("userurl", "https://zithinc.com/");
+                startActivity(intent);
             }
         });
 
         rajawebsite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoUrl("https://www.linkedin.com/in/krajaselvam/");
+                //gotoUrl("https://www.linkedin.com/in/krajaselvam/");
+
+                Intent intent = new Intent(getActivity(), AboutWebview.class);
+                intent.putExtra("userurl", "https://www.linkedin.com/in/krajaselvam/");
+                startActivity(intent);
             }
         });
 
