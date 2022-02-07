@@ -89,12 +89,7 @@ public class qrcode extends AppCompatActivity {
                 today = simpleDateFormat.format(new Date());
                 helper.insert(String.valueOf(Math.round(0)), today, 5);
 
-            } else {
-                //use old row
-                helper.updateBal(5, today);
-                Log.d("accel", String.valueOf(5) );
             }
-
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
