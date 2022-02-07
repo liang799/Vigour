@@ -23,7 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.sp.vigour.GPSTracker;
 import com.sp.vigour.R;
 
-public class Map extends Fragment implements OnMapReadyCallback {
+public class map2 extends Fragment implements OnMapReadyCallback {
     GPSTracker gpsTracker;
     double lat;
     double longi;
@@ -42,14 +42,14 @@ public class Map extends Fragment implements OnMapReadyCallback {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_map, container, false);
+        View v = inflater.inflate(R.layout.fragment_map2, container, false);
         gpsTracker = new GPSTracker(getContext());
 
         supportMapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.googleMaps);
 
         client = LocationServices.getFusedLocationProviderClient(getContext());
-        supportMapFragment.getMapAsync(Map.this);
+        supportMapFragment.getMapAsync(map2.this);
 
         return v;
     }
@@ -60,8 +60,8 @@ public class Map extends Fragment implements OnMapReadyCallback {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         //lat = gpsTracker.getLatitude();
         //longi = gpsTracker.getLongitude();
-        lat = 1.3385;
-        longi = 103.7304;
+        lat = 1.3299;
+        longi = 103.8565;
 
         LatLng latLng = new LatLng(lat, longi);
 

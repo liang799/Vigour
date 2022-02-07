@@ -54,6 +54,12 @@
         <action
             android:id="@+id/action_steps_to_map"
             app:destination="@id/map" />
+        <action
+            android:id="@+id/action_steps_to_map2"
+            app:destination="@id/map2" />
+        <action
+            android:id="@+id/action_steps_to_map3"
+            app:destination="@id/map3" />
     </fragment>
     <fragment
         android:id="@+id/transactions"
@@ -121,4 +127,12 @@
         android:name="com.sp.vigour.activities.qrcode"
         android:label="activity_qrcode"
         tools:layout="@layout/activity_qrcode" />
+    <fragment
+        android:id="@+id/map2"
+        android:name="com.sp.vigour.fragments.map2"
+        android:label="map2" />
+    <fragment
+        android:id="@+id/map3"
+        android:name="com.sp.vigour.fragments.map3"
+        android:label="map3" />
 </navigation>
