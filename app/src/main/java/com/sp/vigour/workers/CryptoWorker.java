@@ -39,7 +39,7 @@ public class CryptoWorker extends Worker {
     public Result doWork() {
         /* ---- SQL stuff ---- */
         helper = new Addhelper(getApplicationContext());
-        simpleDateFormat = new Simplehttps://www.linkedin.com/in/krajaselvam/teFormat("dd LLL");
+        simpleDateFormat = new SimpleDateFormat("dd LLL");
 
         /* ---- crypto stuff ---- */
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

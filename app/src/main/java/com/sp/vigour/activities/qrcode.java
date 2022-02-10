@@ -6,9 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -22,14 +26,17 @@ import org.web3j.protocol.core.methods.response.EthGetBalance;
 
 import java.math.BigInteger;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class qrcode extends AppCompatActivity {
 
     Button btScan;
-    Addhelper helper;
+    Addhelper helper = new Addhelper(this);
     private String today;
     private SimpleDateFormat simpleDateFormat;
+
+    ArrayList<Integer> historyCrypto = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +94,14 @@ public class qrcode extends AppCompatActivity {
                 //reset steps and create new row
                 //steps = 0;
                 today = simpleDateFormat.format(new Date());
-                helper.insert(String.valueOf(Math.round(0)), today, 5);
+
+                //helper.getCoin(c);
+
+                storeDatainArray();
+
+                int size = historyCrypto.size()-1;
+                int usercrypto = historyCrypto.get(size);
+                helper.updateBal(usercrypto + 5, today);
 
             }
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -101,6 +115,28 @@ public class qrcode extends AppCompatActivity {
             builder.show();
         }else {
             Toast.makeText(getApplicationContext(), "OOPS You didnt scan anything", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void storeDatainArray() {
+        helper.close();
+        Cursor cursor = helper.getdata();
+
+        historyCrypto.clear();
+
+        int i = 0;
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
+        }else {
+            while (cursor.moveToNext()){
+
+                historyCrypto.add(cursor.getInt(4));
+
+                i++;
+
+            }
+            helper.close();
         }
     }
 }

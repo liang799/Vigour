@@ -6,8 +6,6 @@
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_about.xml" value="0.22" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_home.xml" value="0.2341485507246377" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_map.xml" value="0.2341485507246377" />
-        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_map2.xml" value="0.2545289855072464" />
-        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_map3.xml" value="0.2545289855072464" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_settings.xml" value="0.22708333333333333" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/nav_header.xml" value="0.24114583333333334" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/menu/bottom_nav.xml" value="0.24114583333333334" />
@@ -55,6 +53,7 @@
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/activity_about_webview.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/activity_qrcode.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_about.xml" value="0.1534954407294833" />
+        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.1828774062816616" />
       </map>
     </option>
   </component>
