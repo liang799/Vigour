@@ -64,11 +64,25 @@ public class Steps extends Fragment implements View.OnClickListener {
                 Navigation.findNavController(v).navigate(R.id.action_steps_to_stepsHistory);
                 break;
             case R.id.event_button_1:
-                Navigation.findNavController(v).navigate(R.id.action_steps_to_map);
+                //Navigation.findNavController(v).navigate(R.id.action_steps_to_map);
+
+                Bundle args = new Bundle();
+                args.putDouble("userlat",1.3299 );
+
+
+                Intent intent = new Intent(getActivity(),Map.class);
+                intent.putExtra("userlat", 1.3299);
+                intent.putExtra("userlong", 103.8565);
+                startActivity(intent);
                 break;
             case R.id.event_button_2:
             //case R.id.event_button_3:
-                Navigation.findNavController(v).navigate(R.id.action_steps_to_map2);
+                //Navigation.findNavController(v).navigate(R.id.action_steps_to_map2);
+
+                Intent intent2 = new Intent(getActivity(),Map.class);
+                intent2.putExtra("userlat", 1.2540);
+                intent2.putExtra("userlong", 103.8238);
+                startActivity(intent2);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
