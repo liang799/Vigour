@@ -35,6 +35,7 @@ public class Steps extends Fragment implements View.OnClickListener {
         steps = v.findViewById(R.id.steps_cum);
         stepsButton = (Button) v.findViewById(R.id.goto_steps_hist);
         stepsButton.setOnClickListener(this);
+        steps.setText(helper.getTodaySteps());
 
         eventBtn_1 = (ImageButton) v.findViewById(R.id.event_button_1);
         eventBtn_2 = (ImageButton) v.findViewById(R.id.event_button_2);
@@ -54,7 +55,7 @@ public class Steps extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        //steps.setText(helper.getTodaySteps());
+        steps.setText(helper.getTodaySteps());
     }
 
     @Override
