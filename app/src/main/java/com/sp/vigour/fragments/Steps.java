@@ -21,6 +21,7 @@ public class Steps extends Fragment implements View.OnClickListener {
     private ImageButton eventBtn_1, eventBtn_2, eventBtn_3;
     private TextView steps;
     private Addhelper helper = null;
+    Bundle bundle = new Bundle();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,11 +65,15 @@ public class Steps extends Fragment implements View.OnClickListener {
                 Navigation.findNavController(v).navigate(R.id.action_steps_to_stepsHistory);
                 break;
             case R.id.event_button_1:
-                Navigation.findNavController(v).navigate(R.id.action_steps_to_map);
+                bundle.putDouble("lat",1.3385);
+                bundle.putDouble("longi",103.7304);
+                Navigation.findNavController(v).navigate(R.id.action_steps_to_map,bundle);
                 break;
             case R.id.event_button_2:
             //case R.id.event_button_3:
-                Navigation.findNavController(v).navigate(R.id.action_steps_to_map2);
+                bundle.putDouble("lat",	1.3154);
+                bundle.putDouble("longi", 103.8982);
+                Navigation.findNavController(v).navigate(R.id.action_steps_to_map,bundle);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());
