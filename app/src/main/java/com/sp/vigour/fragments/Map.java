@@ -41,6 +41,7 @@ public class Map extends Fragment implements OnMapReadyCallback {
     PackageManager getPackageManager;
     GoogleMap map;
     LocationManager locationManager;
+    Bundle bundle = this.getArguments();
 
 
     @Override
@@ -82,6 +83,11 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         client = LocationServices.getFusedLocationProviderClient(getContext());
         supportMapFragment.getMapAsync(Map.this);
+
+        if (bundle != null) {
+            lat = bundle.getDouble("lat");
+            longi = bundle.getDouble("longi");
+        }
 
         return v;
     }
