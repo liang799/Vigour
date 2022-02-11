@@ -12,7 +12,7 @@ import java.util.Date;
 
 public class Addhelper extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "StepsList4.db";
+    private static final String DATABASE_NAME = "StepsList5.db";
     private static final int SCHEMA_VERSION = 2;
 
     public Addhelper(Context context) {
@@ -77,7 +77,7 @@ public class Addhelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("usersteps", steps);
         db.update("Steps_table", cv, "userdate=?", new String[]{date});
-        Log.d("accel", "helper updated" );
+        //Log.d("accel", "helper updated" );
         db.close();
     }
     public void updateBal(int bal, String date) {

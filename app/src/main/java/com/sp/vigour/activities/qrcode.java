@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sp.vigour.Addhelper;
+import com.sp.vigour.LogoutDialogFrag;
 import com.sp.vigour.R;
 import com.sp.vigour.workers.CryptoWorker;
 
@@ -34,21 +35,22 @@ public class qrcode extends AppCompatActivity {
     Button btScan;
     Addhelper helper = new Addhelper(this);
     private String today;
-    private SimpleDateFormat simpleDateFormat;
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
 
     ArrayList<Integer> historyCrypto = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_qrcode);
-        btScan = findViewById(R.id.bt_scan);
 
+        btScan = findViewById(R.id.bt_scan);
         btScan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentIntegrator intentIntegrator = new IntentIntegrator(
                         qrcode.this
                 );
+
                 // Set prompt text
                 intentIntegrator.setPrompt("For flash use volume up key");
 
@@ -63,6 +65,7 @@ public class qrcode extends AppCompatActivity {
 
                 //Initiate scan
                 intentIntegrator.initiateScan();
+
             }
         });
         super.onCreate(savedInstanceState);
