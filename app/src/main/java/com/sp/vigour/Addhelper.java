@@ -77,7 +77,7 @@ public class Addhelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("usersteps", steps);
         db.update("Steps_table", cv, "userdate=?", new String[]{date});
-        Log.d("accel", "helper updated" );
+        //Log.d("accel", "helper updated" );
         db.close();
     }
     public void updateBal(int bal, String date) {
@@ -173,8 +173,10 @@ public class Addhelper extends SQLiteOpenHelper {
             String today = simpleDateFormat.format(new Date());
             SQLiteDatabase db = this.getWritableDatabase();
             Cursor cursor = db.rawQuery("SELECT * FROM Steps_table WHERE userdate = ?", new String[]{today});
-            if (cursor != null && cursor.getCount() > 0)
+            if (cursor != null && cursor.getCount() > 0) {
+                cursor.moveToFirst();
                 steps = String.valueOf(getSteps(cursor));
+            }
             db.close();
         }
         return steps;
