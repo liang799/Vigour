@@ -61,7 +61,7 @@ MAPS_API_KEY=___(Enter api key)_____
 - [x] Test out pedometer on Boyan's old phone
 - [x] Store steps in SQL database
 - [x] Change Pedometer service to be a Worker
-- [ ] Work on RecyclerView
+- [x] Work on RecyclerView
 - [x] Pull data from SQL database from Home Frag
 - [x] Pull data from SQL database from Steps Frag
 ### Fazith
