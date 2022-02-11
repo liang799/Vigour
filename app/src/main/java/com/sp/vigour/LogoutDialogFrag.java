@@ -14,13 +14,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class LogoutDialogFrag extends DialogFragment {
-    private FirebaseAuth firebaseAuth;
-    private GoogleSignInClient googleSignInClient;
-
-    public LogoutDialogFrag(GoogleSignInClient client, FirebaseAuth fAuth){
-        firebaseAuth = fAuth;
-        googleSignInClient = client;
-    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

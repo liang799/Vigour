@@ -19,7 +19,7 @@ import java.io.File;
 public class LoginActivity extends AppCompatActivity {
     String Walletname;
     Credentials credentials;
-    String password = "pw";
+    private String password = "pw";
     Button createWallet;
     Button restoreWallet;
     final String etheriumwalletPath = "/wallet";
@@ -67,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
             credentials = WalletUtils.loadCredentials(password, file + "/" + Walletname);
         } catch(Exception e) {
             e.printStackTrace();
-            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
         }
     }
 }

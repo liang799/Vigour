@@ -18,22 +18,14 @@ import com.sp.vigour.LogoutDialogFrag;
 import com.sp.vigour.R;
 
 public class Logout extends Fragment {
-    private FirebaseAuth firebaseAuth;
-    private GoogleSignInClient googleSignInClient;
     private BottomNavigationView navBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        /* -------- Firebase stuff -------- */
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-        googleSignInClient = GoogleSignIn.getClient(getActivity()
-                , GoogleSignInOptions.DEFAULT_SIGN_IN);
-
         /* -------- Logout Dialog -------- */
-        LogoutDialogFrag logoutDialogFrag = new LogoutDialogFrag(googleSignInClient, firebaseAuth);
+        LogoutDialogFrag logoutDialogFrag = new LogoutDialogFrag();
         logoutDialogFrag.show(getChildFragmentManager(), "Logout of Vigour");
     }
 
