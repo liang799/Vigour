@@ -53,6 +53,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
             today = simpleDateFormat.format(new Date());
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
         } else {
+
             //use old row
             Cursor cursor = helper.getdata();
             cursor.moveToLast();
