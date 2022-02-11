@@ -71,6 +71,7 @@ MAPS_API_KEY=___(Enter api key)_____
 - [x] Start learning crypto
 - [ ] Work on Google login intergration with Etherum wallet
 - [ ] Declare API key in local.properties
+- [ ] Transactions
 ### Raja
 - [x] Get comfortable with Git
 - [x] Create first branch
@@ -78,4 +79,6 @@ MAPS_API_KEY=___(Enter api key)_____
 - [x] Add adapters
 - [x] JSON Parsing on Health tips
 - [x] Get remote image for Health tips
-- [ ] Add stuff here
+- [x] QR code
+- [ ] Transactions
+- [ ] Dialog fragment
