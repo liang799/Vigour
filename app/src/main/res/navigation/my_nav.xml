@@ -43,6 +43,9 @@
         <action
             android:id="@+id/action_home2_to_logout"
             app:destination="@id/logout" />
+        <action
+            android:id="@+id/action_home2_to_qrcode"
+            app:destination="@id/qrcode" />
     </fragment>
     <fragment
         android:id="@+id/steps"

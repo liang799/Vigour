@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/close"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -20,7 +20,7 @@
         app:tint="@color/NeutralWhite" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/cameraIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -43,9 +43,9 @@
         android:textAllCaps="false"
         android:textColor="@color/PrimaryDark"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="@+id/cameraIcon"
         app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintStart_toStartOf="@+id/cameraIcon"
+        app:layout_constraintTop_toBottomOf="@+id/cameraIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
