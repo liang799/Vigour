@@ -13,18 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.work.BackoffPolicy;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.ExistingWorkPolicy;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
-import androidx.work.WorkRequest;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -38,9 +30,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sp.vigour.GPSTracker;
 import com.sp.vigour.R;
-import com.sp.vigour.workers.AccelWorker;
-
-import java.util.concurrent.TimeUnit;
 
 public class Map extends Fragment implements OnMapReadyCallback , SensorEventListener {
     GPSTracker gpsTracker;
