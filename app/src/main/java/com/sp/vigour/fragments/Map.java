@@ -2,6 +2,10 @@ package com.sp.vigour.fragments;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,7 +39,7 @@ import com.sp.vigour.workers.AccelWorker;
 
 import java.util.concurrent.TimeUnit;
 
-public class Map extends Fragment implements OnMapReadyCallback {
+public class Map extends Fragment implements OnMapReadyCallback , SensorEventListener {
     GPSTracker gpsTracker;
     double lat;
     double longi;
@@ -47,34 +51,17 @@ public class Map extends Fragment implements OnMapReadyCallback {
     Bundle bundle = this.getArguments();
     private BottomNavigationView navBar;
     FloatingActionButton qrFab;
+    private static final float NS2S = 1.0f / 1000000000.0f;
+    private float timestamp;
+    private SensorManager sensorManager = null;
+    private Sensor accelmeter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
-        /* --------  Schedule accel --------- */
-        WorkRequest accelChecker =
-                new OneTimeWorkRequest.Builder(AccelWorker.class)
-                        .setBackoffCriteria(
-                                BackoffPolicy.LINEAR,
-                                OneTimeWorkRequest.MIN_BACKOFF_MILLIS,
-                                TimeUnit.MILLISECONDS)
-                        .build();
-
-        PeriodicWorkRequest accel =
-                new PeriodicWorkRequest.Builder(AccelWorker.class, 1, TimeUnit.SECONDS)
-                        // Constraints
-                        .build();
-
-        WorkManager.getInstance(getContext()).enqueueUniquePeriodicWork(
-                "accelerometer",
-                ExistingPeriodicWorkPolicy.KEEP,
-                accel);
-        WorkManager.getInstance().enqueueUniqueWork(
-                "accelChecker",
-                ExistingWorkPolicy.REPLACE,
-                (OneTimeWorkRequest) accelChecker);
-
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        accelmeter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
     }
 
     @Override
@@ -124,11 +111,27 @@ public class Map extends Fragment implements OnMapReadyCallback {
     public void onResume() {
         super.onResume();
         navBar.setVisibility(View.GONE);
+        if (accelmeter != null)
+            sensorManager.registerListener(this, accelmeter, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override
     public void onStop() {
         super.onStop();
         navBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // This timestep's delta rotation to be multiplied by the current rotation
+        // after computing it from the gyro sample data.
+        if (timestamp != 0) {
+            final float dT = (event.timestamp - timestamp) * NS2S;
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
