@@ -105,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
-                    android:text="Early Bird"
+                    android:text="Nature Lover"
                     android:textColor="@color/PrimaryLight"
                     android:textSize="26sp"
                     android:textStyle="bold" />

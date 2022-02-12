@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.work.BackoffPolicy;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.ExistingWorkPolicy;
@@ -26,6 +27,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.sp.vigour.GPSTracker;
 import com.sp.vigour.R;
 import com.sp.vigour.workers.AccelWorker;
@@ -42,11 +45,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
     GoogleMap map;
     LocationManager locationManager;
     Bundle bundle = this.getArguments();
-
+    private BottomNavigationView navBar;
+    FloatingActionButton qrFab;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        navBar = getActivity().findViewById(R.id.bottomNavigationView);
         /* --------  Schedule accel --------- */
         WorkRequest accelChecker =
                 new OneTimeWorkRequest.Builder(AccelWorker.class)
@@ -83,6 +88,13 @@ public class Map extends Fragment implements OnMapReadyCallback {
 
         client = LocationServices.getFusedLocationProviderClient(getContext());
         supportMapFragment.getMapAsync(Map.this);
+        qrFab = v.findViewById(R.id.qr_code);
+        qrFab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_map_to_qrcode);
+            }
+        });
 
         if (bundle != null) {
             lat = bundle.getDouble("lat");
@@ -106,5 +118,17 @@ public class Map extends Fragment implements OnMapReadyCallback {
         MarkerOptions options = new MarkerOptions().position(latLng);
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20));
         map.addMarker(options);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        navBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        navBar.setVisibility(View.VISIBLE);
     }
 }

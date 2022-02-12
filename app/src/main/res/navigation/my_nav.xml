@@ -88,6 +88,9 @@
         <action
             android:id="@+id/action_map_to_steps"
             app:destination="@id/steps" />
+        <action
+            android:id="@+id/action_map_to_qrcode"
+            app:destination="@id/qrcode" />
     </fragment>
     <fragment
         android:id="@+id/details"
