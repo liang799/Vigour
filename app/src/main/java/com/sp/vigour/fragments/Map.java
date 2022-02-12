@@ -8,9 +8,12 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -51,28 +54,36 @@ public class Map extends Fragment implements OnMapReadyCallback , SensorEventLis
     Bundle bundle = this.getArguments();
     private BottomNavigationView navBar;
     FloatingActionButton qrFab;
-    private static final float NS2S = 1.0f / 1000000000.0f;
     private float timestamp;
     private SensorManager sensorManager = null;
     private Sensor accelmeter;
+    private TextView speed;
+    private final float[] acceleration = new float[3];
+    private final boolean invertAxisActive = false;
+    private TextView math;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
-        accelmeter = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        accelmeter = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
+        if (bundle != null) {
+            lat = bundle.getDouble("lat");
+            longi = bundle.getDouble("longi");
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_map, container, false);
+        speed = v.findViewById(R.id.userSpeed);
+        math = v.findViewById(R.id.mathdisplay);
+        math.setText(Html.fromHtml("s<sup>2</sup>"));
         gpsTracker = new GPSTracker(getContext());
-
         supportMapFragment = (SupportMapFragment) this.getChildFragmentManager()
                 .findFragmentById(R.id.googleMaps);
-
         client = LocationServices.getFusedLocationProviderClient(getContext());
         supportMapFragment.getMapAsync(Map.this);
         qrFab = v.findViewById(R.id.qr_code);
@@ -82,11 +93,6 @@ public class Map extends Fragment implements OnMapReadyCallback , SensorEventLis
                 Navigation.findNavController(v).navigate(R.id.action_map_to_qrcode);
             }
         });
-
-        if (bundle != null) {
-            lat = bundle.getDouble("lat");
-            longi = bundle.getDouble("longi");
-        }
 
         return v;
     }
@@ -123,11 +129,18 @@ public class Map extends Fragment implements OnMapReadyCallback , SensorEventLis
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        // This timestep's delta rotation to be multiplied by the current rotation
-        // after computing it from the gyro sample data.
-        if (timestamp != 0) {
-            final float dT = (event.timestamp - timestamp) * NS2S;
+        System.arraycopy(event.values, 0, acceleration, 0, event.values.length);
+
+        // Invert the axes if desired.
+        if (this.invertAxisActive)
+        {
+            acceleration[0] = -acceleration[0];
+            acceleration[1] = -acceleration[1];
+            acceleration[2] = -acceleration[2];
         }
+
+        String currentSpd = Math.round(acceleration[0]) + "m/";
+        speed.setText(currentSpd);
     }
 
     @Override

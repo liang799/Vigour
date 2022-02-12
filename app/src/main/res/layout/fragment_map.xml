@@ -23,20 +23,31 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="12dp"
         android:src="@drawable/ic_steps"
-        app:layout_constraintBottom_toBottomOf="@+id/userDate"
-        app:layout_constraintEnd_toStartOf="@+id/userDate"
-        app:layout_constraintTop_toTopOf="@+id/userDate"
+        app:layout_constraintBottom_toBottomOf="@+id/userSpeed"
+        app:layout_constraintEnd_toStartOf="@+id/userSpeed"
+        app:layout_constraintTop_toTopOf="@+id/userSpeed"
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/userDate"
+        android:id="@+id/userSpeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="5 km/h"
+        android:text="0 m/"
         android:textColor="@color/NeutralGray"
         android:textSize="17dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mathdisplay"
+        app:layout_constraintEnd_toStartOf="@+id/mathdisplay"
+        app:layout_constraintTop_toTopOf="@+id/mathdisplay" />
+
+    <TextView
+        android:id="@+id/mathdisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="s^2"
+        android:textColor="@color/NeutralGray"
+        android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
