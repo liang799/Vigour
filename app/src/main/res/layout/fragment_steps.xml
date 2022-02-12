@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="15dp"
-                    android:text="Walk 1000 steps at Chinese Garden before 7am and earn 2 VGR"
+                    android:text="Find the hidden QR code at Chinese Garden"
                     android:textColor="@color/PrimaryLight" />
 
                 <ImageButton
@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="15dp"
-                    android:text="x2 the rewards when walking near Siong Lim Temple"
+                    android:text="Find the hidden QR code at Siong Lim Temple"
                     android:textColor="@color/PrimaryLight" />
 
                 <ImageButton
@@ -212,7 +212,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="20dp"
-                    android:text="It's Over 9,000!"
+                    android:text="Damn Kakarot!"
                     android:textColor="@color/PrimaryLight"
                     android:textSize="26sp"
                     android:textStyle="bold" />
@@ -222,7 +222,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="15dp"
-                    android:text="Walk over 9,000 steps today"
+                    android:text="Find the hidden QR code in Singapore"
                     android:textColor="@color/PrimaryLight" />
 
                 <ImageButton
