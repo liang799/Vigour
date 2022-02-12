@@ -5,19 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/PrimaryDark"
+    android:foregroundTint="@color/NeutralWhite_alt"
     tools:context=".activities.qrcode">
 
 
-    <ImageView
-        android:id="@+id/close"
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/PrimaryDark"
+        android:tint="@color/NeutralWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_close_24"
-        app:tint="@color/NeutralWhite" />
+        app:srcCompat="@drawable/ic_baseline_close_24" />
 
     <ImageView
         android:id="@+id/cameraIcon"
