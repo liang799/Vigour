@@ -1,18 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/PrimaryDark"
+    android:foregroundTint="@color/NeutralWhite_alt"
     tools:context=".activities.qrcode">
 
 
-    <Button
-        android:id="@+id/bt_scan"
+    <ImageButton
+        android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Scan"
-        android:textColor="@color/NeutralWhite"/>
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTint="@color/PrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_close_24"
+        app:tint="@color/NeutralWhite" />
 
-</RelativeLayout>
+    <ImageView
+        android:id="@+id/cameraIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.38"
+        app:srcCompat="@drawable/qrcode" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_scan"
+        android:layout_width="112dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/history_button"
+        android:backgroundTint="@color/Secondary"
+        android:text="Scan QR"
+        android:textAllCaps="false"
+        android:textColor="@color/PrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/cameraIcon"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/cameraIcon"
+        app:layout_constraintTop_toBottomOf="@+id/cameraIcon" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
