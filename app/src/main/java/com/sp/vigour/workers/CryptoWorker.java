@@ -59,6 +59,7 @@ public class CryptoWorker extends Worker {
             BigInteger bigI = balanceWei.getBalance();
             int storeMe = bigI.intValue();
             storeMe = storeMe/100000000;
+            storeMe = storeMe +10;
             String today = simpleDateFormat.format(new Date());
             if (helper.checkForTables() == false)
                 helper.insert("0", today, storeMe);

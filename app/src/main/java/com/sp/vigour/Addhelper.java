@@ -85,6 +85,7 @@ public class Addhelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put("usercrypto", bal);
         db.update("Steps_table", cv, "userdate=?", new String[]{date});
+        Log.d("trans1", "updateBal: call" + bal +date);
         db.close();
     }
 
