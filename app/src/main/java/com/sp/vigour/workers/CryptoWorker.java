@@ -3,7 +3,9 @@ package com.sp.vigour.workers;
 import static android.content.Intent.getIntent;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.StrictMode;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,10 +27,12 @@ import java.security.Security;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
 public class CryptoWorker extends Worker {
     Web3j web3;
     Addhelper helper;
     SimpleDateFormat simpleDateFormat;
+    Addhelper db;
 
     public CryptoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -47,8 +51,8 @@ public class CryptoWorker extends Worker {
         web3 = Web3j.build(new HttpService("https://kovan.infura.io/v3/6046790414614511b931ac6ef17f28b7")); //infura api key
         setupBouncyCastle();
         retrieveBalance();
-
-        return Result.success();
+        Log.d("trans1", "showing balance ");
+        return Result.retry();
     }
 
     public void retrieveBalance()  {
@@ -58,7 +62,14 @@ public class CryptoWorker extends Worker {
                     .get();
             BigInteger bigI = balanceWei.getBalance();
             int storeMe = bigI.intValue();
+            Cursor model = helper.getdata();
+            model.moveToLast();
+            int tdysteps = Integer.parseInt(helper.getTodaySteps());
+
+            //int tdysteps = 19;
+
             storeMe = storeMe/100000000;
+            storeMe = storeMe + tdysteps;
             String today = simpleDateFormat.format(new Date());
             if (helper.checkForTables() == false)
                 helper.insert("0", today, storeMe);

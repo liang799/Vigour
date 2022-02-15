@@ -31,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
 
         /* ---- crypto stuff ---- */
         PeriodicWorkRequest cryptoUpdate =
-                new PeriodicWorkRequest.Builder(CryptoWorker.class, 15, TimeUnit.MINUTES)
+                new PeriodicWorkRequest.Builder(CryptoWorker.class, 5, TimeUnit.SECONDS)
                         // Constraints
                         .build();
 
