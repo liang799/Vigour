@@ -30,7 +30,7 @@
             android:name=".activities.AboutWebview"
             android:exported="false" />
         <activity
-            android:name=".activities.qrcode"
+            android:name=".activities.QRcode"
             android:exported="false" />
 
         <meta-data

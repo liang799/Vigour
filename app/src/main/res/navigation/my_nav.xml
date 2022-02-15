@@ -129,7 +129,7 @@
     </fragment>
     <activity
         android:id="@+id/qrcode"
-        android:name="com.sp.vigour.activities.qrcode"
+        android:name="com.sp.vigour.activities.QRcode"
         android:label="activity_qrcode"
         tools:layout="@layout/activity_qrcode" />
 </navigation>

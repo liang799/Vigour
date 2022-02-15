@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/PrimaryDark"
     android:foregroundTint="@color/NeutralWhite_alt"
-    tools:context=".activities.qrcode">
+    tools:context=".activities.QRcode">
 
 
     <ImageButton

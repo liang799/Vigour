@@ -14,7 +14,7 @@ import androidx.navigation.Navigation;
 
 import com.sp.vigour.Addhelper;
 import com.sp.vigour.R;
-import com.sp.vigour.activities.qrcode;
+import com.sp.vigour.activities.QRcode;
 
 public class Steps extends Fragment implements View.OnClickListener {
     private Button stepsButton;
@@ -70,7 +70,7 @@ public class Steps extends Fragment implements View.OnClickListener {
                 Navigation.findNavController(v).navigate(R.id.action_steps_to_map, bundle);
                 break;
             case R.id.event_button_3:
-                Intent intent =new Intent(getContext(),qrcode.class);
+                Intent intent =new Intent(getContext(), QRcode.class);
                 startActivity(intent);
                 break;
             default:

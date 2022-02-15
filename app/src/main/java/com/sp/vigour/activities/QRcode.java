@@ -3,17 +3,13 @@ package com.sp.vigour.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.Navigation;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
@@ -21,19 +17,13 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sp.vigour.Addhelper;
-import com.sp.vigour.LogoutDialogFrag;
 import com.sp.vigour.R;
-import com.sp.vigour.workers.CryptoWorker;
 
-import org.web3j.protocol.core.methods.response.EthGetBalance;
-
-import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class qrcode extends AppCompatActivity {
-
+public class QRcode extends AppCompatActivity {
     Button btScan;
     Addhelper helper = new Addhelper(this);
     private String today;
@@ -50,7 +40,7 @@ public class qrcode extends AppCompatActivity {
         close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(qrcode.this, MainActivity.class));
+                onBackPressed();
             }
         });
         btScan = findViewById(R.id.bt_scan);
@@ -58,7 +48,7 @@ public class qrcode extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 IntentIntegrator intentIntegrator = new IntentIntegrator(
-                        qrcode.this
+                        QRcode.this
                 );
 
                 // Set prompt text
@@ -91,7 +81,7 @@ public class qrcode extends AppCompatActivity {
 
         if(intentResult.getContents() !=null){
             AlertDialog.Builder builder = new AlertDialog.Builder(
-                    qrcode.this
+                    QRcode.this
             );
             builder.setTitle("Result");
 
