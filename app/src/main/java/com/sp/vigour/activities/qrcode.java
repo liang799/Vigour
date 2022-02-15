@@ -3,6 +3,7 @@ package com.sp.vigour.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -36,6 +38,7 @@ public class qrcode extends AppCompatActivity {
     Addhelper helper = new Addhelper(this);
     private String today;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
+    ImageButton close;
 
     ArrayList<Integer> historyCrypto = new ArrayList();
 
@@ -43,6 +46,13 @@ public class qrcode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_qrcode);
 
+        close = findViewById(R.id.imageButton);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(qrcode.this, MainActivity.class));
+            }
+        });
         btScan = findViewById(R.id.bt_scan);
         btScan.setOnClickListener(new View.OnClickListener() {
             @Override
