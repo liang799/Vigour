@@ -43,13 +43,7 @@ public class Steps extends Fragment implements View.OnClickListener {
         eventBtn_3 = (ImageButton) v.findViewById(R.id.event_button_3);
         eventBtn_1.setOnClickListener(this);
         eventBtn_2.setOnClickListener(this);
-        eventBtn_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent =new Intent(getContext(),qrcode.class);
-                startActivity(intent);
-            }
-        });
+        eventBtn_3.setOnClickListener(this);
         return v;
     }
 
@@ -68,13 +62,16 @@ public class Steps extends Fragment implements View.OnClickListener {
             case R.id.event_button_1:
                 bundle.putDouble("lat",1.3385);
                 bundle.putDouble("longi",103.7304);
-                Navigation.findNavController(v).navigate(R.id.action_steps_to_map,bundle);
+                Navigation.findNavController(v).navigate(R.id.action_steps_to_map, bundle);
                 break;
             case R.id.event_button_2:
-            //case R.id.event_button_3:
-                bundle.putDouble("lat",	1.3154);
-                bundle.putDouble("longi", 103.8982);
-                Navigation.findNavController(v).navigate(R.id.action_steps_to_map,bundle);
+                bundle.putDouble("lat",	1.3300);
+                bundle.putDouble("longi", 103.8571);
+                Navigation.findNavController(v).navigate(R.id.action_steps_to_map, bundle);
+                break;
+            case R.id.event_button_3:
+                Intent intent =new Intent(getContext(),qrcode.class);
+                startActivity(intent);
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + v.getId());

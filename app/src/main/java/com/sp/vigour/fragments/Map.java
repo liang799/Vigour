@@ -40,7 +40,6 @@ public class Map extends Fragment implements OnMapReadyCallback , SensorEventLis
     PackageManager getPackageManager;
     GoogleMap map;
     LocationManager locationManager;
-    Bundle bundle = this.getArguments();
     private BottomNavigationView navBar;
     FloatingActionButton qrFab;
     private float timestamp;
@@ -57,10 +56,9 @@ public class Map extends Fragment implements OnMapReadyCallback , SensorEventLis
         navBar = getActivity().findViewById(R.id.bottomNavigationView);
         sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
         accelmeter = sensorManager.getDefaultSensor(Sensor.TYPE_LINEAR_ACCELERATION);
-        if (bundle != null) {
-            lat = bundle.getDouble("lat");
-            longi = bundle.getDouble("longi");
-        }
+        Bundle bundle = getArguments();
+        lat = bundle.getDouble("lat");
+        longi = bundle.getDouble("longi");
     }
 
     @Override
@@ -92,8 +90,6 @@ public class Map extends Fragment implements OnMapReadyCallback , SensorEventLis
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         //lat = gpsTracker.getLatitude();
         //longi = gpsTracker.getLongitude();
-        lat = 1.3385;
-        longi = 103.7304;
 
         LatLng latLng = new LatLng(lat, longi);
 
