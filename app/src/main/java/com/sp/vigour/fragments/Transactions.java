@@ -4,6 +4,7 @@ import static androidx.navigation.Navigation.findNavController;
 
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,7 +32,7 @@ public class Transactions extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         helper = new Addhelper(getContext());
-        model = helper.getdata();
+        //model = helper.getdata();
     }
 
     @Override
@@ -48,8 +49,10 @@ public class Transactions extends Fragment {
             }
         });
         balance = v.findViewById(R.id.userCountry);
+        model = helper.getdata();
         model.moveToLast();
         balance.setText(helper.getCoin(model));
+        Log.d("trans1", helper.getCoin(model));
 
         /* ---- RecyclerView stuff ---- */
         adapter = new TransAdapter(getActivity(), model, helper);
@@ -57,7 +60,6 @@ public class Transactions extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         adapter.notifyDataSetChanged();
-
         return v;
     }
 }
