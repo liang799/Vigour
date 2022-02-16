@@ -30,15 +30,15 @@ public class SplashScreen extends AppCompatActivity {
         mediaPlayer.start();
 
         /* ---- crypto stuff ---- */
-        PeriodicWorkRequest cryptoUpdate =
-                new PeriodicWorkRequest.Builder(CryptoWorker.class, 5, TimeUnit.SECONDS)
+        /*PeriodicWorkRequest cryptoUpdate =
+                new PeriodicWorkRequest.Builder(CryptoWorker.class, 1, TimeUnit.MICROSECONDS)
                         // Constraints
                         .build();
 
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
                 "Get Balance",
                 ExistingPeriodicWorkPolicy.KEEP,
-                cryptoUpdate);
+                cryptoUpdate);*/
 
         /* ---- goto login ---- */
         new Handler().postDelayed(new Runnable() {

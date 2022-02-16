@@ -65,10 +65,13 @@ public class CryptoWorker extends Worker {
             Cursor model = helper.getdata();
             model.moveToLast();
             int tdysteps = Integer.parseInt(helper.getTodaySteps());
+            Log.d("trans1","todays steps is "+ String.valueOf(tdysteps));
 
             //int tdysteps = 19;
 
             storeMe = storeMe/100000000;
+            Log.d("trans1","storeme is "+ storeMe);
+            Log.d("trans1","todays steps is "+ tdysteps);
             storeMe = storeMe + tdysteps;
             String today = simpleDateFormat.format(new Date());
             if (helper.checkForTables() == false)
