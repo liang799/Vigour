@@ -31,7 +31,7 @@ import java.util.Date;
 public class PedoWorker extends Worker implements SensorEventListener {
     private static final String TAG = "PedoWorker";
 
-    private String today;
+    private String today,latestday;
     private SimpleDateFormat simpleDateFormat;
 
     private int steps;
@@ -44,22 +44,32 @@ public class PedoWorker extends Worker implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         Addhelper helper = new Addhelper(getApplicationContext());
 
+        Cursor cursor = helper.getdata();
+        cursor.moveToLast();
+        latestday = helper.getDate(cursor);
+
+        simpleDateFormat = new SimpleDateFormat("dd LLL");
+        today = simpleDateFormat.format(new Date());
+
+
         if (helper.checkForTables() == false) {
             //create new row
+            Log.d("accel", "if");
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-        } else if(!simpleDateFormat.format(new Date()).equals(today)) {
+        } else if(!today.equals(latestday)) {
             //reset steps and create new row
             steps = 0;
             today = simpleDateFormat.format(new Date());
-            helper.insert(String.valueOf(steps), today, 0);
+            Log.d("accel", "else if");
+            helper.insert(String.valueOf(Math.round(steps)), today, 0);
         } else {
-
             //use old row
-            Cursor cursor = helper.getdata();
-            cursor.moveToLast();
             steps = helper.getSteps(cursor);
+            Integer usercrypto = Integer.parseInt(helper.getCoin(cursor));
             steps++;
             helper.updateSteps(String.valueOf(steps), today);
+            helper.updateBal(usercrypto+2, today);
+            Log.d("accel", today);
             Log.d("accel", String.valueOf(steps));
 
         }

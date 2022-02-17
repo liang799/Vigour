@@ -1,6 +1,7 @@
 package com.sp.vigour.fragments;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.hardware.Sensor;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -49,6 +51,7 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView insight_coin;
     private Addhelper db;
     private String amount;
+    ArrayList<Integer> historycrypto = new ArrayList<>();
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,8 +85,14 @@ public class Home extends Fragment implements View.OnClickListener {
             tips.setTextColor(Color.parseColor("#EF4B39"));
             tips.setTypeface(tips.getTypeface(), Typeface.BOLD);
         }
-            amount = db.getVGR();
-            Vgr_Amount.setText(amount);
+
+        storeDatainArray();
+        Integer totcryp = 0;
+        for (int i = 0; i< historycrypto.size(); i++){
+            totcryp = historycrypto.get(i) +totcryp;
+        }
+
+            Vgr_Amount.setText(String.valueOf(totcryp));
             insight_coin.setText(db.coinInsight());
             insight_step.setText(db.stepsInsight());
 
@@ -156,6 +165,29 @@ public class Home extends Fragment implements View.OnClickListener {
                     }
                 }
             });
+        }
+    }
+
+    private void storeDatainArray() {
+        db.close();
+        Cursor cursor = db.getdata();
+
+        historycrypto.clear();
+
+        int i = 0;
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(getContext(), "No data", Toast.LENGTH_SHORT).show();
+        }else {
+            while (cursor.moveToNext()){
+
+
+                historycrypto.add(cursor.getInt(4));
+
+                i++;
+
+            }
+            db.close();
         }
     }
 }

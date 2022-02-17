@@ -3,6 +3,7 @@ package com.sp.vigour.adapters;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,9 +23,9 @@ public class TransAdapter extends RecyclerView.Adapter<TransAdapter.ViewHolder> 
     private Bundle bundle;
 
     public TransAdapter(Context ct, Cursor c, Addhelper h) {
-        context = ct;
-        cursor = c;
-        helper = h;
+        this.context = ct;
+        this.cursor = c;
+        this.helper = h;
     }
 
     @NonNull
@@ -40,6 +41,12 @@ public class TransAdapter extends RecyclerView.Adapter<TransAdapter.ViewHolder> 
         cursor.moveToPosition(position);
         String amount = "+" + helper.getCoin(cursor);
         String steps = cursor.getString(1) + " steps";
+
+
+        Log.d("trans1", "amount is " +amount);
+        Log.d("trans1", "steps is " +steps);
+
+
         holder.amt.setText(amount);
         holder.steps.setText(steps);
         // Create the Bundle to pass, you can put String, Integer, or serializable object
@@ -47,6 +54,7 @@ public class TransAdapter extends RecyclerView.Adapter<TransAdapter.ViewHolder> 
         bundle.putString("date", helper.getDate(cursor));
         bundle.putString("amount", helper.getCoin(cursor));
         bundle.putString("steps", cursor.getString(1));
+
         holder.itemView.setOnClickListener(
                 Navigation.createNavigateOnClickListener(R.id.action_transactions_to_details, bundle)
         );

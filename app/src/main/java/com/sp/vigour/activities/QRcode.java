@@ -26,10 +26,10 @@ import java.util.Date;
 public class QRcode extends AppCompatActivity {
     Button btScan;
     Addhelper helper = new Addhelper(this);
+    Addhelper db = new Addhelper(this);
     private String today;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
     ImageButton close;
-
     ArrayList<Integer> historyCrypto = new ArrayList();
 
     @Override
@@ -86,6 +86,13 @@ public class QRcode extends AppCompatActivity {
             builder.setTitle("Result");
 
             builder.setMessage(intentResult.getContents());
+
+            Cursor cursor = helper.getdata();
+            cursor.moveToLast();
+            String latestday = helper.getDate(cursor);
+
+            today = simpleDateFormat.format(new Date());
+
             if(intentResult.getContents().equals("ok"))
             {
                 Log.d("qr","it recognises the text");
@@ -93,14 +100,12 @@ public class QRcode extends AppCompatActivity {
             if (helper.checkForTables() == false) {
                 //create new row
                 helper.insert(String.valueOf(Math.round(0)), today, 5);
-            } else if(!simpleDateFormat.format(new Date()).equals(today)) {
+            } else if(!today.equals(latestday)) {
+
                 //reset steps and create new row
                 //steps = 0;
-                today = simpleDateFormat.format(new Date());
 
                 //helper.getCoin(c);
-
-                storeDatainArray();
 
                 int size = historyCrypto.size()-1;
                 int usercrypto = historyCrypto.get(size);
@@ -120,7 +125,6 @@ public class QRcode extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "OOPS You didnt scan anything", Toast.LENGTH_SHORT).show();
         }
     }
-
     private void storeDatainArray() {
         helper.close();
         Cursor cursor = helper.getdata();
