@@ -93,6 +93,7 @@ public class Home extends Fragment implements View.OnClickListener {
         }
 
             Vgr_Amount.setText(String.valueOf(totcryp));
+            amount = String.valueOf(totcryp);
             insight_coin.setText(db.coinInsight());
             insight_step.setText(db.stepsInsight());
 

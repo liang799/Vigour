@@ -38,7 +38,6 @@
             android:text="/"
             android:textColor="@color/PrimaryLight"
             android:textSize="24sp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="@+id/visibilitySwitch"
             app:layout_constraintStart_toStartOf="@+id/visibilitySwitch"
             app:layout_constraintTop_toTopOf="@+id/visibilitySwitch" />

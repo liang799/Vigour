@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.262037037037037" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/activity_qrcode.xml" value="0.10733695652173914" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_about.xml" value="0.22" />
-        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_home.xml" value="0.2341485507246377" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_home.xml" value="0.4" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_map.xml" value="0.2341485507246377" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_settings.xml" value="0.22708333333333333" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_steps.xml" value="0.17300724637681159" />
+        <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/fragment_transactions.xml" value="0.17300724637681159" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/layout/nav_header.xml" value="0.24114583333333334" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/menu/bottom_nav.xml" value="0.24114583333333334" />
         <entry key="..\:/AndroidStudioProjects/vigourproject/app/src/main/res/menu/drawer_menu.xml" value="0.24114583333333334" />
@@ -28,6 +31,7 @@
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_logingoogle.xml" value="0.2228310502283105" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_logoutgoogle.xml" value="0.2111111111111111" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_nav_drawer.xml" value="0.2" />
+        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_qrcode.xml" value="0.176" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/dialog_confirmation.xml" value="0.22592592592592592" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_about.xml" value="0.264" />
@@ -37,9 +41,9 @@
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_item_list_dialog_list_dialog.xml" value="0.2228310502283105" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_login.xml" value="0.1375" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_logout.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_map.xml" value="0.2" />
+        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_map.xml" value="0.72" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_maps.xml" value="0.22592592592592592" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.2" />
+        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.264" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps_details.xml" value="0.264" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_steps_history.xml" value="0.2" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/fragment_transactions.xml" value="0.4" />
@@ -50,18 +54,21 @@
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/layout/transaction_row.xml" value="0.264" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/bottom_nav.xml" value="0.4" />
         <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/close_frag.xml" value="0.2" />
-        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/drawer_menu.xml" value="0.2228310502283105" />
+        <entry key="..\:/Users/James/ImportantProjs/Vigour/app/src/main/res/menu/drawer_menu.xml" value="0.264" />
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/activity_about_webview.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/activity_qrcode.xml" value="0.22282608695652173" />
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_about.xml" value="0.1534954407294833" />
-        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_home.xml" value="0.17350557244174267" />
         <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_steps.xml" value="0.1828774062816616" />
-        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/fragment_transactions.xml" value="0.1580547112462006" />
-        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/my_row.xml" value="0.2011144883485309" />
-        <entry key="..\:/Users/Rajaselvam/AndroidStudioProjects/Vigour/app/src/main/res/layout/transaction_row.xml" value="0.18059777102330293" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
+  </component>
 </project>
