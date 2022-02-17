@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -39,12 +40,20 @@ public class qrcode extends AppCompatActivity {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
     ArrayList<Integer> historycrypto = new ArrayList<>();
 
+    ImageView close;
+
     ArrayList<Integer> historyCrypto = new ArrayList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_qrcode);
-
+        close = findViewById(R.id.imageButton);
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
         btScan = findViewById(R.id.bt_scan);
         btScan.setOnClickListener(new View.OnClickListener() {
             @Override
