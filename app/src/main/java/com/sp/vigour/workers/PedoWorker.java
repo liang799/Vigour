@@ -44,9 +44,6 @@ public class PedoWorker extends Worker implements SensorEventListener {
     public void onSensorChanged(SensorEvent event) {
         Addhelper helper = new Addhelper(getApplicationContext());
 
-        Cursor cursor = helper.getdata();
-        cursor.moveToLast();
-        latestday = helper.getDate(cursor);
 
         simpleDateFormat = new SimpleDateFormat("dd LLL");
         today = simpleDateFormat.format(new Date());
@@ -56,22 +53,28 @@ public class PedoWorker extends Worker implements SensorEventListener {
             //create new row
             Log.d("accel", "if");
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-        } else if(!today.equals(latestday)) {
-            //reset steps and create new row
-            steps = 0;
-            today = simpleDateFormat.format(new Date());
-            Log.d("accel", "else if");
-            helper.insert(String.valueOf(Math.round(steps)), today, 0);
         } else {
-            //use old row
-            steps = helper.getSteps(cursor);
-            Integer usercrypto = Integer.parseInt(helper.getCoin(cursor));
-            steps++;
-            helper.updateSteps(String.valueOf(steps), today);
-            helper.updateBal(usercrypto+2, today);
-            Log.d("accel", today);
-            Log.d("accel", String.valueOf(steps));
+            Cursor cursor = helper.getdata();
+            cursor.moveToLast();
+            latestday = helper.getDate(cursor);
 
+            if (!today.equals(latestday)) {
+                //reset steps and create new row
+                steps = 0;
+                today = simpleDateFormat.format(new Date());
+                Log.d("accel", "else if");
+                helper.insert(String.valueOf(Math.round(steps)), today, 0);
+            } else {
+                //use old row
+                steps = helper.getSteps(cursor);
+                Integer usercrypto = Integer.parseInt(helper.getCoin(cursor));
+                steps++;
+                helper.updateSteps(String.valueOf(steps), today);
+                helper.updateBal(usercrypto+2, today);
+                Log.d("accel", today);
+                Log.d("accel", String.valueOf(steps));
+
+            }
         }
     }
 

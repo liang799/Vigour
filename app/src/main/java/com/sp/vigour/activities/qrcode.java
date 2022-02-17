@@ -111,16 +111,22 @@ public class qrcode extends AppCompatActivity {
             if (helper.checkForTables() == false) {
                 //create new row
                 helper.insert(String.valueOf(Math.round(0)), today, 5);
-            } else if(!today.equals(latestday)) {
+            } else if(today.equals(latestday)) {
 
                 //reset steps and create new row
                 //steps = 0;
 
                 //helper.getCoin(c);
 
+                storeDatainArray();
+
                 int size = historyCrypto.size()-1;
                 int usercrypto = historyCrypto.get(size);
-                helper.updateBal(usercrypto + 5, today);
+                Log.d("trans1", "usercrypto is " + usercrypto);
+                usercrypto = usercrypto +5;
+
+                Log.d("trans1", "usercrypto + 5 is " + usercrypto);
+                helper.updateBal(usercrypto, today);
 
             }
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
