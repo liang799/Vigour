@@ -50,7 +50,6 @@ public class Home extends Fragment implements View.OnClickListener {
     private TextView insight_step;
     private TextView insight_coin;
     private Addhelper db;
-    private String amount;
     ArrayList<Integer> historycrypto = new ArrayList<>();
 
     public void onCreate(Bundle savedInstanceState) {
@@ -92,9 +91,9 @@ public class Home extends Fragment implements View.OnClickListener {
             totcryp = historycrypto.get(i) +totcryp;
         }
 
-            Vgr_Amount.setText(String.valueOf(totcryp));
-            insight_coin.setText(db.coinInsight());
-            insight_step.setText(db.stepsInsight());
+        Vgr_Amount.setText(String.valueOf(totcryp));
+        insight_coin.setText(db.coinInsight());
+        insight_step.setText(db.stepsInsight());
 
         return view;
     }
@@ -109,7 +108,11 @@ public class Home extends Fragment implements View.OnClickListener {
                     hidden = true;
                 } else {
                     hide_indicator.setVisibility(View.GONE);
-                    Vgr_Amount.setText(amount);
+                    Integer totcryp = 0;
+                    for (int i = 0; i< historycrypto.size(); i++){
+                        totcryp = historycrypto.get(i) +totcryp;
+                    }
+                    Vgr_Amount.setText(String.valueOf(totcryp));
                     hidden = false;
                 }
                 break;
