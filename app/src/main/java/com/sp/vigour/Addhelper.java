@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import androidx.annotation.Nullable;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -44,16 +46,16 @@ public class Addhelper extends SQLiteOpenHelper {
         Log.d("accel", "helper inserted" );
     }
 
+    @Nullable()
     public Cursor getdata() {
-        String query = "SELECT * " + " FROM Steps_table";
+        String query = "SELECT * FROM Steps_table";
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = null;
-        if(db != null){
-            cursor = db.rawQuery(query,null);
+        if (db == null) {
+            return null;
         }
 
-        return cursor;
+        return db.rawQuery(query,null);
     }
 
     public Boolean delete(String historyID) {
