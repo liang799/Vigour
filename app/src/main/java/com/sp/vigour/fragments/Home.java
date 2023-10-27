@@ -159,6 +159,7 @@ public class Home extends Fragment implements View.OnClickListener {
                 @Override
                 public void run() {
                     MainActivity activity = (MainActivity) getActivity();
+                    if (activity == null) return;
                     if (activity.isNetworkAvailable()) {
                         int random = new Random().nextInt(did_u_know.size());
                         tips.setText(did_u_know.get(random));
