@@ -31,8 +31,7 @@ import java.util.Date;
 public class PedoWorker extends Worker implements SensorEventListener {
     private static final String TAG = "PedoWorker";
 
-    private String today,latestday;
-    private SimpleDateFormat simpleDateFormat;
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
 
     private int steps;
 
@@ -46,33 +45,32 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
         Cursor cursor = helper.getdata();
         cursor.moveToLast();
-        latestday = helper.getDate(cursor);
 
-        simpleDateFormat = new SimpleDateFormat("dd LLL");
-        today = simpleDateFormat.format(new Date());
+        String today = simpleDateFormat.format(new Date());
 
-
-        if (helper.checkForTables() == false) {
-            //create new row
-            Log.d("accel", "if");
+        if (!helper.checkForTables()) {
+            Log.d("accel", "create new row");
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-        } else if(!today.equals(latestday)) {
-            //reset steps and create new row
+            return;
+        }
+
+        String latestday = helper.getDate(cursor);
+        if (!today.equals(latestday)) {
             steps = 0;
             today = simpleDateFormat.format(new Date());
-            Log.d("accel", "else if");
+            Log.d("accel", "reset steps and create new row");
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
-        } else {
-            //use old row
-            steps = helper.getSteps(cursor);
-            Integer usercrypto = Integer.parseInt(helper.getCoin(cursor));
-            steps++;
-            helper.updateSteps(String.valueOf(steps), today);
-            helper.updateBal(usercrypto+2, today);
-            Log.d("accel", today);
-            Log.d("accel", String.valueOf(steps));
-
+            return;
         }
+
+        Log.d("accel", "use old row");
+        steps = helper.getSteps(cursor);
+        Integer usercrypto = Integer.parseInt(helper.getCoin(cursor));
+        steps++;
+        helper.updateSteps(String.valueOf(steps), today);
+        helper.updateBal(usercrypto + 2, today);
+        Log.d("accel", today);
+        Log.d("accel", String.valueOf(steps));
     }
 
     @Override
@@ -90,9 +88,9 @@ public class PedoWorker extends Worker implements SensorEventListener {
         if (pedometer != null) {
             setForegroundAsync(createForegroundInfo());
             simpleDateFormat = new SimpleDateFormat("dd LLL");
-            today = simpleDateFormat.format(new Date());
+            String today = simpleDateFormat.format(new Date());
             sensorManager.registerListener(this, pedometer, SensorManager.SENSOR_DELAY_UI);
-            while(!isUSBCharging());
+            while (!isUSBCharging());
             Log.d(TAG, "Work successful");
         } else {
             Log.d(TAG, "No pedometer");
@@ -148,7 +146,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
     BatteryManager myBatteryManager = (BatteryManager) getApplicationContext().getSystemService(Context.BATTERY_SERVICE);
 
     @RequiresApi(api = Build.VERSION_CODES.M)
-    public boolean isUSBCharging(){
-        return  myBatteryManager.isCharging();
+    public boolean isUSBCharging() {
+        return myBatteryManager.isCharging();
     }
 }
