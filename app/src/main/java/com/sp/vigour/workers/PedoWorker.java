@@ -33,8 +33,6 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd LLL");
 
-    private int steps;
-
     public PedoWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
@@ -50,13 +48,13 @@ public class PedoWorker extends Worker implements SensorEventListener {
 
         if (!helper.checkForTables()) {
             Log.d("accel", "create new row");
-            helper.insert(String.valueOf(Math.round(steps)), today, 0);
+            helper.insert("0", today, 0);
             return;
         }
 
         String latestday = helper.getDate(cursor);
         if (!today.equals(latestday)) {
-            steps = 0;
+            int steps = 0;
             today = simpleDateFormat.format(new Date());
             Log.d("accel", "reset steps and create new row");
             helper.insert(String.valueOf(Math.round(steps)), today, 0);
@@ -64,7 +62,7 @@ public class PedoWorker extends Worker implements SensorEventListener {
         }
 
         Log.d("accel", "use old row");
-        steps = helper.getSteps(cursor);
+        int steps = helper.getSteps(cursor);
         Integer usercrypto = Integer.parseInt(helper.getCoin(cursor));
         steps++;
         helper.updateSteps(String.valueOf(steps), today);
